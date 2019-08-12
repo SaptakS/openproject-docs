@@ -1,0 +1,23 @@
+<div class="landing-header-top" id="landing-header-bar">
+  <a class="header-link logo-container flex-container justify-center align-center" href="/">
+    <%= image_tag "openproject-logo-white.svg", class: 'logo' %>
+    <p>OpenProject <strong>Docs</strong></p>
+  </a>
+  <nav class="nav-container">
+    <% data.products.each do |key, product| %>
+      <a class="header-link nav-item flex-container justify-center align-center"
+         href="<%= localized_path(key) %>">
+        <p><%= product[:name] %></p>
+      </a>
+    <% end %>
+    <%= partial 'layouts/language_dropdown' %>
+<!--    <a class="header-link nav-item flex-container justify-center align-center"-->
+<!--       href="<%#= switch_language_path('en') %>">-->
+<!--      <p>(English)</p>-->
+<!--    </a>-->
+<!--    <a class="header-link nav-item flex-container justify-center align-center"-->
+<!--      href="<%#= switch_language_path('de') %>">-->
+<!--      <p>(Deutsch)</p>-->
+<!--    </a>-->
+  </nav>
+</div>

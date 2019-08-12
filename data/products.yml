@@ -1,0 +1,8 @@
+openproject:
+  name: 'OpenProject'
+  img: 'openproject-logo.svg'
+  repo: 'https://github.com/opf/openproject'
+subscriptions:
+  name: 'Subscriptions'
+  img: 'cloud.png'
+  repo: 'https://github.com/finnlabs/saas-openproject'

@@ -1,0 +1,50 @@
+<% wrap_layout :base do %>
+  <%#= TODO partial 'layouts/gtm' %>
+  <%= partial 'layouts/header' %>
+  <div class="wrapper">
+    <div class="nav-wrapper active">
+      <aside id="global-nav" class="global-nav">
+        <%= partial 'layouts/sidebar_navigation' %>
+      </aside>
+      <button type="button" class="btn nav-toggle" data-gl-class-toggle="active" data-target=".nav-wrapper">
+        <span class="arrow"></span>
+        <span class="arrow"></span>
+        <div class="label">Collapse sidebar</div>
+      </button>
+    </div>
+    <div class="main class js-main-wrapper">
+      <% if config[:breadcrumbs] %>
+        <% ancestor_array = ancestor_path_array(current_page) %>
+        <% if ancestor_array %>
+          <ul class="breadcrumbs">
+            <% ancestor_array.reverse_each do |item| %>
+              <li class="breadcrumb"><%= link_to item.key?(:title) ? "#{item[:title]}" : "Breadcrumb", item %></li>
+            <% end %>
+            <li class="breadcrumb"><%= current_page.data.title || "Current page" %></li>
+          </ul>
+          <div id="doc-nav" class="doc-nav">
+            <a class="toc-collapse" data-toggle="collapse" href="#markdown-toc" aria-expanded="true" aria-controls="markdown-toc"></a>
+          </div>
+        <% else %>
+          <div id="doc-nav" class="doc-nav toc-no-breadcrumbs">
+            <a class="toc-collapse" role="button" data-toggle="collapse" href="#markdown-toc" aria-expanded="true" aria-controls="markdown-toc"></a>
+          </div>
+        <% end %>
+      <% else %>
+        <div id="doc-nav" class="doc-nav toc-no-breadcrumbs">
+          <a class="toc-collapse" role="button" data-toggle="collapse" href="#markdown-toc" aria-expanded="true" aria-controls="markdown-toc"></a>
+        </div>
+      <% end %>
+      <div class="article-content js-article-content" role="main" itemscope itemprop="mainContentOfPage">
+        <%= yield %>
+      </div>
+      <%= partial 'layouts/feedback' %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <%= partial 'layouts/docsearch' %>
+  <%#= TODO mermaid.js support ? partial 'layouts/mermaid' %>
+  <%#= TODO analytics partial 'layouts/analytics' %>
+  <%= stylesheet_link_tag 'site.css' %>
+  <%= javascript_include_tag 'site.js' %>
+<% end %>

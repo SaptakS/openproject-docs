@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "importHelpers": true,
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "outDir": "./dist/out-tsc",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "noEmitOnError": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    // Increase strictness
+    // Enable strict once "use strict" errors can be resolved
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "baseUrl": "./webpack/javascripts/",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "compileOnSave": false
+}

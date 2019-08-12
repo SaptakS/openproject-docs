@@ -1,0 +1,16 @@
+---
+de:
+  products:
+    openproject:
+      shortname: 'OpenProject'
+      name: 'OpenProject Community- und Enterprise-Edition'
+      description: 'Dokumentationen zu den OpenProject Umgebungen'
+    subscriptions:
+      shortname: 'Cloud-Umgebung'
+      name: 'Ihre openproject.com Cloud-Umgebung'
+      description: 'Anleitung zur Verwaltung Ihrer Cloud-Umgebung'
+  landing:
+    how_can_we_help: '🇩🇪 Wie können wir helfen?'
+    topics:
+      migration:
+        'Migrieren von OpenProject'

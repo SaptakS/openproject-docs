@@ -1,0 +1,182 @@
+.clear {
+  clear: both;
+}
+
+// ToC styles
+.doc-nav {
+  h4 {
+    padding-bottom: 5px;
+    font-size: 16px;
+  }
+
+  > ul {
+    position: relative;
+    padding: 16px 8px;
+    margin-top: 60px;
+
+    li {
+      list-style: none;
+
+      &::before {
+        content: "›";
+        margin-right: 8px;
+      }
+
+      > a {
+        font-size: 14px;
+        color: $toc-link-color;
+        display: inline;
+        padding: 3px 7px;
+
+        &:hover {
+          color: $link-color-nav-hover;
+          text-decoration: underline;
+          background-color: transparent;
+          box-shadow: none;
+        }
+      }
+      .nav-link.active {
+        font-weight: 600;
+        color: $link-color-nav;
+        background-color: transparent;
+
+        &:hover, &:only-child {
+          color: $link-color-nav-hover;
+          text-decoration: underline;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.markdown-toc {
+  padding-left: 16px;
+}
+
+.nav-pills {
+  flex-wrap: nowrap;
+}
+
+// not wide enough to show quick nav and toc
+@media(max-width:1099px) {
+  .doc-nav {
+    position: relative;
+    min-height: 34px;
+
+    // ToC toggle button
+    .toc-collapse {
+      font-size: 13px;
+      display: block;
+      padding: 5px 5px 5px 0;
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      color: $link-color-nav;
+
+      &:hover {
+        color: $link-color-nav-hover;
+      }
+
+      &::before {
+        font-family: FontAwesome;
+        content: "\f147";
+        padding-right: 5px;
+      }
+
+      &::after {
+        content: "";
+        font-style: italic;
+      }
+
+      &.collapsed {
+        left: 0;
+        right: 0;
+        text-align: right;
+        background-color: $body-background-color;
+
+        &::before {
+          content: "\f196";
+        }
+
+        &::after {
+          content: "On this page";
+        }
+      }
+    }
+    // ToC toggle button
+
+    > ul {
+      margin: 0;
+    }
+  }
+
+  .main.class {
+    float: none;
+    width: inherit;
+    max-width: 900px;
+    margin: auto 1% auto 10%;
+  }
+}
+
+// wide enough to show toc but not quick nav
+@media(min-width:1100px) {
+  .header {
+    top: 0;
+    left: 0;
+  }
+
+  .doc-nav {
+    position: fixed;
+    top: 0;
+    right: 8px;
+    margin-top: 55px;
+    overflow: scroll;
+    height: 100%;
+
+    &.toc-no-breadcrumbs {
+      padding-top: 6px;
+    }
+
+    .toc-collapse {
+      display: none; // ToC toggle button => don't display on big screens
+    }
+  }
+
+  .doc-nav ul ul {
+    padding-left: 25px;
+  }
+}
+
+@media(min-width:1100px) and (max-width:1600px) {
+  $doc-nav-desired-width: 20vw;
+  // Get around the scroll bar
+  $doc-nav-width: $doc-nav-desired-width;
+
+  .main.class.has-toc {
+    width: 64vw;
+    max-width: 64vw;
+    float: left;
+  }
+
+  .doc-nav {
+    width: $doc-nav-width;
+  }
+}
+
+// wide enough to show quick nav and toc
+@media(min-width:1601px) {
+  $doc-nav-desired-width: 0;
+  // Get around the scroll bar
+  $doc-nav-width: 21%;
+
+  .main.class.has-toc {
+    width: 64vw;
+    max-width: 64vw;
+    margin: auto 13%;
+  }
+
+  .doc-nav {
+    width: $doc-nav-width;
+  }
+}

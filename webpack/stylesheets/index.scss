@@ -1,0 +1,1767 @@
+@import "variables";
+@import "~bootstrap/scss/bootstrap";
+
+@import 'footer';
+@import 'highlight';
+@import 'comments';
+@import 'instantsearch';
+@import 'toc';
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: $body-background-color;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-family: $sans-font-family;
+  font-size: $body-font-size;
+  color: $body-color;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: $link-color;
+
+  &:hover {
+    color: $link-color-hover;
+    text-decoration: underline;
+  }
+}
+
+details {
+  summary {
+    display: list-item;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  margin: 15px auto;
+  word-wrap: break-word;
+  clear: both;
+
+  thead {
+    background: $thead-background-color;
+  }
+
+  tbody {
+    border-top: 3px solid $gds-gray-200;
+
+    &:first-child {
+      border-top: 0;
+    }
+
+    tr > td {
+      max-width: 100%;
+      min-width: 100px;
+    }
+    code {
+      word-wrap: break-word;
+    }
+  }
+
+  td, th {
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid $table-border-color;
+    font-size: $body-font-size;
+
+    .badge-small {
+      &:hover::after {
+        padding: 5px;
+      }
+    }
+  }
+
+  @media all and (max-width: $mobile-width) {
+    display: block;
+  }
+
+  &.borderless-table {
+    border: 0;
+
+    tr, td, th {
+      border: 0;
+    }
+  }
+
+  &.center {
+    td {
+      text-align: center;
+    }
+  }
+
+  &.fixed-table {
+    table-layout: fixed; // use this for columns with the same width
+  }
+}
+
+blockquote {
+  background-color: $blockquote-background-color;
+  color: $blockquote-txt-color;
+  border-left: solid 3px $blockquote-border-color;
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-size: $body-font-size;
+
+  .highlight {
+    background-color: $white;
+  }
+
+  // Override bootstrap
+  ol:last-child, p:last-child, ul:last-child {
+    margin: inherit;
+  }
+
+}
+
+pre {
+  background-color: $pre-background-color;
+  position: relative;
+
+  code {
+    color: $code-color;
+    background-color: $code-background-color;
+    word-wrap: normal;
+    word-break: normal;
+    white-space: pre;
+  }
+
+  .clip-btn {
+    display: inline-block;
+    padding: 10px 10px 10px 13px;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    position: absolute;
+    color: $white;
+    background-color: $pre-code-color;
+    border: 0;
+    outline: 0;
+
+    i {
+      opacity: .5;
+      transition: opacity .3s ease-in;
+    }
+
+    @media all and (max-width: $mobile-width) {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .clip-btn {
+      i {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.gitlab-embed-snippets {
+  .clip-btn {
+    display: none;
+  }
+}
+
+code, code span {
+  font-family: $mono-font-family;
+}
+
+p code, li code, table code {
+  color: $code-color;
+  background-color: $code-background-color;
+}
+
+a > code {
+  color: $link-code-color;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid $hr-border-color;
+  width: 100%;
+}
+
+// Make code in headers match the font size of the given header.
+h2, h3, h4, h5, h6 {
+  border-bottom: solid 1px $h-border-bottom;
+  line-height: 1.4;
+  padding-bottom: 5px;
+
+  code {
+    color: $code-color;
+    background-color: $code-background-color;
+  }
+
+  @media all and (min-width: $mobile-width) {
+    .anchor {
+      opacity: 0;
+      float: left;
+      margin-left: -30px;
+      vertical-align: bottom;
+      margin-top: 8px;
+      height: 22px;
+    }
+
+    &:hover .anchor {
+      opacity: 1;
+    }
+  }
+}
+
+// base fonts
+// p font size = $body-font-size: 15px;
+
+h1 {
+  font-size: 30px;
+  font-weight: 500;
+  border-bottom: solid 2px $h1-border-bottom;
+  padding-bottom: 10px;
+  margin-top: $h-margin-top;
+  margin-bottom: $h-margin-bottom;
+
+  @media (max-width: $mobile-width) {
+    font-size: 26px;
+  }
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-top: $h-margin-top;
+  margin-bottom: $h-margin-bottom;
+
+  @media (max-width: $mobile-width) {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: $h-margin-top;
+  margin-bottom: $h-margin-bottom;
+
+  @media (max-width: $mobile-width) {
+    font-size: 22px;
+  }
+}
+
+h4 {
+  font-size: 22px;
+  font-weight: 400;
+
+  @media (max-width: $mobile-width) {
+    font-size: 20px;
+  }
+}
+
+h5 {
+  font-size: 20px;
+  color: $color-light-gray;
+  font-weight: 500;
+
+  @media (max-width: $mobile-width) {
+    font-size: 18px;
+  }
+}
+
+h6 {
+  font-size: 18px;
+  color: $color-light-gray;
+  font-weight: 500;
+
+  @media (max-width: $mobile-width) {
+    font-size: 16px;
+  }
+}
+
+li {
+  ul {
+    padding-left: 20px;
+  }
+}
+
+.float-left {
+  float: left;
+}
+
+.main {
+  margin: auto 15%;
+  padding: 55px 40px 0;
+  position: relative;
+  width: auto;
+  max-width: 900px;
+  border-left: 1px solid $main-box-shadow;
+  border-right: 1px solid $main-box-shadow;
+  background: $main-background-color;
+  z-index: 1;
+
+  @media (max-width: $mobile-width) {
+    padding: 55px 10px 5px;
+  }
+
+  @media(min-width:1601px) {
+    margin: auto 18%;
+    max-width: 64%;
+  }
+
+  &:not(.has-toc) {
+    > .doc-nav {
+      display: none;
+    }
+  }
+
+  .edit-on {
+    text-align: center;
+    border-top: 1px solid $hr-border-color;
+    padding-top: 20px;
+    margin-top: 15px;
+    a {
+      color: $h1-border-bottom;
+      &::before {
+        content: "\f126";
+        font-family: FontAwesome;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        padding-right: 5px;
+        line-height: 10px;
+      }
+      &:hover {
+        color: $color-tanuki-dark;
+      }
+    }
+  }
+
+  // external link
+  [href^="http://"], [href^="https://"] {
+    &:not([href*="gitlab.com"]) {
+      &::after {
+        content: "\f08e";
+        font-family: FontAwesome;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        padding-left: 5px;
+        line-height: 10px;
+      }
+    }
+  }
+
+  p {
+    margin: 7px 0;
+    line-height: 22px;
+  }
+
+  ul, ol {
+    margin: 20px 0;
+  }
+
+  li {
+    line-height: 22px;
+
+    > ul, > ol {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  img {
+    max-width: calc(100% - 10px);
+    max-height: 100vh;
+    box-shadow: 0 4px 18px 0 rgba($color-dark, .1), 0 6px 20px 0 rgba($color-dark, .09);
+    margin: 40px auto;
+    display: block;
+  }
+
+  footer {
+    padding: 10px 5px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+  }
+
+  .breadcrumbs {
+    font-style: italic;
+  }
+
+  // Override bootstrap defaults
+  .nav-tabs > li > a {
+    padding: 10px 15px;
+    display: block;
+    margin-right: 2px;
+    border-radius: 4px 4px 0 0;
+    text-decoration: none;
+
+    &.active {
+      background-color: $gds-white;
+    }
+  }
+
+  .nav-link {
+    padding: 0;
+  }
+
+  code {
+    word-break: normal;
+    padding: 2px 4px;
+  }
+
+  .input-group-text {
+    background-color: transparent;
+    display: flex;
+  }
+
+}
+
+// Override Bootstraps default button (for GDS colors)
+.btn-default {
+  border-color: $gds-gray-300;
+  -webkit-appearance: none;
+}
+
+.btn-default:hover {
+  background-color: $button-default-bg-hover;
+}
+
+.btn-primary {
+  background-color: $button-primary;
+}
+
+.btn-warning {
+  background-color: $button-warning;
+  color: $gds-white;
+}
+
+// Override Bootstrap tooltip
+.tooltip .tooltip-inner {
+  font-size: $tooltip-font-size;
+}
+
+//global nav
+.nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  padding-top: 56px;
+  max-width: 220px;
+  width: 50px;
+  height: 100vh;
+  transition: all .3s;
+  background: $gds-gray-50;
+  border-right: 1px solid $gds-gray-200;
+  z-index: 2;
+
+  &.active {
+    width: 15%;
+    min-width: 190px;
+
+    .nav-toggle {
+
+      .arrow {
+        left: 19px;
+        transform: rotate(0);
+
+        &:nth-child(2) {
+          left: 25px;
+        }
+      }
+
+      .label {
+        display: block;
+        pointer-events: none;
+        font-size: 14px;
+        color: $gds-gray-700;
+        margin-left: 30px;
+        flex-shrink: 0;
+      }
+    }
+
+    .global-nav {
+      visibility: visible;
+    }
+  }
+
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 0;
+    border-top: 1px solid $gds-gray-200;
+
+    &:hover {
+      background-color: $gds-gray-200;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    .label {
+      display: none;
+    }
+
+    .arrow, .arrow::before, .arrow::after {
+      cursor: pointer;
+      pointer-events: none;
+      border-radius: 1px;
+      height: 2px;
+      width: 9px;
+      background: $gds-gray-700;
+      position: absolute;
+      display: block;
+      content: "";
+    }
+
+    .arrow {
+      transform: rotate(180deg);
+      background-color: transparent;
+
+      &:nth-child(2) {
+        left: 19px;
+      }
+    }
+
+    .arrow::before {
+      top: 0;
+      transform: rotate(45deg) translateY(4px);
+    }
+
+    .arrow::after {
+      top: 0;
+      bottom: -7px;
+      transform: rotate(-45deg) translateY(-4px);
+    }
+  }
+}
+
+.global-nav {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  visibility: hidden;
+
+  .global-nav-section {
+    &.expanded {
+      background-color: $gds-gray-100;
+      box-shadow: inset 4px 0 0 $gds-indigo-800;
+    }
+  }
+
+  .global-nav-cat.active {
+    a {
+      color: $gds-indigo-800;
+    }
+  }
+
+  .global-nav-content {
+    margin-bottom: 70px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-right: 7px;
+
+    &.active {
+      background-color: $gds-gray-100;
+      font-weight: 600;
+      border-left: 4px solid;
+      color: $gds-indigo-800;
+
+      &:hover {
+        color: $gds-indigo-800;
+      }
+
+      &.level-1, &.level-2 {
+        background-color: $gds-gray-200;
+      }
+    }
+  }
+
+  .collapse-toggle {
+    cursor: pointer;
+    float: right;
+    width: 26px;
+    height: 36px;
+    display: flex;
+    padding-right: 10px;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: "";
+      border: solid $gds-gray-700;
+      border-width: 0 1px 1px 0;
+      display: inline-block;
+      transform: rotate(-135deg);
+      width: 7px;
+      height: 7px;
+    }
+
+    &.collapsed {
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+
+    &.active {
+      background-color: $gds-gray-200;
+      &.section-title {
+        background-color: $gds-gray-100;
+      }
+    }
+  }
+}
+
+.global-nav-block {
+  font-weight: 600;
+  padding-left: 10px;
+}
+
+// scss-lint:disable QualifyingElement
+a.global-nav-link, .nav-link {
+  text-decoration: none;
+
+  &:hover {
+    color: $link-color-nav-hover;
+  }
+}
+
+a.global-nav-link {
+  line-height: 1.25;
+  font-size: 14px;
+  width: 100%;
+}
+
+.nav-link {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-link:hover {
+  background-color: $link-color-bg-active;
+}
+// scss-lint:enable QualifyingElement
+
+.global-nav-block-top {
+  font-weight: 600;
+  margin-bottom: 3px;
+  margin-top: 3px;
+
+  a {
+    text-decoration: none;
+    text-shadow: 3px 3px 5px $link-color-bg-active;
+  }
+}
+
+// use these classes to add color and padding-left to the nav links
+.level-0 {
+  color: $global-nav-link-level0;
+  padding-left: 18px;
+
+  &:visited {
+    color: $global-nav-link-level0;
+  }
+
+  &.active {
+    padding-left: 14px;
+  }
+}
+
+.level-1 {
+  color: $global-nav-link-level1;
+  padding-left: 35px;
+
+  &:visited {
+    color: $global-nav-link-level1;
+  }
+
+  &.active {
+    padding-left: 31px;
+  }
+}
+
+.level-2 {
+  color: $global-nav-link-level2;
+  padding-left: 53px;
+
+  &:visited {
+    color: $global-nav-link-level2;
+  }
+
+  &.active {
+    padding-left: 49px;
+  }
+}
+
+.global-nav-badges {
+  color: $gds-gray-700;
+}
+//end of global-nav
+
+.last-updated {
+  color: $color-light-gray;
+  font-size: 13px;
+  padding-bottom: 10px;
+  text-align: right;
+}
+
+.btn-tanuki {
+  &:hover {
+    background-color: $color-btn-tanuki;
+  }
+}
+
+// Styles for breadcrumbs navigation
+.breadcrumbs {
+  white-space: nowrap;
+  overflow-x: auto;
+  padding: 0;
+
+  .breadcrumb {
+    text-overflow: ellipsis;
+    display: inline-block;
+    overflow-x: hidden;
+    // Override bootstrap
+    padding: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border-radius: 0;
+
+    &:not(:last-child)::after {
+      content: "›\00a0";
+    }
+
+    &::after {
+      padding: 0 4px 0 6px;
+    }
+  }
+}
+
+// Permalinks on header elements.
+.anchor {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  max-height: 25px;
+  vertical-align: middle;
+  background: url("<%= @items['/assets/images/icon_anchor.svg'].path %>") center center / contain no-repeat;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Version history ("Introduced in") notes
+.introduced-in {
+  font-size: $introduced-in-font-size;
+  color: $gds-gray-700;
+
+  .introduced-in-content {
+    border-left: solid 1px $gds-gray-500;
+    margin-top: 8px;
+
+    ul {
+      margin: 0;
+      padding-left: 26px;
+    }
+  }
+
+  .collapsing {
+    transition: none;
+  }
+}
+
+.text-expander {
+  background: url("<%= @items['/assets/images/ellipsis_h.svg'].path %>") center center / 12px no-repeat;
+  vertical-align: middle;
+  border: 1px solid $introduced-in-border-color;
+  border-radius: 4px;
+  margin-left: 8px;
+  margin-bottom: 2px;
+  width: 22px;
+  height: 16px;
+
+  &:hover {
+    background-color: $text-expander-hover-color;
+  }
+}
+// End of version history ("Introduced in") notes
+
+// Articles layout
+.article-metadata {
+  color: $article-metadata;
+  display: block;
+  order: -1;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+// Embedded video
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 0;
+  height: 0;
+  margin: 20px 0;
+  box-shadow: 5px 5px 10px $gds-gray-300;
+
+  iframe,
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// Embedded video fallback for GitLab's /help
+.video-fallback {
+  display: none;
+}
+
+// Override bootstrap's alert color
+.alert {
+  color: inherit;
+  border: 0;
+  border-radius: 0;
+  padding: .75rem .60rem;
+  opacity: .9;
+
+  code {
+    background-color: $alert-code-background-color;
+  }
+
+  i {
+    padding-right: 10px;
+  }
+}
+
+// Pajamas alerts
+// https://gitlab-org.gitlab.io/gitlab-design/hosted/design-gitlab-specs/alerts-spec-previews/
+.alert-info {
+  background-color: $alert-info-bg;
+  color: $alert-info-txt;
+  border-left: solid 3px $alert-info-border;
+}
+
+.alert-warning {
+  background-color: $alert-warning-bg;
+  color: $alert-warning-txt;
+  border-left: solid 3px $alert-warning-border;
+}
+
+.alert-success {
+  background-color: $alert-success-bg;
+  color: $alert-success-txt;
+  border-left: solid 3px $alert-success-border;
+}
+
+.alert-danger {
+  background-color: $alert-danger-bg;
+  color: $alert-danger-txt;
+  border-left: solid 3px $alert-danger-border;
+}
+
+.alert-gray {
+  background-color: $alert-gray-bg;
+  color: $alert-gray-txt;
+  border-left: solid 3px $alert-gray-border;
+}
+// End of Pajamas alerts
+
+.header {
+  z-index: 10;
+  background: $main-background-color;
+  position: fixed;
+  width: 100%;
+  padding: 6px 24px;
+  border-bottom: 1px solid $border-color;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+
+  .logo-container {
+    margin-right: 24px;
+  }
+
+  @media all and (max-width: $mobile-width) {
+    height: auto;
+    padding-left: 5px;
+  }
+
+  img {
+    height: 40px;
+  }
+
+  p {
+    font-size: 16px;
+    color: $black;
+    display: inline-block;
+    margin: 0 0 0 4px;
+  }
+
+  ul {
+    text-align: right;
+    list-style-type: none;
+
+    @media all and (max-width: $mobile-width) {
+      display: none;
+    }
+  }
+
+  @media all and (max-width: $mobile-width) {
+    &.active {
+      display: block;
+
+      .nav {
+        display: block;
+        text-align: left;
+        padding: 0;
+        width: 100%;
+      }
+
+      li {
+        display: block;
+        padding: 10px 0;
+      }
+    }
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .choose-version {
+    padding: 10px;
+  }
+
+  .btn-versions {
+    color: $black;
+    font-size: 16px;
+    border: 1px solid $color-tanuki-medium;
+
+    &:hover {
+      opacity: .8;
+    }
+
+    &:active {
+      opacity: .8;
+      box-shadow: none;
+    }
+  }
+
+  .versions-menu {
+    padding: 0;
+
+    li {
+      display: block;
+      margin: 5px 0;
+
+      a {
+        color: $versions-link-color;
+        padding: 3px 20px;
+        font-size: 14px;
+        display: block;
+        line-height: 1.4;
+
+        &:hover {
+          color: $versions-link-color-hover;
+          background-color: $versions-link-color-bg-hover;
+          text-decoration: none;
+        }
+
+        &.active {
+          background-color: $versions-active-bg-color;
+          font-weight: 600;
+          color: $link-color-nav;
+        }
+      }
+
+      &.divider {
+        margin: 0;
+      }
+
+      i {
+        padding-left: 5px;
+        opacity: .5;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  input {
+    box-sizing: content-box;
+    border: 1px solid $search-border;
+    border-radius: $border-radius;
+    -webkit-appearance: none;
+    padding: 7px 11px 7px 28px;
+    width: 260px;
+    background: $white url("<%= @items['/assets/images/icon_search.svg'].path %>") 9px 12px / 14px no-repeat;
+    outline: 0;
+
+    @media(max-width:$medium-width) {
+      width: 210px;
+    }
+
+    @media(max-width:$mobile-width) {
+      display: none;
+    }
+  }
+
+  input:focus {
+    border: 1px solid $search-border-dark;
+  }
+
+  input:visited {
+    outline: 0;
+    border: 0;
+  }
+
+  .nav-container {
+    margin: auto 0;
+
+    .docsearch-mobile {
+      display: none;
+      width: 100%;
+      outline: 0;
+      margin-top: 12px;
+
+      @media all and (max-width: $mobile-width) {
+        display: block;
+      }
+
+    }
+
+    .docsearch-mobile:focus {
+      border: 1px solid $search-border-dark;
+    }
+
+  }
+
+  .nav-toggle {
+    display: none;
+
+    @media all and (max-width: $mobile-width) {
+      display: inline-block;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: $link-color-nav;
+    }
+  }
+
+  // Override bootstrap
+  .nav > li > a {
+    text-decoration: none;
+    color: $black;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  // Override bootstrap
+  .nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+    opacity: .8;
+  }
+
+}
+
+
+// Home page //
+
+.landing {
+
+  h2, h3, h4, h5, h6 {
+    color: $header-color;
+  }
+
+  .landing-header {
+    padding: 120px 20px 220px;
+    color: $white;
+    background: $landing-background;
+
+    input {
+      border-radius: $border-radius;
+      font-size: 18px;
+      line-height: inherit;
+      outline: 0;
+    }
+
+    img {
+      width: 280px;
+    }
+
+    h1 {
+      text-align: center;
+      letter-spacing: normal;
+      white-space: nowrap;
+
+      span {
+        margin-left: 8px;
+      }
+
+    }
+
+    @media all and (max-width: $mobile-width) {
+      h1 {
+        font-size: 22px;
+        transform: translateY(20px);
+      }
+    }
+
+  }
+
+  h1 {
+    font-size: 34px;
+    font-weight: 300;
+    margin-top: 20px;
+    border-bottom: 0;
+
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+
+  }
+
+  .input-container {
+    position: relative;
+    margin-top: 30px;
+
+    img {
+      position: absolute;
+      left: 12px;
+      top: calc(50% - 10px);
+      height: 20px;
+      width: 20px;
+      z-index: 1;
+      opacity: .8;
+    }
+
+    input:focus {
+      box-shadow: 0 10px 20px $secondary-box-shadow;
+    }
+
+  }
+
+  .docsearch {
+    box-sizing: content-box;
+    position: relative;
+    padding: 12px 12px 12px 40px;
+    border: 0;
+    color: $black;
+    width: 500px;
+    min-width: 500px;
+
+    @media all and (max-width: $mobile-width) {
+      min-width: 230px;
+      width: 230px;
+    }
+  }
+
+  .scrolling-header {
+    background: $color-white;
+    border-bottom: 1px solid $color-gray-extra-light;
+
+    @media all and (max-width: $mobile-width) {
+      padding: 10px;
+    }
+
+  }
+
+  .header-link {
+    color: $color-white;
+
+    @media all and (max-width: $mobile-width) {
+      font-size: .8em;
+    }
+
+  }
+
+  .header-link:hover {
+    color: $color-white;
+  }
+
+  .scrolling-header-links {
+    color: $black;
+  }
+
+  .scrolling-header-links:hover {
+    color: $black;
+  }
+
+  .landing-header-top {
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    padding: 4px 24px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    overflow: auto;
+    // font-size: 1.1em;
+    transition: .2s cubic-bezier(0, 0, 0, 1);
+
+    a:hover {
+      opacity: .8;
+    }
+
+    p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .logo {
+      height: 40px;
+      margin-right: 6px;
+    }
+
+    .logo-container {
+      margin-right: auto;
+    }
+
+    .nav-item {
+      padding: 10px 18px;
+      margin-right: 4px;
+      text-align: center;
+
+      @media all and (max-width: $mobile-width) {
+        font-size: .8em;
+        padding: 10px;
+        margin-right: 0;
+      }
+
+    }
+
+    @media all and (max-width: $mobile-width) {
+      height: auto;
+      padding: 10px;
+    }
+
+    @media all and (max-width: $mobile-width) {
+      &.active {
+        display: block;
+
+        ul {
+          display: block;
+          text-align: left;
+          padding: 0;
+          width: 100%;
+        }
+
+        li {
+          display: block;
+          padding: 10px 0;
+        }
+      }
+    }
+
+    li {
+      display: inline-block;
+      line-height: 20px;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+
+    input {
+      box-sizing: content-box;
+      border: 1px solid $search-border;
+      border-radius: $border-radius;
+      -webkit-appearance: none;
+      padding: 7px 11px 7px 28px;
+      margin: -20;
+      width: 190px;
+      background: $white url("<%= @items['/assets/images/icon_search.svg'].path %>") 7px 8px / 16px no-repeat;
+
+      @media(max-width:1099px) {
+        width: 130px;
+      }
+    }
+
+    .nav-container {
+      margin: auto 0;
+      display: flex;
+    }
+
+    .nav-toggle {
+      display: none;
+
+      @media all and (max-width: $mobile-width) {
+        display: inline-block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+      }
+
+    }
+
+  }
+
+  .footer-link-title {
+    color: $color-white;
+  }
+
+  .row {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .topics-container {
+    margin-top: 60px;
+
+    .topic {
+      color: $blog-color-text;
+      width: 100%;
+
+      @media all and (max-width: $mobile-width) {
+        margin-bottom: 20px;
+      }
+
+    }
+
+    .topic:hover {
+      opacity: .6;
+      color: $black;
+    }
+
+    .topic:not(:first-child) {
+      margin-left: 40px;
+
+      @media all and (max-width: $mobile-width) {
+        margin-left: 0;
+      }
+
+    }
+
+    h4 {
+      font-weight: 600;
+      color: $black;
+    }
+
+    @media all and (max-width: $mobile-width) {
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+  }
+
+  .popular-topics {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 30px 160px;
+
+    h1 {
+      text-align: center;
+      color: $header-color;
+    }
+
+    @media all and (max-width: $mobile-width) {
+      flex-wrap: wrap;
+      padding-bottom: 80px;
+    }
+
+  }
+
+}
+
+// End of landing wrapper
+
+.main-topics {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  top: -80px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+
+  li {
+    display: inline-block;
+    background-color: $white;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px $main-box-shadow;
+    margin: 10px;
+    flex: 1 0 270px;
+    min-width: 270px;
+
+    @media all and (max-width: $mobile-width) {
+      width: 100%;
+      min-width: auto;
+      flex: initial;
+      margin: 20px 0 0;
+    }
+
+    a p, a:visited p {
+      color: $black;
+      vertical-align: bottom;
+    }
+
+    .wrapper {
+      padding: 40px;
+
+      img {
+        height: 76px;
+        margin: auto auto 20px;
+        transition: .2s cubic-bezier(0, 0, 0, 1);
+      }
+
+      h2 {
+        border-bottom: 1px solid $hr-border-color;
+      }
+
+      .topic-info {
+        transition: .2s cubic-bezier(0, 0, 0, 1);
+      }
+
+      @media all and (max-width: $mobile-width) {
+        padding: 30px;
+      }
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 400;
+    }
+
+    a, a:visited {
+      text-decoration: none;
+
+      h2 {
+        height: 50px;
+        margin: 0 0 25px;
+
+        @media all and (max-width: $mobile-width) {
+          height: auto;
+        }
+      }
+    }
+  }
+
+  li:hover {
+    img {
+      transform: scale(1.05);
+    }
+    .topic-info {
+      transform: translateY(4px);
+    }
+  }
+
+}
+
+// https://gitlab.com/gitlab-org/gitlab-docs/issues/107#note_36655246
+h1, h2, h3, h4, h5, h6 {
+  &[id]::before {
+    display: block;
+    content: " ";
+    margin-top: -75px;
+    height: 75px;
+    visibility: hidden;
+  }
+}
+
+//badges
+.badges-drop {
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 5px;
+  transition: background-color .5s ease-in-out;
+
+  .badge-gitlab,
+  .badge-gitlab-com {
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      transition: width .3s;
+      opacity: .5;
+    }
+  }
+
+  .badge-gitlab {
+    &::after {
+      background: $badge-gitlab;
+    }
+  }
+
+  .badge-gitlab-com {
+    &::after {
+      background: $badge-gitlab-com;
+    }
+  }
+
+  &:hover {
+    .badge-gitlab,
+    .badge-gitlab-com {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+h1, h2, h3, h4 {
+  .badge-display {
+    font-size: 11px;
+  }
+}
+
+h5, h6 {
+  .badge-display {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+}
+
+p, li {
+  .badge-display {
+    font-size: 9px;
+    padding: 1px;
+  }
+}
+
+p {
+  .badges-drop {
+    margin-left: 3px;
+    margin-right: 0;
+  }
+}
+
+// scss-lint:disable MergeableSelector
+// skipping scss-lint rule: keeping all the badges styles together
+h1, h2, h3, h4, h5, h6 {
+  .badges-drop {
+    float: right;
+  }
+}
+
+h1 {
+  @media all and (max-width: $mobile-width) {
+    .badges-drop {
+      padding-top: 5px;
+    }
+  }
+}
+
+li {
+  .badges-drop {
+    margin-left: 0;
+    margin-right: 3px;
+  }
+}
+// scss-lint:enable MergeableSelector
+
+.badge-display {
+  text-transform: uppercase;
+  text-align: center;
+  display: inline-block;
+  color: $white;
+  margin-left: 2px;
+  border-radius: 2px;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1.4;
+}
+
+.badge-gitlab {
+  color: $badge-gitlab;
+}
+
+.badge-gitlab-com {
+  color: $badge-gitlab-com;
+  padding-left: 5px;
+}
+
+.badge-small {
+  color: $badge-gitlab;
+  opacity: .6;
+  transition: opacity .3s;
+
+  &:hover {
+    opacity: 1;
+
+    &::after {
+      content: attr(data-title);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: .7em;
+      display: inline;
+      position: absolute;
+      padding: 1px 5px;
+      opacity: 1;
+      background-color: $white;
+      white-space: nowrap;
+      border-radius: 2px;
+      max-width: 150px;
+    }
+  }
+}
+
+// scss-lint:disable ImportantRule
+.dotcom-false {
+  .badge-gitlab-com {
+    display: none;
+  }
+}
+// scss-lint:enable ImportantRule
+
+.doc-nav,
+.breadcrumb {
+  .badge-trigger {
+    display: none;
+  }
+}
+
+//
+// Algolia search override
+// https://community.algolia.com/docsearch/styling.html
+//
+.algolia-autocomplete {
+  // Scrollable search results box
+  // https://gitlab.com/gitlab-org/gitlab-docs/issues/362
+  .ds-dropdown-menu [class^=ds-dataset-] {
+    max-height: 85vh;
+    overflow-x: hidden;
+  }
+}
+// Algolia search override end
+
+.flex-container {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+//in-page styles
+.center {
+  text-align: center;
+}
+
+.justify {
+  text-align: justify;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.middle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.youtube {
+  color: $youtube;
+}
+
+.half-width {
+  width: 50%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-60 {
+  width: 60%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-70 {
+  width: 70%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-75 {
+  width: 75%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-80 {
+  width: 80%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-90 {
+  width: 90%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+// scss-lint:disable ImportantRule
+.display-none {
+  display: none !important;
+}
+
+.display-block {
+  display: block !important;
+}
+
+.image-noshadow {
+  box-shadow: none !important;
+}
+// scss-lint:enable ImportantRule
+
+//end of in-page styles

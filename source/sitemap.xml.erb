@@ -1,0 +1,13 @@
+---
+is_hidden: true
+---
+<%= xml_sitemap(
+  items: items.select do |i|
+    # Exclude 'is_hidden: true' files
+    !i[:is_hidden] &&
+      # Exclude CE
+      !i.identifier.to_s.include?('/ce/') &&
+      # Include all files end with md, erb, html
+      i.identifier.to_s.end_with?('.md','.erb','.html')
+  end
+) %>

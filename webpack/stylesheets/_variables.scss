@@ -1,0 +1,345 @@
+// Breakpoints
+$medium-width: 1100px;
+$mobile-width: 900px;
+
+// Border radius
+$border-radius: 3px;
+
+// Border colors
+$introduced-in-border-color: #e3e3e3;
+
+// Fonts
+$mono-font-family: "Menlo", "DejaVu Sans Mono", "Liberation Mono", "Consolas", "Ubuntu Mono", "Courier New", "andale mono", "lucida console", monospace;
+$sans-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$body-font-size: 15px;
+$tooltip-font-size: 12px;
+$introduced-in-font-size: 13px;
+
+// Margins
+$h-margin-top: 20px;
+$h-margin-bottom: 10px;
+
+// GitLab colors
+// Tanuki
+$color-tanuki-dark: rgb(226, 67, 41);
+$color-tanuki-medium: rgb(252, 109, 38);
+$color-tanuki-light: rgb(252, 163, 38);
+$color-btn-tanuki: rgba(252, 163, 38, .1);
+
+//// GitLab Design System's (GDS) colors ////
+// https://design.gitlab.com/#/foundations/colors
+
+// Neutral palette
+$gds-white: #fff;
+$gds-gray-50: #fafafa;
+$gds-gray-100: #f2f2f2;
+$gds-gray-200: #dfdfdf;
+$gds-gray-300: #ccc;
+$gds-gray-400: #bababa;
+$gds-gray-500: #a7a7a7;
+$gds-gray-600: #919191;
+$gds-gray-700: #707070;
+$gds-gray-800: #4f4f4f;
+$gds-gray-900: #2e2e2e;
+$gds-gray-950: #1f1f1f;
+$gds-black: #000;
+
+// Transparency
+$gds-t-gray-a2: rgba($gds-black, .02);
+$gds-t-gray-a4: rgba($gds-black, .04);
+$gds-t-gray-a6: rgba($gds-black, .06);
+$gds-t-gray-a8: rgba($gds-black, .08);
+
+// Blue palette
+$gds-blue-100: #e4f0fb;
+$gds-blue-200: #b8d6f4;
+$gds-blue-300: #73afea;
+$gds-blue-400: #418cd8;
+$gds-blue-500: #1f78d1;
+$gds-blue-600: #1b69b6;
+$gds-blue-700: #17599c;
+$gds-blue-800: #134a81;
+
+// Indigo palatte
+$gds-indigo-800: #393982;
+//// end of GitLab Design System's colors ////
+
+//// Colors conforming with GDS ////
+// Add here all the variables that already conform with GDS
+
+// Base colors
+$body-color: $gds-gray-950; //font color
+$body-background-color: rgba($gds-gray-50, .3); //body background
+$main-background-color: $gds-white; // content background
+
+// Link colors
+$link-color: $gds-blue-600;
+$link-color-hover: $gds-blue-800;
+$link-code-color: $gds-blue-600;
+$link-color-bg-active: rgba($gds-gray-900, .06);
+$link-color-nav: $gds-gray-800;
+$link-color-nav-hover: $gds-gray-900;
+
+// Global nav
+$global-nav-link-level0: $link-color-nav;
+$global-nav-link-level1: $link-color-nav;
+$global-nav-link-level2: $gds-gray-700;
+$global-nav-link-shadow: $gds-gray-200;
+
+// Table of contents
+$toc-bg-color: $body-background-color;
+$toc-border: $gds-gray-600;
+$toc-link-color: $global-nav-link-level2;
+
+// Help and feedback section
+$feedback-bg: rgba($gds-gray-50, .4);
+$inactive-tabs: rgba($gds-gray-100, .6);
+$buttons-bg: $body-background-color;
+$tabs-border: $gds-gray-200;
+
+// Versions menu
+$versions-link-color: $global-nav-link-level1;
+$versions-link-color-hover: $link-color-nav-hover;
+$versions-link-color-bg-hover: rgba($gds-gray-200, .6);
+$versions-active-bg-color: $versions-link-color-bg-hover;
+
+/// Elements
+$blockquote-border-color: #b8d6f4;
+$blockquote-background-color: rgba($gds-blue-100, .5);
+$blockquote-txt-color: #0f3b66;
+$h1-border-bottom: $gds-gray-700;
+$h-border-bottom: $gds-gray-300;
+$divider-color: $gds-gray-200;
+$border-color: $gds-gray-200;
+$border-color-light: $gds-gray-50;
+$table-border-color: $border-color;
+$thead-border-color: $gds-gray-200;
+$thead-background-color: $gds-gray-100;
+
+// Buttons
+$button-default-bg-hover: $gds-gray-100;
+$button-primary: #337ab7;
+$button-warning: #f0ad4e;
+
+// Pajama alerts
+$alert-info-bg: $gds-blue-100;
+$alert-info-txt:#0f3b66;
+$alert-info-border: #b8d6f4;
+
+$alert-success-bg: #dcf5e7;
+$alert-success-txt: #0e5a2d;
+$alert-success-border: #b3e6c8;
+
+$alert-warning-bg: #fff1de;
+$alert-warning-txt: #853c00;
+$alert-warning-border: #fed69f;
+
+$alert-danger-bg: #fbe5e1;
+$alert-danger-txt: #711e11;
+$alert-danger-border: #f2b4a9;
+
+$alert-gray-bg: $gds-gray-100;
+$alert-gray-txt: $gds-gray-900;
+$alert-gray-border: $gds-gray-200;
+
+//// end of colors conforming with GitLab Design System ////
+
+// Badges
+$badge-gitlab: $color-tanuki-medium;
+$badge-gitlab-com: $color-tanuki-light;
+$badge-gitlab-transparent: rgba(252, 109, 38, .1);
+$badge-gitlab-com-transparent: rgba(252, 163, 38, .1);
+
+// Inline code colors
+$code-color: rgb(95, 131, 65);
+$code-background-color: rgba(95, 131, 65, .1);
+$alert-code-background-color: #f9f2f4;
+
+//copy button bg color == pre code color
+$pre-code-color: #2b303b;
+
+// Home page colors
+$header-color: #24689F;
+$landing-background: #24689F;
+$topic-border: rgb(215, 215, 215);
+$topic-ee-header-color: #24689F;
+$topic-omnibus-header-color: rgb(9, 96, 153);
+$topic-runner-header-color: rgb(203, 88, 15);
+$subtopic-color: rgba(0, 0, 0, .6);
+$subtopic-border-color: rgb(79, 172, 225);
+
+// Other colors
+$hr-border-color: $border-color;
+$pre-background-color: rgba(238, 238, 238, .35);
+$search-border: rgba(0, 0, 0, .25);
+$search-border-dark: rgba(0, 0, 0, .50);
+$main-box-shadow: rgba(0, 0, 0, .1);
+$secondary-box-shadow: rgba(0, 0, 0, .1);
+$text-expander-hover-color: #e1e1e1;
+$white: #fff;
+$black: #333;
+
+// Colors
+
+$color-white: #fff;
+$color-white-alt: #d9ccff;
+$color-transparent: rgba(0, 0, 0, 0);
+$color-dark: #000;
+$color-gray: #777;
+$color-gray-medium: #ddd;
+$color-gray-light: #aaa;
+$color-gray-extra-light: #e7e7e7;
+$color-light-gray: rgb(117, 117, 117);
+$color-green: #18be97;
+$color-red: #f00;
+$color-primary: #24689F;
+$color-primary-alt: #006080;
+$color-secondary: #e14329;
+$color-secondary-alt: #fba225;
+$color-primary-medium: #503991;
+
+$header-text-light-color: #a69ebd;
+
+$team-content-color: #999;
+$member-name-color: #333;
+$member-shadow-color: #ccc;
+$member-social-color: #ccc;
+
+$blog-color-text: #222;
+$blog-color-note: #666;
+$blog-color-heading: #fff;
+$blog-color-purple: rgb(107, 79, 187);
+$blog-color-mk-border: #ccc;
+$blog-color-date: #888;
+$blog-color-overlay-border: #eee;
+$blog-color-border-shadow: rgba(0, 0, 0, .1);
+$blog-color-image-from: rgba(0, 0, 0, 0);
+$blog-color-image-to: rgba(0, 0, 0, .8);
+$blog-color-ipanel-heading: rgba(221, 221, 221, .5);
+$blog-color-legacy-image-from: rgba(85, 68, 136, .8);
+$blog-color-legacy-image-to: rgba(72, 135, 197, .92);
+
+// legacy blog variables that were used by other pages
+
+$blog-date-color: #999;
+$blog-text-color: #444;
+$blog-notes-color: #606060;
+$blog-image-color-to: #4887c5;
+$blog-divider-color: #128bee;
+$blog-table-background: #faf9f9;
+$blog-table-background-hover: #f4f8fe;
+$blog-table-border: #efeff1;
+
+$release-manager-list-bg: #403366;
+$release-manager-table-border: #584985;
+$release-manager-table-header-color: #9583c9;
+$release-manager-current-table-data-color: #ff9;
+
+$mvp-list-bg: #403366;
+$mvp-table-border: #584985;
+$mvp-table-header-color: #9583c9;
+
+$landing-community-bg: #34373c;
+$landing-organization-color: #d7d7d7;
+
+$downloads-btn-color: #7769a0;
+$downloads-btn-hover-color: #403366;
+$downloads-code-color: #403366;
+$downloads-step-link-color: #ffb800;
+$downloads-step-color: #e3dcf7;
+
+$contact-color: #bbb4cf;
+$contact-btn-bg: #887ab6;
+
+$consultancy-bg-color: #272120;
+
+$gs-btn-bg: #129bee;
+$gs-btn-hover-bg: #6144b8;
+
+$applications-title-color: #373737;
+$applications-app-shadow-color: #e0e0e0;
+
+$link-box-color: #333;
+$link-box-border-color: #7863b6;
+$link-box-hover-bg: #f4f0ff;
+
+$pricing-primary: #129bee;
+$subscription-header-bg: #444;
+$subs-header-color: #242424;
+$subs-header-sub-color: #979797;
+$subs-header-hr-color: #d4d4d4;
+$pricing-header-color-to: #4887c5;
+$pricing-gray-bg: #fafafa;
+
+$blueish-gray: #a1a1a2;
+
+$dropdown-text-color: #626262;
+$dropdown-caret-color: #c4c4c4;
+$dropdown-border-color: #eaeaea;
+$dropdown-focus-color: #c4c4c4;
+$dropdown-hover-color: #f7faff;
+
+$dropdown-filter-border-color: rgba(0, 0, 0, .1);
+$dropdown-fa-color: #c7c7c7;
+$dropdown-fa-focus-color: #555;
+
+$formula-variable-bg: #f9f9f9;
+$formula-text-color: #9d9d9d;
+$formula-value-color: #444;
+
+// Bootstrap overrides
+$breadcrumb-separator: ">";
+$breadcrumb-bg: darken($color-white, 2%);
+
+$container-large-desktop: 1200px;
+
+$body-bg: #f9f9f9;
+
+$border-radius-large: 3px;
+
+$grid-float-breakpoint: 992px;
+$screen-sm-min: 768px;
+
+$navbar-default-bg: #fff;
+$navbar-default-toggle-icon-bar-bg: $color-primary;
+$navbar-default-link-color: #8c929d;
+$navbar-default-link-hover-color: $color-primary;
+$navbar-default-link-active-color: $color-primary;
+$navbar-default-link-active-bg: transparent;
+$navbar-default-border: #d7d7d7;
+
+$search-input-font-color: #333;
+$search-border-color: #bcbcbc;
+
+$reseller-divider-color: $navbar-default-border;
+$reseller-hero-bg-color: #35393d;
+$reseller-hero-content-color: #969696;
+$reseller-category-active-background-color: rgba(255, 255, 255, .4);
+
+$applications-search-box-shadow-color: rgba($color-dark, .5);
+
+$features-gradient-end: rgba(148, 149, 150, 1);
+$features-gradient-begin: rgba(0, 0, 0, .91);
+$features-semi-transparent-white: rgba(255, 255, 255, .15);
+$features-semi-transparent-gray: rgba(180, 180, 180, .15);
+$features-semi-transparent-gray-link: rgba(180, 180, 180, .50);
+$features-semi-transparent-black: rgba(12, 12, 12, .47);
+$features-semi-transparent-purple: rgba(107, 79, 187, .50);
+$features-barely-transparent-white: rgba(255, 255, 255, .5);
+$features-gray-light-barely-transparent: rgba(170, 170, 170, .5);
+$features-gallery-background-gradient-begin: #6b4fbb;
+$features-gallery-background-gradient-middle: #5942a0;
+$features-gallery-background-gradient-end: #42327a;
+$features-gallery-alt-description-black: rgba(0, 0, 0, .7);
+
+$ee-standalone-primary-background-gradient: linear-gradient(to right, $color-primary-alt 0%, $features-gallery-background-gradient-middle 40%, $features-gallery-background-gradient-end 100%);
+$ee-standalone-hero-background-top: rgba(52, 55, 60, .85);
+$ee-standalone-hero-background-gradient: linear-gradient(to bottom, $ee-standalone-hero-background-top, $landing-community-bg 85%);
+
+$facebook-bg: #3b5998;
+$twitter-bg: #55acee;
+$google-bg: #dd4b39;
+$linkedin-bg: #007bb5;
+$youtube: #f00;
+
+$article-metadata: rgb(110, 110, 110);

@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="<%= I18n.locale %>"
+      lang="<%= I18n.locale %>"
+      prefix="og: http://ogp.me/ns#">
+<head>
+  <%= partial 'layouts/head' %>
+</head>
+<body class="<%= page_classes %> <%= current_page.data.body_classes || '' %>">
+<%= yield %>
+<%= partial 'layouts/footer' %>
+<%= partial 'layouts/docsearch' %>
+</body>
+</html>

@@ -1,0 +1,18 @@
+---
+en:
+  products:
+    openproject:
+      shortname: 'OpenProject'
+      name: 'OpenProject Community and Enterprise Editions'
+      description: 'Documentation for OpenProject Community and Enterprise Editions'
+    subscriptions:
+      shortname: 'Subscriptions'
+      name: 'Cloud subscription help'
+      description: 'Managing your OpenProject.com cloud subscription'
+  landing:
+    how_can_we_help: '🇬🇧 How can we help?'
+    topics:
+      migration:
+        'Migrating to openproject.com'
+      migration_text:
+        'Something that has not been translated yet'

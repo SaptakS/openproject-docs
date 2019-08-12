@@ -1,0 +1,24 @@
+<% if data.languages.length > 1 %>
+<div class="dropdown">
+  <a role="button"
+     class="btn btn-versions header-link dropdown-toggle"
+     data-toggle="dropdown"
+     aria-haspopup="true"
+     aria-expanded="false"
+     id="languages"
+     href="#">
+    Languages
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu versions-menu" aria-labelledby="languages">
+    <% data.languages.each do |locale, name| %>
+      <li>
+        <% classes = locale == I18n.locale.to_s ? 'active' : '' %>
+        <a href="<%= switch_language_path(locale) %>" class="<%= classes %>">
+          <%= name %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

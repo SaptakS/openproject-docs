@@ -1,0 +1,15 @@
+<footer class=footer>
+  <%= partial 'layouts/footer_links' %>
+</footer>
+<div class='animated text-center source-link'>
+  <a href='https://creativecommons.org/licenses/by-sa/4.0/' target='_blank' rel="license" alt="Creative Commons License"><img src='/assets/images/by-sa.svg'></a>
+  <a href='/cookies-policy/' alt='Cookies Policy'>Cookies Policy</a>
+  <% if ENV['NANOC_ENV'] == 'production' && ENV['CI_COMMIT_REF_NAME'] == 'master' %>
+    <%# Show Edit button only in production and on master branch (hide archives) %>
+    <div class="edit-on">
+      <i class="fa fa-code-fork" aria-hidden="true"></i>
+      <a href="<%= edit_on_gitlab(@item) %>">Edit this page</a>
+      (<a href="<%= edit_on_gitlab(@item, editor: :webide) %>">Web IDE</a>)
+    </div>
+  <% end %>
+</div>

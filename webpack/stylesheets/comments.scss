@@ -1,0 +1,143 @@
+.comments {
+  margin: 15px -10px 0;
+  padding: 10px 10px 0;
+  border-top-style: solid;
+  border-top-color: $border-color;
+  border-top-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: $border-color;
+  border-bottom-width: 3px;
+  background-color: $feedback-bg;
+
+  @media all and (min-width: $mobile-width) {
+    margin-left: -40px;
+    margin-right: -40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.comments-filter {
+  a {
+    color: $color-tanuki-dark;
+    border-color: $color-tanuki-light;
+
+    i {
+      color: $color-tanuki-dark;
+      padding-right: 5px;
+      display: inline-block;
+    }
+
+    &:hover {
+      color: $color-tanuki-light;
+      border-color: $color-tanuki-dark;
+    }
+
+    &.comments-holder {
+      display: inline-block;
+      width: 100%;
+      background-color: $buttons-bg;
+
+      &:hover {
+        background-color: $color-white;
+      }
+    }
+  }
+
+  h2 {
+    border-bottom: 0;
+  }
+
+  i {
+    color: $color-tanuki-dark;
+
+    &.black-icon {
+      color: $color-gray;
+      padding-left: 5px;
+    }
+  }
+}
+
+.disqus-comments-gitlab {
+  a {
+    margin-bottom: 13px;
+  }
+
+  iframe {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: $color-white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 7px $search-border;
+    margin-top: 25px;
+  }
+}
+
+.comments-holder {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: $color-tanuki-dark;
+  box-shadow: 1px 2px 3px transparent;
+  font-size: 13px;
+
+  &:hover {
+    color: $color-tanuki-dark;
+    background-color: $color-white;
+    box-shadow: 1px 2px 3px $color-gray-extra-light;
+  }
+
+  @media all and (max-width: $medium-width) {
+    font-size: 12px;
+  }
+}
+
+.tab-content {
+  .row {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px $border-color;
+
+    &:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 7px;
+    }
+  }
+}
+
+.tab-pane {
+  padding-bottom: 15px;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+// Fixes padding in this row when the Disqus row isn't shown
+// scss-lint:disable IdSelector
+#doc-issue-row {
+  padding-bottom: 20px;
+}
+// scss-lint:enable IdSelector
+
+// scss-lint:disable ImportantRule
+.nav-tabs {
+  > li {
+    > a {
+      color: $body-color;
+      border: solid 1px $tabs-border;
+      background-color: $inactive-tabs;
+
+      &:hover {
+        color: $body-color;
+        border: solid 1px $border-color;
+        background-color: $color-white;
+      }
+    }
+
+    &.active > a {
+      background-color: $feedback-bg !important;
+    }
+  }
+}
+// scss-lint:enable ImportantRule

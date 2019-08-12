@@ -1,0 +1,27 @@
+<div class="header">
+  <div class="flex-container align-center">
+    <a class="header-link logo-container flex-container justify-center align-center" href="/">
+      <%= image_tag "openproject-logo.svg", class: 'logo' %>
+      <p>OpenProject <strong>Docs</strong></p>
+    </a>
+    <% unless current_page.data.disable_searchbar || current_page.url.include?('/search') %>
+      <form id="search-form" action="/search/" method="get">
+        <input type="text" name="q" class="docsearch" placeholder="Search" required/>
+        <input type="submit" style="visibility: hidden; position:absolute;" />
+      </form>
+    <% end %>
+  </div>
+  <div class="nav-container">
+    <a class="nav-toggle" id="docs-nav-toggle">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </a>
+    <ul class="nav">
+      <% data.products.each do |key, product| %>
+        <a class="nav-item"
+           href="<%= localized_path(key) %>">
+          <p><%= product[:name] %></p>
+        </a>
+      <% end %>
+    </ul>
+  </div>
+</div>

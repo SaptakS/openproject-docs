@@ -1,0 +1,225 @@
+// original CSS: https://github.com/algolia/examples/blob/master/instant-search/instantsearch.js/assets/style.css
+// original CSS customized and converted to SCSS with http://sebastianpontow.de/css2compass/
+
+//colors
+$color0: rgba(180, 162, 231, .1);
+$color1: rgba(180, 162, 231, .2);
+$color2: rgba(180, 162, 231, .1);
+$color3: rgba(79, 171, 225, .2);
+$color4: #eee;
+$color5: #ed5565;
+$color6: #999;
+$color7: #868686;
+$color8: #fff;
+$color9: #383838;
+$color10: rgb(117, 117, 117);
+$color11: transparent;
+// link-color: rgb(32, 139, 196);
+$color12: rgba(32, 139, 196, .2); //link color lighter
+
+
+//scss-lint:disable ImportantRule
+.ais-search-box {
+  width: 100%;
+  max-width: 100% !important; // was 300px
+}
+
+.search-input {
+  border-radius: 2px;
+}
+
+.instantsearch-input {
+  padding-bottom: 7px;
+}
+
+.ais-stats {
+  display: block;
+  float: left;
+  margin-top: -26px !important;
+
+  @media all and (max-width: $mobile-width) {
+    margin-top: -25px !important;
+  }
+} 
+
+.ais-search-box--powered-by {
+  font-family: $sans-font-family;
+  font-size: $body-font-size;
+}
+
+.ais-search-box--magnifier,
+.ais-search-box--reset {
+  display: block;
+  top: 35% !important;
+  bottom: auto;
+  right: 10px !important;
+}
+
+.hit-content {
+  display: block;
+  border-top: 2px solid $color0;
+  padding: 30px 5px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 300;
+  width: 100%; // was 81%
+  position: relative;
+  color: $color10;
+  transition: .3s ease;
+  word-wrap: break-word;
+
+  &:hover {
+    border-top: 2px solid $color12;
+    box-shadow: 0 10px 6px -6px $color12;
+
+    .hit-tag {
+      color: $link-color;
+      border-color: $color3;
+    }
+  }
+
+  @media all and (max-width: $mobile-width) {
+    padding: 25px 5px;
+  }
+
+  .lvl0 {
+    color: $black;
+  }
+
+  .lvl1 {
+    font-size: 18px !important;
+  }
+
+  .lvl2 {
+    font-size: 14px;
+    color: $color7;
+  }
+
+  .hit-name {
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+  em {
+    font-style: normal;
+    background-color: $color3;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .hit-description {
+    margin: 1px 0 5px;
+  }
+
+  .hit-tag {
+    display: block;
+    position: absolute;
+    padding: 3px;
+    border: 1px solid $color0;
+    border-top: 0;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    right: 0;
+    top: 0;
+    width: 70px;
+    height: 25px;
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    color: $color6;
+  }
+
+  .hit-text {
+    font-size: inherit;
+    color: $link-color;
+  }
+
+  @media all and (max-width: $mobile-width) {
+    .hit-tag {
+      width: 60px;
+      height: 23px;
+      font-size: 10px;
+    }
+
+    .lvl0 {
+      padding-top: 5px;
+    }
+  }
+}
+//scss-lint:enable ImportantRule
+
+//scss-lint:disable IdSelector
+#hits {
+  border-top: 0;
+  margin: 4px 0;
+  padding: 10px 0;
+
+  > h1, h2, h3, h4, h5, h6 {
+    border: 0;
+  }
+}
+
+#refinement-list {
+  margin-top: 15px;
+}
+//scss-lint:enable IdSelector
+
+//overrides padding for the searchbox
+.main.class {
+  padding-top: 90px;
+
+  @media (max-width: $mobile-width) {
+    padding-top: 20px;
+  }
+}
+
+.algolia-docsearch-suggestion--highlight {
+  background-color: $color3;
+}
+
+.ais-infinite-hits--showmore {
+  display: block;
+  margin: 10px auto auto;
+
+  button {
+    padding: 20px 10px;
+    cursor: pointer;
+    width: 100%;
+    background-color: $color8;
+    border-color: $color3;
+    border-right: 0;
+    border-left: 0;
+
+    &:hover {
+      background-color: $color3;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.stats {
+  display: block;
+  text-align: right;
+  font-size: 11px;
+  color: $body-color;
+
+  @media all and (max-width: $mobile-width) {
+    font-size: 10px;
+  }
+}
+
+.ais-refinement-list--item {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.ais-refinement-list--label {
+  text-transform: uppercase;
+  color: $link-color;
+}

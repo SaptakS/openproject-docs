@@ -1,0 +1,20 @@
+---
+is_hidden: true
+---
+
+<% if ENV['CI_COMMIT_REF_NAME'] == 'master' %>
+sitemap: https://docs.gitlab.com/sitemap.xml
+user-agent: *
+disallow: /ce/
+disallow: /debug/
+<% @items['/_data/versions.yaml'][:online].each do |version| %>
+disallow: /<%= version %>/
+<% end %>
+<% @items['/_data/versions.yaml'][:offline].each do |version| %>
+disallow: /<%= version %>/
+<% end %>
+<% else %>
+# Ban all spiders from the entire site when not on master branch
+user-agent: *
+disallow: /
+<% end %>

@@ -1,0 +1,39 @@
+---
+title: OpenProject Documentation
+layout: home
+body_classes: landing
+---
+<div class="row">
+  <ul class="main-topics" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+    <% data.products.each do |key, product| %>
+      <li>
+        <a itemprop="url" href="<%= localized_path(key) %>">
+          <div class="wrapper flex-container flex-column">
+            <%= image_tag product[:img], alt: product[:name], class: 'line logo' %>
+            <div class="topic-info">
+              <h2 itemprop="name"><%= product[:name] %></h2>
+              <p><%= I18n.t("products.#{key}.description") %></p>
+            </div>
+          </div>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="popular-topics">
+  <h1>Most popular topics</h1>
+  <div class="topics-container flex-container">
+    <a class="topic" href="/ee/user/project/import/">
+      <h4><%= I18n.t('landing.topics.migration') %></h4>
+      <p><%= I18n.t('landing.topics.migration_text') %></p>
+    </a>
+    <a class="topic" href="/ee/ci/yaml/">
+      <h4>Foo</h4>
+      <p>Bar</p>
+    </a>
+    <a class="topic" href="/ee/api/">
+      <h4>API</h4>
+      <p>API ...</p>
+    </a>
+  </div>
+</div>
