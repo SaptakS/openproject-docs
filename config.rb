@@ -1,5 +1,6 @@
 require_relative './lib/readme_directory_indexes'
 require_relative './lib/markdown_templates'
+require_relative './lib/trailing_slashes'
 
 require_relative 'lib/locale_helpers'
 helpers LocaleHelpers
@@ -18,6 +19,8 @@ set :breadcrumbs, false
 
 # Disable site_url locally
 set :site_url, ""
+
+use ::Rack::TrailingSlashes
 
 # Per-page layout changes
 page '/*.xml', layout: false
