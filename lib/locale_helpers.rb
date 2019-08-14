@@ -1,11 +1,19 @@
 module LocaleHelpers
+  def site_url
+    config[:site_url] || ''
+  end
+
+  def root_path
+    "#{site_url}/"
+  end
+
   def localized_path(path, options = {})
     lang = options.fetch(:language, I18n.locale.to_s)
 
     if lang == 'en'
-      "/#{path}"
+      "#{site_url}/#{path}"
     else
-      "/#{lang}/#{path}"
+      "#{site_url}/#{lang}/#{path}"
     end
   end
 
@@ -17,7 +25,7 @@ module LocaleHelpers
       # Link to the current page with english
       url
     else
-      "/#{target_lang}#{current_page.url}"
+      "#{site_url}/#{target_lang}#{current_page.url}"
     end
   end
 end

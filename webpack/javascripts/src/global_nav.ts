@@ -1,5 +1,10 @@
 (function() {
-  const menu = document.getElementById('global-nav')!;
+  const menu = document.getElementById('global-nav');
+
+  if (!menu) {
+    return;
+  }
+
   const activeMenuItem = menu.querySelector('.nav-link .active' as any);
   const collapsedMenu = activeMenuItem ? activeMenuItem.closest('.collapse') : null;
   let resizeTimeout:number;

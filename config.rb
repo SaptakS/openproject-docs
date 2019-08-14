@@ -16,6 +16,8 @@ helpers LocaleHelpers
 # Disable breadcrumbs while we don't support them
 set :breadcrumbs, false
 
+# Disable site_url locally
+set :site_url, ""
 
 # Per-page layout changes
 page '/*.xml', layout: false
@@ -29,6 +31,7 @@ activate :i18n, mount_at_root: :en, langs: [:en, :de]
 configure :development do
   activate :livereload
 end
+
 
 # Activate /openproject to map to /openproject/README.* or /openproject/index.*
 activate :directory_indexes
@@ -76,4 +79,8 @@ activate :external_pipeline,
 
 configure :build do
   activate :asset_hash
+
+  # Relative assets needed to deploy to Github Pages
+  activate :relative_assets
+  set :site_url, "/openproject-docs"
 end
