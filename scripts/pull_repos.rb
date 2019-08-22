@@ -3,8 +3,9 @@
 
 require 'pathname'
 require 'fileutils'
+require 'pry'
 
-core_docs = '/home/oliver/openproject/dev/docs'
+core_docs = '/home/oliver/openproject/dev/help'
 localizable_path = File.expand_path('../source/localizable', __dir__)
 openproject_source_dir = File.join(localizable_path, 'openproject')
 
@@ -17,6 +18,12 @@ puts "Copying core to #{openproject_source_dir}"
 FileUtils.copy_entry core_docs, openproject_source_dir
 
 puts "Renaming index files to match directory index"
-Dir.glob("#{openproject_source_dir}/**/README.md").each do |path|
-  FileUtils.mv path, path.gsub('README.md', 'index.html.md')
+Dir.glob("#{openproject_source_dir}/**/*.md").each do |path|
+  target = path.gsub(/\.md$/, '.html.md')
+
+  if target.end_with? 'README.html.md'
+    target.gsub! 'README.html.md', 'index.html.md'
+  end
+
+  FileUtils.mv path, target
 end
