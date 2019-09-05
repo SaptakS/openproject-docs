@@ -18,7 +18,7 @@
     <ul class="nav">
       <% data.products.each do |key, product| %>
         <a class="nav-item"
-           href="<%= localized_path(key) %>">
+           href="<%= localized_path(product[:path]) %>">
           <p><%= product[:name] %></p>
         </a>
       <% end %>

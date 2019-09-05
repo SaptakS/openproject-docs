@@ -6,7 +6,7 @@
   <nav class="nav-container">
     <% data.products.each do |key, product| %>
       <a class="header-link nav-item flex-container justify-center align-center"
-         href="<%= localized_path(key) %>">
+         href="<%= localized_path(product[:path]) %>">
         <p><%= product[:name] %></p>
       </a>
     <% end %>

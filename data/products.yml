@@ -1,8 +1,20 @@
 openproject:
-  name: 'OpenProject'
+  path: 'openproject/getting-started'
+  name: 'Getting started'
   img: 'openproject-logo.svg'
   repo: 'https://github.com/opf/openproject'
-subscriptions:
-  name: 'Subscriptions'
+cloud-edition:
+  path: 'openproject/cloud-edition-guide'
+  name: 'Cloud Edition'
+  img: 'cloud.png'
+  repo: 'https://github.com/finnlabs/saas-openproject'
+project-admin-guide:
+  path: 'openproject/project-admin-guide'
+  name: 'Projects'
+  img: 'cloud.png'
+  repo: 'https://github.com/finnlabs/saas-openproject'
+system-admin-guide:
+  path: 'openproject/system-admin-guide'
+  name: 'Administration'
   img: 'cloud.png'
   repo: 'https://github.com/finnlabs/saas-openproject'
