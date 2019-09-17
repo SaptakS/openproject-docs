@@ -1,24 +1,5 @@
 var NAV_INLINE_BREAKPOINT = 1100;
 
-var landingHeaderBar = document.getElementById('landing-header-bar');
-var headerLinks = document.getElementsByClassName('header-link');
-
-if (landingHeaderBar) {
-  window.addEventListener('scroll', function() {
-    if (window.scrollY >= 100) {
-      landingHeaderBar.classList.add('scrolling-header');
-      for (var i = 0; i < headerLinks.length; i++) {
-        headerLinks[i].classList.add('scrolling-header-links');
-      }
-    } else {
-      landingHeaderBar.classList.remove('scrolling-header');
-      for (var i = 0; i < headerLinks.length; i++) {
-        headerLinks[i].classList.remove('scrolling-header-links');
-      }
-    }
-  });
-}
-
 var navtoggle = document.getElementById('docs-nav-toggle');
 if (navtoggle) {
   navtoggle.addEventListener('click', toggleNavigation);
@@ -144,6 +125,10 @@ function toggleNavigation() {
   document.addEventListener('DOMContentLoaded', function() {
     var globalNav = document.getElementById('global-nav');
     var media = window.matchMedia('(max-width: 1099px)');
+
+    if (!globalNav) {
+      return;
+    }
 
     window.addEventListener('scroll', function(e) {
       var isTouchingBottom = false;

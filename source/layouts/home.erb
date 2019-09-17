@@ -1,14 +1,14 @@
 <% wrap_layout :base do %>
   <%= partial 'layouts/landing_header' %>
   <div class="landing-header flex-container flex-column justify-center align-center">
-    <h1 class="flex-container"><%= t('landing.how_can_we_help') %></h1>
+    <h1><%= t('landing.how_can_we_help') %></h1>
     <div itemscope itemtype="http://schema.org/WebSite">
       <meta itemprop="url" content="https://docs.gitlab.com"/>
       <form id="search-form" action="/search/" method="get" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
         <meta itemprop="target" content="https://docs.gitlab.com/search/?q={q}"/>
         <div class="input-container">
           <%= image_tag "icon_search.svg" %>
-          <input itemprop="query-input" type="text" name="q" class="docsearch" placeholder="Find anything in our docs" autofocus required/>
+          <input itemprop="query-input" type="text" name="q" class="docsearch" placeholder="<%= t('landing.enter_search_term') %>" autofocus required/>
         </div>
         <input type="submit" style="visibility: hidden; position:absolute;"/>
       </form>

@@ -3,16 +3,23 @@ title: OpenProject Documentation
 layout: home
 body_classes: landing
 ---
-<div class="row">
+<div class="row topic--background">
   <ul class="main-topics" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
     <% data.products.each do |key, product| %>
+      <% translation_base = "products.#{key}" %>
       <li>
         <a itemprop="url" href="<%= localized_path(product[:path]) %>">
-          <div class="wrapper flex-container flex-column">
-            <%= image_tag product[:img], alt: product[:name], class: 'line logo' %>
+          <div class="topic--wrapper wrapper flex-container flex-column">
+            <% badge = t("#{translation_base}.badge", default: nil) %>
+            <% if badge %>
+              <div class="topic--badge -<%= t("#{translation_base}.badge_color", default: 'gray') %>">
+                <%= badge %>
+              </div>
+            <% end %>
+            <%= image_tag product[:img], alt: t("#{translation_base}.title"), class: 'line logo' %>
             <div class="topic-info">
-              <h2 itemprop="name"><%= product[:name] %></h2>
-              <p><%= I18n.t("products.#{key}.description") %></p>
+              <h2 class="topic--header" itemprop="name"><%= t("#{translation_base}.title") %></h2>
+              <p class="topic--info"><%= I18n.t("#{translation_base}.text") %></p>
             </div>
           </div>
         </a>
@@ -20,20 +27,50 @@ body_classes: landing
     <% end %>
   </ul>
 </div>
-<div class="popular-topics">
-  <h1>Most popular topics</h1>
-  <div class="topics-container flex-container">
-    <a class="topic" href="/ee/user/project/import/">
-      <h4><%= I18n.t('landing.topics.migration') %></h4>
-      <p><%= I18n.t('landing.topics.migration_text') %></p>
-    </a>
-    <a class="topic" href="/ee/ci/yaml/">
-      <h4>Foo</h4>
-      <p>Bar</p>
-    </a>
-    <a class="topic" href="/ee/api/">
-      <h4>API</h4>
-      <p>API ...</p>
-    </a>
+<div class="row popular-topics--background">
+  <div class="popular-topics">
+    <h1>Most popular topics</h1>
+    <div class="popular-topics--container">
+      <div class="popular-topics--item">
+        <a href="/ee/user/project/import/">
+          <header><%= I18n.t('landing.topics.migration') %></header>
+          <div>
+            <p>
+              <%= I18n.t('landing.topics.migration_text') %>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="popular-topics--item">
+        <a href="/ee/user/project/import/">
+          <header><%= I18n.t('landing.topics.migration') %></header>
+          <div>
+            <p>
+              <%= I18n.t('landing.topics.migration_text') %>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="popular-topics--item">
+        <a href="/ee/user/project/import/">
+          <header><%= I18n.t('landing.topics.migration') %></header>
+          <div>
+            <p>
+              <%= I18n.t('landing.topics.migration_text') %>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="popular-topics--item">
+        <a href="/ee/user/project/import/">
+          <header><%= I18n.t('landing.topics.migration') %></header>
+          <div>
+            <p>
+              <%= I18n.t('landing.topics.migration_text') %>
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 </div>

@@ -10,7 +10,10 @@ de:
       name: 'Ihre openproject.com Cloud-Umgebung'
       description: 'Anleitung zur Verwaltung Ihrer Cloud-Umgebung'
   landing:
-    how_can_we_help: '🇩🇪 Wie können wir helfen?'
+    how_can_we_help: 'Hallo! Wir können wir helfen?'
     topics:
       migration:
         'Migrieren von OpenProject'
+    enter_search_term: "Suchbegriff hier eingeben ..."
+    get_started_for_free: "KOSTENLOS beginnen"
+    sign_in: "Anmelden"

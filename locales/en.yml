@@ -1,18 +1,46 @@
 ---
 en:
   products:
-    openproject:
-      shortname: 'OpenProject'
-      name: 'OpenProject Community and Enterprise Editions'
-      description: 'Documentation for OpenProject Community and Enterprise Editions'
-    subscriptions:
-      shortname: 'Subscriptions'
-      name: 'Cloud subscription help'
-      description: 'Managing your OpenProject.com cloud subscription'
+    getting-started:
+      title: 'Getting started'
+      text: 'Learn about the first steps with OpenProject'
+      badge: 'First steps'
+      badge_color: 'green'
+    user-guide:
+      title: 'User guide'
+      text: 'In-depth guide of all features in OpenProject'
+      badge: 'All features'
+      badge_color: 'red'
+    project-admin-guide:
+      title: 'Project Admin guide'
+      text: 'Learn about the first steps with OpenProject'
+    cloud-edition-guide:
+      title: 'Cloud Edition guide'
+      text: 'Learn about the first steps with OpenProject'
+    enterprise-edition-guide:
+      title: 'Enterprise Edition guide'
+      text: 'Learn about the first steps with OpenProject'
+    system-admin-guide:
+      title: 'System Admin guide'
+      text: 'Learn about the first steps with OpenProject'
+    installation-and-operations:
+      title: 'Installation and operations guide'
+      text: 'Learn about the first steps with OpenProject'
+    development:
+      title: 'Development'
+      text: 'Learn about how to contribute to OpenProject'
+    api:
+      title: 'API'
+      text: 'Learn about the API powering OpenProject'
   landing:
-    how_can_we_help: '🇬🇧 How can we help?'
+    first_steps: 'First steps'
+    all_features: 'All features'
+    how_can_we_help: 'Hello, how can we help you?'
     topics:
       migration:
         'Migrating to openproject.com'
       migration_text:
         'Something that has not been translated yet'
+    enter_search_term: "Enter your search term here ..."
+    get_started_for_free: "Get started for FREE"
+    sign_in: "Sign in"

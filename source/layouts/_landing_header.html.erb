@@ -1,16 +1,23 @@
 <div class="landing-header-top" id="landing-header-bar">
   <a class="header-link logo-container flex-container justify-center align-center" href="/">
     <%= image_tag "openproject-logo-white.svg", class: 'logo' %>
-    <p>OpenProject <strong>Docs</strong></p>
+    <div class="header--separator"></div>
+    <div class="header--help-text">Help</div>
   </a>
-  <nav class="nav-container">
-    <% data.products.each do |key, product| %>
-      <a class="header-link nav-item flex-container justify-center align-center"
-         href="<%= localized_path(product[:path]) %>">
-        <p><%= product[:name] %></p>
-      </a>
-    <% end %>
+  <nav class="landing-header--button-group">
     <%= partial 'layouts/language_dropdown' %>
+    <a href="https://start.openproject.com/"
+       target="_blank"
+       title="<%= t('landing.get_started_for_free') %>"
+       class="landing-header--btn landing-header--get-started-btn animated">
+      <%= t('landing.get_started_for_free') %>
+    </a>
+    <a href="https://www.openproject.org/signin/"
+       target="_blank"
+       title="<%= t('landing.sign_in') %>"
+      class="landing-header--btn landing-header--signin-btn animated">
+      <%= t('landing.sign_in') %>
+    </a>
 <!--    <a class="header-link nav-item flex-container justify-center align-center"-->
 <!--       href="<%#= switch_language_path('en') %>">-->
 <!--      <p>(English)</p>-->

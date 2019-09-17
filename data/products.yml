@@ -1,20 +1,27 @@
-openproject:
+getting-started:
   path: 'openproject/getting-started'
-  name: 'Getting started'
-  img: 'openproject-logo.svg'
-  repo: 'https://github.com/opf/openproject'
-cloud-edition:
-  path: 'openproject/cloud-edition-guide'
-  name: 'Cloud Edition'
-  img: 'cloud.png'
-  repo: 'https://github.com/finnlabs/saas-openproject'
+  img: 'products/getting-started.svg'
+user-guide:
+  path: 'openproject/user-guide'
+  img: 'products/user-guide.svg'
 project-admin-guide:
   path: 'openproject/project-admin-guide'
-  name: 'Projects'
-  img: 'cloud.png'
-  repo: 'https://github.com/finnlabs/saas-openproject'
+  img: 'products/project-admin-guide.svg'
+cloud-edition-guide:
+  path: 'openproject/cloud-edition-guide'
+  img: 'products/openproject-cloud-edition.png'
+enterprise-edition-guide:
+  path: 'openproject/enterprise-edition-guide'
+  img: 'products/openproject-enterprise-edition.png'
 system-admin-guide:
   path: 'openproject/system-admin-guide'
-  name: 'Administration'
-  img: 'cloud.png'
-  repo: 'https://github.com/finnlabs/saas-openproject'
+  img: 'products/system-admin-guide.svg'
+installation-and-operations:
+  path: 'openproject/installation-and-operations'
+  img: 'products/installation-operations.svg'
+development:
+  path: 'openproject/development'
+  img: 'products/development-guide.svg'
+api:
+  path: 'openproject/api'
+  img: 'products/api-docs.svg'

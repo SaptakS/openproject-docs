@@ -1,0 +1,157 @@
+.main-topics {
+  position: relative;
+  top: -80px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media all and (max-width: $mobile-width) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  li {
+    display: block;
+    background-color: $white;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px $main-box-shadow;
+    flex: 1 0 270px;
+    min-width: 270px;
+
+    @media all and (max-width: $mobile-width) {
+      width: 100%;
+      min-width: auto;
+      flex: initial;
+      margin: 20px 0 0;
+    }
+
+    a p, a:visited p {
+      color: $black;
+      vertical-align: bottom;
+    }
+
+    .wrapper {
+      padding: 40px;
+
+      img {
+        height: 76px;
+        margin: 20px auto 5px;
+        transition: .2s cubic-bezier(0, 0, 0, 1);
+      }
+
+      h2 {
+        border-bottom: none
+      }
+
+      .topic-info {
+        transition: .2s cubic-bezier(0, 0, 0, 1);
+      }
+
+      @media all and (max-width: $mobile-width) {
+        padding: 30px;
+      }
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 400;
+    }
+
+    a, a:visited {
+      text-decoration: none;
+
+      h2 {
+        font-weight: bold;
+        margin-top: 25px;
+      }
+    }
+  }
+
+  li:hover {
+    img {
+      transform: scale(1.05);
+    }
+    .topic-info {
+      transform: translateY(4px);
+    }
+  }
+
+}
+
+.topic--background {
+  background: white;
+}
+
+.topic--wrapper {
+  position: relative;
+}
+
+.topic--header {
+  color: #444;
+  font-size: 1.2rem;
+}
+
+.topic--info {
+  text-align: center;
+}
+
+.topic--badge {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  &.-gray {
+    background: #EEE;
+    color: white;
+  }
+
+  &.-red {
+    background: #CA6784;
+    color: white;
+  }
+
+  &.-green {
+    background: #69CA95;
+    color: white;
+  }
+}
+
+.popular-topics--background {
+  background: #F6F6F6;
+}
+
+.popular-topics--container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+
+.popular-topics--item {
+  a {
+    color: #333;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  header {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+}
+//
+//  div {
+//    grid-area: content;
+//  }
+//}
