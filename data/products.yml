@@ -23,5 +23,5 @@ development:
   path: 'openproject/development'
   img: 'products/development-guide.svg'
 api:
-  path: 'openproject/api'
+  path: 'api'
   img: 'products/api-docs.svg'
