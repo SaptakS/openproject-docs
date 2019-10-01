@@ -12,10 +12,6 @@
       outline: 0;
     }
 
-    img {
-      width: 280px;
-    }
-
     h1 {
       font-weight: 400;
       text-align: center;
@@ -339,5 +335,15 @@
 
   &:hover {
     background: hsla(0,0%,100%,.2);
+  }
+}
+
+.landing-header--powered-by-algolia {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+
+  img {
+    width: 180px;
   }
 }
