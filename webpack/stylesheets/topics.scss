@@ -33,10 +33,11 @@
     }
 
     .wrapper {
-      padding: 40px;
+      padding: 40px 30px;
+      max-width: 320px;
 
       img {
-        height: 76px;
+        height: 110px;
         margin: 20px auto 5px;
         transition: .2s cubic-bezier(0, 0, 0, 1);
       }
@@ -51,6 +52,7 @@
 
       @media all and (max-width: $mobile-width) {
         padding: 30px;
+        max-width: initial;
       }
     }
 
@@ -64,7 +66,7 @@
 
       h2 {
         font-weight: bold;
-        margin-top: 25px;
+        margin-top: 20px;
       }
     }
   }
