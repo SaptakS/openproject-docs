@@ -4,8 +4,8 @@
   position: relative;
   padding-top: 50px;
   padding-bottom: 80px;
-  background: $color-primary-alt;
-  color: $color-white;
+  background: $footer-bg;
+  color: $footer-font-color;
   z-index: 9;
 
   @media (max-width: 989px) {
@@ -15,13 +15,13 @@
 
   a {
     color: inherit;
-
-    &:hover {
-      color: $color-secondary-alt;
-      text-decoration: none;
-    }
   }
 
+  a:hover,
+  a:visited,
+  a:visited:hover {
+    color: $footer-font-color;
+  }
   a::after {
     content: none;
   }
@@ -53,9 +53,10 @@
 .footer-link-title {
   margin-top: 0;
   margin-bottom: 15px;
-  font-weight: 600;
   border-bottom: 0;
-  color: $color-white;
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 .footer-links {
@@ -63,6 +64,13 @@
 
   li:not(:last-child) {
     padding-bottom: 2px;
+  }
+
+  a {
+    text-transform: none;
+    font-weight: 300;
+    font-size: .8rem;
+    line-height: 1.5rem;
   }
 }
 
@@ -83,22 +91,4 @@
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
-}
-
-.source-link {
-  position: relative;
-  padding: 1rem;
-  color: $color-white;
-  font-size: 15px;
-  background: $color-primary;
-  z-index: 9;
-
-  a {
-    color: $color-secondary-alt;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
