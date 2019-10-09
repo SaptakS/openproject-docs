@@ -1,0 +1,15 @@
+include openproject-docs-includes.jade
+
+
+div.nav-wrapper.active
+    aside.global-nav(id='global-nav')
+        block nav
+            +Nav(false)
+
+div.main.class.js-main-wrapper
+    div.container-fluid
+        .row
+            .col-md-8
+                div(id="op-api-content")
+                    block content
+                        +Content('primary', false)

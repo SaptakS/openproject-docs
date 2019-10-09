@@ -25,5 +25,8 @@
     "typescript": "^3.5.3",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3"
+  },
+  "dependencies": {
+    "aglio": "^2.3.0"
   }
 }

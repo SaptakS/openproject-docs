@@ -5,6 +5,8 @@ require 'pathname'
 require 'fileutils'
 require 'pry'
 
+middleman_root = File.expand_path('../', __dir__)
+
 core_docs = ENV['OPENPROJECT_CORE']
 raise 'Missing OPENPROJECT_CORE env' unless core_docs
 
@@ -31,4 +33,30 @@ Dir.glob("#{openproject_source_dir}/**/*.md").each do |path|
   end
 
   FileUtils.mv path, target
+end
+
+puts 'Building API docs'
+Dir.chdir(File.join(middleman_root, 'api-builder')) do
+  path = File.join(ENV['OPENPROJECT_CORE'], 'docs', 'api', 'apiv3-doc-stable.apib')
+  target_path = File.join(middleman_root, 'source', 'api.html.erb')
+  aglio_path = File.join(middleman_root, 'node_modules', '.bin', 'aglio')
+
+  FileUtils.rm target_path, force: true
+
+  # Execute
+  `NOCACHE=1 #{aglio_path} -t openproject-docs-layout.jade -i #{path} -o #{target_path}`
+
+  # Prepend layout
+  api = File.read(target_path)
+
+  File.open(target_path, 'w') do |f|
+    f.write <<~HEADER
+      ---
+      layout: api
+      ---
+
+    HEADER
+
+    f.write api
+  end
 end
