@@ -69,8 +69,9 @@ $gds-indigo-800: #393982;
 
 // Base colors
 $body-color: $gds-gray-950; //font color
-$body-background-color: rgba($gds-gray-50, .3); //body background
+$body-background-color: $gds-white; //body background
 $main-background-color: $gds-white; // content background
+$header-background-color: #1A67A3; // header background
 
 // Link colors
 $link-color: $gds-blue-600;
@@ -81,6 +82,8 @@ $link-color-nav: $gds-gray-800;
 $link-color-nav-hover: $gds-gray-900;
 
 // Global nav
+$global-nav-bg: #f4f4f4;
+$global-nav-border-color: $gds-gray-200;
 $global-nav-link-level0: $link-color-nav;
 $global-nav-link-level1: $link-color-nav;
 $global-nav-link-level2: $gds-gray-700;
@@ -159,7 +162,7 @@ $alert-code-background-color: #f9f2f4;
 $pre-code-color: #2b303b;
 
 // Home page colors
-$header-color: #555;
+$header-color: #FFFFFF;
 $landing-background: #24689F;
 $topic-border: rgb(215, 215, 215);
 $topic-ee-header-color: #24689F;

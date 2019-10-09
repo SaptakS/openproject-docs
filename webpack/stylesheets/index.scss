@@ -2,6 +2,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 @import 'footer';
+@import 'header';
 @import 'highlight';
 @import 'comments';
 @import 'instantsearch';
@@ -297,13 +298,11 @@ li {
 }
 
 .main {
-  margin: auto 15%;
-  padding: 55px 40px 0;
+  margin: auto 220px;
+  padding: 55px 25px 0;
   position: relative;
   width: auto;
   max-width: 900px;
-  border-left: 1px solid $main-box-shadow;
-  border-right: 1px solid $main-box-shadow;
   background: $main-background-color;
   z-index: 1;
 
@@ -312,8 +311,8 @@ li {
   }
 
   @media(min-width:1601px) {
-    margin: auto 18%;
-    max-width: 64%;
+    margin: auto 220px;
+    max-width: 65%;
   }
 
   &:not(.has-toc) {
@@ -460,8 +459,8 @@ li {
   width: 50px;
   height: 100vh;
   transition: all .3s;
-  background: $gds-gray-50;
-  border-right: 1px solid $gds-gray-200;
+  background: $global-nav-bg;
+  border-right: 1px solid $global-nav-border-color;
   z-index: 2;
 
   &.active {
@@ -891,212 +890,6 @@ a.global-nav-link {
   border-left: solid 3px $alert-gray-border;
 }
 // End of Pajamas alerts
-
-.header {
-  z-index: 10;
-  background: $main-background-color;
-  position: fixed;
-  width: 100%;
-  padding: 6px 24px;
-  border-bottom: 1px solid $border-color;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-  white-space: nowrap;
-
-  .logo-container {
-    margin-right: 24px;
-  }
-
-  @media all and (max-width: $mobile-width) {
-    height: auto;
-    padding-left: 5px;
-  }
-
-  img {
-    height: 40px;
-  }
-
-  p {
-    font-size: 16px;
-    color: $black;
-    display: inline-block;
-    margin: 0 0 0 4px;
-  }
-
-  ul {
-    text-align: right;
-    list-style-type: none;
-
-    @media all and (max-width: $mobile-width) {
-      display: none;
-    }
-  }
-
-  @media all and (max-width: $mobile-width) {
-    &.active {
-      display: block;
-
-      .nav {
-        display: block;
-        text-align: left;
-        padding: 0;
-        width: 100%;
-      }
-
-      li {
-        display: block;
-        padding: 10px 0;
-      }
-    }
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  .choose-version {
-    padding: 10px;
-  }
-
-  .btn-versions {
-    color: $black;
-    font-size: 16px;
-    border: 1px solid $color-tanuki-medium;
-
-    &:hover {
-      opacity: .8;
-    }
-
-    &:active {
-      opacity: .8;
-      box-shadow: none;
-    }
-  }
-
-  .versions-menu {
-    padding: 0;
-
-    li {
-      display: block;
-      margin: 5px 0;
-
-      a {
-        color: $versions-link-color;
-        padding: 3px 20px;
-        font-size: 14px;
-        display: block;
-        line-height: 1.4;
-
-        &:hover {
-          color: $versions-link-color-hover;
-          background-color: $versions-link-color-bg-hover;
-          text-decoration: none;
-        }
-
-        &.active {
-          background-color: $versions-active-bg-color;
-          font-weight: 600;
-          color: $link-color-nav;
-        }
-      }
-
-      &.divider {
-        margin: 0;
-      }
-
-      i {
-        padding-left: 5px;
-        opacity: .5;
-
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
-  }
-
-  input {
-    box-sizing: content-box;
-    border: 1px solid $search-border;
-    border-radius: $border-radius;
-    -webkit-appearance: none;
-    padding: 7px 11px 7px 28px;
-    width: 260px;
-    background: $white url("<%= @items['/assets/images/icon_search.svg'].path %>") 9px 12px / 14px no-repeat;
-    outline: 0;
-
-    @media(max-width:$medium-width) {
-      width: 210px;
-    }
-
-    @media(max-width:$mobile-width) {
-      display: none;
-    }
-  }
-
-  input:focus {
-    border: 1px solid $search-border-dark;
-  }
-
-  input:visited {
-    outline: 0;
-    border: 0;
-  }
-
-  .nav-container {
-    margin: auto 0;
-
-    .docsearch-mobile {
-      display: none;
-      width: 100%;
-      outline: 0;
-      margin-top: 12px;
-
-      @media all and (max-width: $mobile-width) {
-        display: block;
-      }
-
-    }
-
-    .docsearch-mobile:focus {
-      border: 1px solid $search-border-dark;
-    }
-
-  }
-
-  .nav-toggle {
-    display: none;
-
-    @media all and (max-width: $mobile-width) {
-      display: inline-block;
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      color: $link-color-nav;
-    }
-  }
-
-  // Override bootstrap
-  .nav > li > a {
-    text-decoration: none;
-    color: $black;
-    padding: 10px;
-    font-size: 16px;
-  }
-
-  // Override bootstrap
-  .nav > li > a:focus, .nav > li > a:hover {
-    text-decoration: none;
-    background-color: transparent;
-    opacity: .8;
-  }
-
-}
-
-
-
 
 
 // https://gitlab.com/gitlab-org/gitlab-docs/issues/107#note_36655246
