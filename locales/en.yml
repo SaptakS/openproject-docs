@@ -46,6 +46,38 @@ en:
     sign_in: "Sign in"
   footer:
     links:
+      blog:
+        title: 'Blog'
+        trello_alternative: 'Why OpenProject is the better Trello alternative for Enterprises'
+        scrum_agile: 'OpenProject 9: new Scrum and Agile Boards'
+        getting_started: 'How to get started with Agile Boards'
+        excel_sync: 'How to synchronize your Excel Sheet with OpenProject'
+        alternative_jira: 'OpenProject: open source alternative to Jira'
+        alternative_excel: 'OpenProject: open source Excel alternative'
+      pricing:
+        title: 'Pricing'
+        enterprise_edition: 'Enterprise Edition'
+        hosting: 'Hosting'
+        maintenance: 'Maintenance and support'
+        training: 'Training and consulting'
+        certification: 'OpenProject Certification'
+        custom_development: 'Custom Development'
+        reseller: 'Reseller Program'
+      project_management:
+        title: 'Project Management'
+        gantt: 'Gantt chards | Timeline management'
+        boards: 'Boards for Kanban and Agile Project Management'
+        issue_tracking: 'Task management | Issue tracking'
+        agile: 'Agile project management and Scrum'
+        costs: 'Time tracking, Cost reporting and Budgeting'
+        bug_tracking: 'Bug tracking'
+        roadmap: 'Product roadmap and release planning'
+      about_us:
+        title: 'About us'
+        gdpr: 'GDPR | Security and data privacy statement'
+        user_feedback: 'What our users say'
+        career: 'Career'
+        newsletter: 'Newsletter'
       contact_us: 'Contact us'
       legal_notice: 'Legal notice'
       terms_of_service: 'Terms of Service'

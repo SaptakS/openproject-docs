@@ -33,6 +33,7 @@
 }
 
 .footer-link-title {
+  color: $color-white;
   margin-top: 0;
   margin-bottom: 15px;
   border-bottom: 0;
@@ -93,10 +94,6 @@
   .footer-link-holder {
     margin-bottom: 15px;
   }
-}
-
-.text-center {
-  text-align: center;
 }
 
 .animated, .animated a {
