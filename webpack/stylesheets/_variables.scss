@@ -195,8 +195,8 @@ $color-gray-extra-light: #e7e7e7;
 $color-light-gray: rgb(117, 117, 117);
 $color-green: #18be97;
 $color-red: #f00;
-$color-primary: #24689F;
-$color-primary-alt: #006080;
+$color-primary: #1a67a3;
+$color-primary-dark: #175A8E;
 $color-secondary: #e14329;
 $color-secondary-alt: #fba225;
 $color-primary-medium: #503991;
@@ -338,10 +338,6 @@ $features-gallery-background-gradient-begin: #6b4fbb;
 $features-gallery-background-gradient-middle: #5942a0;
 $features-gallery-background-gradient-end: #42327a;
 $features-gallery-alt-description-black: rgba(0, 0, 0, .7);
-
-$ee-standalone-primary-background-gradient: linear-gradient(to right, $color-primary-alt 0%, $features-gallery-background-gradient-middle 40%, $features-gallery-background-gradient-end 100%);
-$ee-standalone-hero-background-top: rgba(52, 55, 60, .85);
-$ee-standalone-hero-background-gradient: linear-gradient(to bottom, $ee-standalone-hero-background-top, $landing-community-bg 85%);
 
 $facebook-bg: #3b5998;
 $twitter-bg: #55acee;

@@ -19,18 +19,18 @@
 
 .comments-filter {
   a {
-    color: $color-tanuki-dark;
-    border-color: $color-tanuki-light;
+    color: $color-primary;
+    border-color: $color-primary;
 
     i {
-      color: $color-tanuki-dark;
+      color: $color-primary;
       padding-right: 5px;
       display: inline-block;
     }
 
     &:hover {
-      color: $color-tanuki-light;
-      border-color: $color-tanuki-dark;
+      color: $color-primary-dark;
+      border-color: $color-primary-dark;
     }
 
     &.comments-holder {
@@ -48,14 +48,10 @@
     border-bottom: 0;
   }
 
-  i {
-    color: $color-tanuki-dark;
-
-    &.black-icon {
+  i.black-icon {
       color: $color-gray;
       padding-left: 5px;
     }
-  }
 }
 
 .disqus-comments-gitlab {
