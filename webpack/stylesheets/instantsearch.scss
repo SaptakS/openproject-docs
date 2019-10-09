@@ -180,6 +180,10 @@ $color12: rgba(32, 139, 196, .2); //link color lighter
   background-color: $color3;
 }
 
+.algolia-autocomplete .ds-dropdown-menu {
+  width: 558px;
+}
+
 .ais-infinite-hits--showmore {
   display: block;
   margin: 10px auto auto;
