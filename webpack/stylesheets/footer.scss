@@ -78,6 +78,10 @@
 }
 
 .social-media-link {
+  &:hover {
+    text-decoration: none;
+  }
+
   img {
     height: 20px;
     margin-right: 5px;

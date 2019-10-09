@@ -58,10 +58,18 @@
 
   <div class="footer--generic-line-container">
     <div>
-      <a class="generic-link" href="https://www.openproject.org/contact-us/" target="_blank"> Contact Us </a>
-      <a class="generic-link" href="https://www.openproject.org/legal-notice/" target="_blank"> Legal Notice </a>
-      <a class="generic-link" href="https://www.openproject.org/terms-of-service/" target="_blank"> Terms of Service </a>
-      <a class="generic-link" href="https://www.openproject.org/data-privacy-and-security/" target="_blank"> Data privacy </a>
+      <a class="generic-link" href="https://www.openproject.org/contact-us/" target="_blank">
+        <%= I18n.t('footer.links.contact_us') %>
+      </a>
+      <a class="generic-link" href="https://www.openproject.org/legal-notice/" target="_blank">
+        <%= I18n.t('footer.links.legal_notice') %>
+      </a>
+      <a class="generic-link" href="https://www.openproject.org/terms-of-service/" target="_blank">
+        <%= I18n.t('footer.links.terms_of_service') %>
+      </a>
+      <a class="generic-link" href="https://www.openproject.org/data-privacy-and-security/" target="_blank">
+        <%= I18n.t('footer.links.data_privacy') %>
+      </a>
     </div>
     <div class="footer-social-media">
       <a class="social-media-link"  href="https://twitter.com/openproject" target="_blank">
@@ -78,7 +86,7 @@
       </a>
     </div>
     <div class="footer-copyright">
-      © 2019 - OpenProject. All rights reserved.
+      © <%= Date.today.year %> - OpenProject. All rights reserved.
     </div>
   </div>
 

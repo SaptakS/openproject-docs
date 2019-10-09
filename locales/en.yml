@@ -44,3 +44,9 @@ en:
     enter_search_term: "Enter your search term here ..."
     get_started_for_free: "Get started for FREE"
     sign_in: "Sign in"
+  footer:
+    links:
+      contact_us: 'Contact us'
+      legal_notice: 'Legal notice'
+      terms_of_service: 'Terms of Service'
+      data_privacy: 'Data privacy'
