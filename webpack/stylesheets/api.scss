@@ -41,3 +41,22 @@
 .coffeescript .javascript, .javascript .xml, .tex .hljs-formula, .xml .javascript, .xml .vbscript, .xml .css, .xml .hljs-cdata {
   opacity: .5
 }
+
+.api-container {
+  h1:hover,
+  h2:hover,
+  h3:hover,
+  h4:hover,
+  h5:hover {
+    .permalink {
+      opacity: 1
+    }
+  }
+
+
+  .permalink {
+    margin-left: 0;
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+}

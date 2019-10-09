@@ -76,8 +76,7 @@ mixin RequestResponse(title, request, resourceGroup, resource, action)
                 code= request.name
         if content
             a.pull-right.collapsed(data-toggle="collapse", data-target="##{id}")
-                span.closed Show
-                span.open Hide
+                | Toggle details
     if content
         li.list-group-item.panel-collapse.collapse(id=id)
             if request.description
@@ -114,7 +113,7 @@ mixin ResourceGroup(resourceGroup, getButtonClass, multipage)
             h3(id="#{slug(resourceGroup.name)}")
                 = resourceGroup.name || 'Resource Group'
                 | &nbsp;
-                a(href="##{multipage ? 'page:' : ''}#{slug(resourceGroup.name)}")
+                a.permalink(href="##{multipage ? 'page:' : ''}#{slug(resourceGroup.name)}")
                     i.fa.fa-link
         .panel-body
             if resourceGroup.description
