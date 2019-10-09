@@ -1,30 +1,11 @@
-<%#
 <!-- Algolia docsearch https://community.algolia.com/docsearch/ -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script type="text/javascript">
-    var search = docsearch({
-        apiKey: 'ce1690e1421303458a1fcbea0cc4a927',
-        indexName: 'gitlab',
+    docsearch({
+        apiKey: 'd512e10709e766090965031ff2f59675',
+        indexName: 'openproject',
         inputSelector: '.docsearch',
         algoliaOptions: {
-            // Filter by tags as described in https://github.com/algolia/docsearch-configs/blob/master/configs/gitlab.json
-            'filters': "tags:gitlab<score=3> OR tags:omnibus<score=2> OR tags:runner<score=1>",
-            // Number of results shown in the search dropdown
-            'hitsPerPage': 10
-        },
-        debug: false, // Set debug to true if you want to inspect the dropdown
-        autocompleteOptions: {
-            'autoselect': false
-        }
-    });
-
-    var mobileSearch = docsearch({
-        apiKey: 'ce1690e1421303458a1fcbea0cc4a927',
-        indexName: 'gitlab',
-        inputSelector: '.docsearch-mobile',
-        algoliaOptions: {
-            // Filter by tags as described in https://github.com/algolia/docsearch-configs/blob/master/configs/gitlab.json
-            'filters': "tags:gitlab<score=3> OR tags:omnibus<score=2> OR tags:runner<score=1>",
             // Number of results shown in the search dropdown
             'hitsPerPage': 10
         },
@@ -34,4 +15,3 @@
         }
     });
 </script>
-%>
