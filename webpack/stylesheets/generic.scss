@@ -1,0 +1,453 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.clear {
+  clear: both;
+}
+
+.float-left {
+  float: left;
+}
+
+@media (max-width: $mobile-width) {
+  .hidden-for-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: $mobile-width) {
+  .hidden-for-desktop {
+    display: none;
+  }
+}
+
+.display-none {
+  display: none !important;
+}
+
+.display-block {
+  display: block !important;
+}
+
+.image-noshadow {
+  box-shadow: none !important;
+}
+
+body {
+  background: $body-background-color;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-family: $sans-font-family;
+  font-size: $body-font-size;
+  color: $body-color;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: $link-color;
+
+  &:hover {
+    color: $link-color-hover;
+    text-decoration: underline;
+  }
+}
+
+details {
+  summary {
+    display: list-item;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  margin: 15px auto;
+  word-wrap: break-word;
+  clear: both;
+
+  thead {
+    background: $thead-background-color;
+  }
+
+  tbody {
+    border-top: 3px solid $gds-gray-200;
+
+    &:first-child {
+      border-top: 0;
+    }
+
+    tr > td {
+      max-width: 100%;
+      min-width: 100px;
+    }
+    code {
+      word-wrap: break-word;
+    }
+  }
+
+  td, th {
+    text-align: left;
+    padding: 7px 10px;
+    border: 1px solid $table-border-color;
+    font-size: $body-font-size;
+
+    .badge-small {
+      &:hover::after {
+        padding: 5px;
+      }
+    }
+  }
+
+  @media all and (max-width: $mobile-width) {
+    display: block;
+  }
+
+  &.borderless-table {
+    border: 0;
+
+    tr, td, th {
+      border: 0;
+    }
+  }
+
+  &.center {
+    td {
+      text-align: center;
+    }
+  }
+
+  &.fixed-table {
+    table-layout: fixed; // use this for columns with the same width
+  }
+}
+
+blockquote {
+  background-color: $blockquote-background-color;
+  color: $blockquote-txt-color;
+  border-left: solid 3px $blockquote-border-color;
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-size: $body-font-size;
+
+  .highlight {
+    background-color: $white;
+  }
+
+  // Override bootstrap
+  ol:last-child, p:last-child, ul:last-child {
+    margin: inherit;
+  }
+
+}
+
+pre {
+  background-color: $pre-background-color;
+  position: relative;
+
+  code {
+    color: $code-color;
+    background-color: $code-background-color;
+    word-wrap: normal;
+    word-break: normal;
+    white-space: pre;
+  }
+
+  .clip-btn {
+    display: inline-block;
+    padding: 10px 10px 10px 13px;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    position: absolute;
+    color: $white;
+    background-color: $pre-code-color;
+    border: 0;
+    outline: 0;
+
+    i {
+      opacity: .5;
+      transition: opacity .3s ease-in;
+    }
+
+    @media all and (max-width: $mobile-width) {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .clip-btn {
+      i {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+code, code span {
+  font-family: $mono-font-family;
+}
+
+p code, li code, table code {
+  color: $code-color;
+  background-color: $code-background-color;
+}
+
+a > code {
+  color: $link-code-color;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid $hr-border-color;
+  width: 100%;
+}
+
+// Make code in headers match the font size of the given header.
+h2, h3, h4, h5, h6 {
+  border-bottom: solid 1px $h-border-bottom;
+  line-height: 1.4;
+  padding-bottom: 5px;
+
+  code {
+    color: $code-color;
+    background-color: $code-background-color;
+  }
+
+  @media all and (min-width: $mobile-width) {
+    .anchor {
+      opacity: 0;
+      float: left;
+      margin-left: -30px;
+      vertical-align: bottom;
+      margin-top: 8px;
+      height: 22px;
+    }
+
+    &:hover .anchor {
+      opacity: 1;
+    }
+  }
+}
+
+// base fonts
+// p font size = $body-font-size: 15px;
+
+h1 {
+  font-size: 30px;
+  font-weight: 500;
+  border-bottom: solid 2px $h1-border-bottom;
+  padding-bottom: 10px;
+  margin-top: $h-margin-top;
+  margin-bottom: $h-margin-bottom;
+
+  @media (max-width: $mobile-width) {
+    font-size: 26px;
+  }
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-top: $h-margin-top;
+  margin-bottom: $h-margin-bottom;
+
+  @media (max-width: $mobile-width) {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: $h-margin-top;
+  margin-bottom: $h-margin-bottom;
+
+  @media (max-width: $mobile-width) {
+    font-size: 22px;
+  }
+}
+
+h4 {
+  font-size: 22px;
+  font-weight: 400;
+
+  @media (max-width: $mobile-width) {
+    font-size: 20px;
+  }
+}
+
+h5 {
+  font-size: 20px;
+  color: $color-light-gray;
+  font-weight: 500;
+
+  @media (max-width: $mobile-width) {
+    font-size: 18px;
+  }
+}
+
+h6 {
+  font-size: 18px;
+  color: $color-light-gray;
+  font-weight: 500;
+
+  @media (max-width: $mobile-width) {
+    font-size: 16px;
+  }
+}
+
+li {
+  ul {
+    padding-left: 20px;
+  }
+}
+
+// Override Bootstraps default button (for GDS colors)
+.btn-default {
+  border-color: $gds-gray-300;
+  -webkit-appearance: none;
+}
+
+.btn-default:hover {
+  background-color: $button-default-bg-hover;
+}
+
+.btn-primary {
+  background-color: $button-primary;
+}
+
+.btn-warning {
+  background-color: $button-warning;
+  color: $gds-white;
+}
+
+// Override Bootstrap tooltip
+.tooltip .tooltip-inner {
+  font-size: $tooltip-font-size;
+}
+
+.last-updated {
+  color: $color-light-gray;
+  font-size: 13px;
+  padding-bottom: 10px;
+  text-align: right;
+}
+
+
+.half-width {
+  width: 50%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-60 {
+  width: 60%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-70 {
+  width: 70%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-75 {
+  width: 75%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-80 {
+  width: 80%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+.width-90 {
+  width: 90%;
+
+  @media all and (max-width: $mobile-width) {
+    width: 100%;
+  }
+}
+
+//in-page styles
+.center {
+  text-align: center;
+}
+
+.justify {
+  text-align: justify;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.middle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+// Permalinks on header elements.
+.anchor {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  max-height: 25px;
+  vertical-align: middle;
+  background: url("<%= @items['/assets/images/icon_anchor.svg'].path %>") center center / contain no-repeat;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// https://gitlab.com/gitlab-org/gitlab-docs/issues/107#note_36655246
+h1, h2, h3, h4, h5, h6 {
+  &[id]::before {
+    display: block;
+    content: " ";
+    margin-top: -75px;
+    height: 75px;
+    visibility: hidden;
+  }
+}

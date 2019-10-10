@@ -1,0 +1,151 @@
+//badges
+.badges-drop {
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 5px;
+  transition: background-color .5s ease-in-out;
+
+  .badge-gitlab,
+  .badge-gitlab-com {
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      transition: width .3s;
+      opacity: .5;
+    }
+  }
+
+  .badge-gitlab {
+    &::after {
+      background: $badge-gitlab;
+    }
+  }
+
+  .badge-gitlab-com {
+    &::after {
+      background: $badge-gitlab-com;
+    }
+  }
+
+  &:hover {
+    .badge-gitlab,
+    .badge-gitlab-com {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+h1, h2, h3, h4 {
+  .badge-display {
+    font-size: 11px;
+  }
+}
+
+h5, h6 {
+  .badge-display {
+    font-size: 10px;
+    padding: 2px 4px;
+  }
+}
+
+p, li {
+  .badge-display {
+    font-size: 9px;
+    padding: 1px;
+  }
+}
+
+p {
+  .badges-drop {
+    margin-left: 3px;
+    margin-right: 0;
+  }
+}
+
+// scss-lint:disable MergeableSelector
+// skipping scss-lint rule: keeping all the badges styles together
+h1, h2, h3, h4, h5, h6 {
+  .badges-drop {
+    float: right;
+  }
+}
+
+h1 {
+  @media all and (max-width: $mobile-width) {
+    .badges-drop {
+      padding-top: 5px;
+    }
+  }
+}
+
+li {
+  .badges-drop {
+    margin-left: 0;
+    margin-right: 3px;
+  }
+}
+// scss-lint:enable MergeableSelector
+
+.badge-display {
+  text-transform: uppercase;
+  text-align: center;
+  display: inline-block;
+  color: $white;
+  margin-left: 2px;
+  border-radius: 2px;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: .02em;
+  line-height: 1.4;
+}
+
+.badge-gitlab {
+  color: $badge-gitlab;
+}
+
+.badge-gitlab-com {
+  color: $badge-gitlab-com;
+  padding-left: 5px;
+}
+
+.badge-small {
+  color: $badge-gitlab;
+  opacity: .6;
+  transition: opacity .3s;
+
+  &:hover {
+    opacity: 1;
+
+    &::after {
+      content: attr(data-title);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: .7em;
+      display: inline;
+      position: absolute;
+      padding: 1px 5px;
+      opacity: 1;
+      background-color: $white;
+      white-space: nowrap;
+      border-radius: 2px;
+      max-width: 150px;
+    }
+  }
+}
+
+.dotcom-false {
+  .badge-gitlab-com {
+    display: none;
+  }
+}
+
+.doc-nav,
+.breadcrumb {
+  .badge-trigger {
+    display: none;
+  }
+}

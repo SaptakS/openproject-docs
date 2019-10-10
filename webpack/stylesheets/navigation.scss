@@ -1,0 +1,294 @@
+//global nav
+.nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  padding-top: 56px;
+  max-width: 220px;
+  width: 50px;
+  height: 100vh;
+  transition: all .3s;
+  background: $global-nav-bg;
+  border-right: 1px solid $global-nav-border-color;
+  z-index: 2;
+
+  &.active {
+    width: 15%;
+    min-width: 190px;
+
+    .nav-toggle {
+
+      .arrow {
+        left: 19px;
+        transform: rotate(0);
+
+        &:nth-child(2) {
+          left: 25px;
+        }
+      }
+
+      .label {
+        display: block;
+        pointer-events: none;
+        font-size: 14px;
+        color: $gds-gray-700;
+        margin-left: 30px;
+        flex-shrink: 0;
+      }
+    }
+
+    .global-nav {
+      visibility: visible;
+    }
+  }
+
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 0;
+    border-top: 1px solid $gds-gray-200;
+
+    &:hover {
+      background-color: $gds-gray-200;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    .label {
+      display: none;
+    }
+
+    .arrow, .arrow::before, .arrow::after {
+      cursor: pointer;
+      pointer-events: none;
+      border-radius: 1px;
+      height: 2px;
+      width: 9px;
+      background: $gds-gray-700;
+      position: absolute;
+      display: block;
+      content: "";
+    }
+
+    .arrow {
+      transform: rotate(180deg);
+      background-color: transparent;
+
+      &:nth-child(2) {
+        left: 19px;
+      }
+    }
+
+    .arrow::before {
+      top: 0;
+      transform: rotate(45deg) translateY(4px);
+    }
+
+    .arrow::after {
+      top: 0;
+      bottom: -7px;
+      transform: rotate(-45deg) translateY(-4px);
+    }
+  }
+}
+
+.global-nav {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  visibility: hidden;
+
+  .global-nav-section {
+    &.expanded {
+      background-color: $gds-gray-100;
+      box-shadow: inset 4px 0 0 $gds-indigo-800;
+    }
+  }
+
+  .global-nav-cat.active {
+    a {
+      color: $gds-indigo-800;
+    }
+  }
+
+  .global-nav-content {
+    margin-bottom: 70px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-right: 7px;
+
+    &.active {
+      background-color: $gds-gray-100;
+      font-weight: 600;
+      border-left: 4px solid;
+      color: $gds-indigo-800;
+
+      &:hover {
+        color: $gds-indigo-800;
+      }
+
+      &.level-1, &.level-2 {
+        background-color: $gds-gray-200;
+      }
+    }
+  }
+
+  .collapse-toggle {
+    cursor: pointer;
+    float: right;
+    width: 26px;
+    height: 36px;
+    display: flex;
+    padding-right: 10px;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+      content: "";
+      border: solid $gds-gray-700;
+      border-width: 0 1px 1px 0;
+      display: inline-block;
+      transform: rotate(-135deg);
+      width: 7px;
+      height: 7px;
+    }
+
+    &.collapsed {
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+
+    &.active {
+      background-color: $gds-gray-200;
+      &.section-title {
+        background-color: $gds-gray-100;
+      }
+    }
+  }
+}
+
+.global-nav-block {
+  font-weight: 600;
+  padding-left: 10px;
+}
+
+// scss-lint:disable QualifyingElement
+a.global-nav-link, .nav-link {
+  text-decoration: none;
+
+  &:hover {
+    color: $link-color-nav-hover;
+  }
+}
+
+a.global-nav-link {
+  line-height: 1.25;
+  font-size: 14px;
+  width: 100%;
+}
+
+.nav-link {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-link:hover {
+  background-color: $link-color-bg-active;
+}
+// scss-lint:enable QualifyingElement
+
+.global-nav-block-top {
+  font-weight: 600;
+  margin-bottom: 3px;
+  margin-top: 3px;
+
+  a {
+    text-decoration: none;
+    text-shadow: 3px 3px 5px $link-color-bg-active;
+  }
+}
+
+// use these classes to add color and padding-left to the nav links
+.level-0 {
+  color: $global-nav-link-level0;
+  padding-left: 18px;
+
+  &:visited {
+    color: $global-nav-link-level0;
+  }
+
+  &.active {
+    padding-left: 14px;
+  }
+}
+
+.level-1 {
+  color: $global-nav-link-level1;
+  padding-left: 35px;
+
+  &:visited {
+    color: $global-nav-link-level1;
+  }
+
+  &.active {
+    padding-left: 31px;
+  }
+}
+
+.level-2 {
+  color: $global-nav-link-level2;
+  padding-left: 53px;
+
+  &:visited {
+    color: $global-nav-link-level2;
+  }
+
+  &.active {
+    padding-left: 49px;
+  }
+}
+
+.global-nav-badges {
+  color: $gds-gray-700;
+}
+
+// Styles for breadcrumbs navigation
+.breadcrumbs {
+  white-space: nowrap;
+  overflow-x: auto;
+  padding: 0;
+
+  .breadcrumb {
+    text-overflow: ellipsis;
+    display: inline-block;
+    overflow-x: hidden;
+    // Override bootstrap
+    padding: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border-radius: 0;
+
+    &:not(:last-child)::after {
+      content: "›\00a0";
+    }
+
+    &::after {
+      padding: 0 4px 0 6px;
+    }
+  }
+}

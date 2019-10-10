@@ -1,5 +1,4 @@
 .landing {
-
   .landing-header {
     padding: 120px 20px 220px;
     color: $white;
@@ -82,16 +81,6 @@
     }
   }
 
-  .scrolling-header {
-    background: $color-white;
-    border-bottom: 1px solid $color-gray-extra-light;
-
-    @media all and (max-width: $mobile-width) {
-      padding: 10px;
-    }
-
-  }
-
   .header-link {
     color: $color-white;
 
@@ -106,14 +95,6 @@
 
   .header-link:hover {
     color: $color-white;
-  }
-
-  .scrolling-header-links {
-    color: $black;
-  }
-
-  .scrolling-header-links:hover {
-    color: $black;
   }
 
   .landing-header-top {
@@ -225,45 +206,6 @@
     max-width: 100%;
   }
 
-  .topics-container {
-    margin-top: 60px;
-
-    .topic {
-      color: $blog-color-text;
-      width: 100%;
-
-      @media all and (max-width: $mobile-width) {
-        margin-bottom: 20px;
-      }
-
-    }
-
-    .topic:hover {
-      opacity: .6;
-      color: $black;
-    }
-
-    .topic:not(:first-child) {
-      margin-left: 40px;
-
-      @media all and (max-width: $mobile-width) {
-        margin-left: 0;
-      }
-
-    }
-
-    h4 {
-      font-weight: 600;
-      color: $black;
-    }
-
-    @media all and (max-width: $mobile-width) {
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-  }
-
   .popular-topics {
     width: 100%;
     max-width: 1200px;
@@ -279,9 +221,7 @@
       flex-wrap: wrap;
       padding-bottom: 80px;
     }
-
   }
-
 }
 
 // End of old styles
