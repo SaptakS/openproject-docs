@@ -25,6 +25,7 @@
     }
 
     @media all and (max-width: $mobile-width) {
+      padding: 20px 20px 120px;
       h1 {
         font-size: 22px;
         transform: translateY(20px);

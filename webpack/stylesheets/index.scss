@@ -168,12 +168,6 @@ pre {
   }
 }
 
-.gitlab-embed-snippets {
-  .clip-btn {
-    display: none;
-  }
-}
-
 code, code span {
   font-family: $mono-font-family;
 }
@@ -295,6 +289,18 @@ li {
 
 .float-left {
   float: left;
+}
+
+@media (max-width: $mobile-width) {
+  .hidden-for-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: $mobile-width) {
+  .hidden-for-desktop {
+    display: none;
+  }
 }
 
 .main {

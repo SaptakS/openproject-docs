@@ -1,8 +1,9 @@
 <div class="landing-header-top" id="landing-header-bar">
   <a class="header-link logo-container flex-container justify-center align-center" href="/">
-    <%= image_tag "openproject-logo-white.svg", class: 'logo' %>
-    <div class="header--separator"></div>
-    <div class="header--help-text">Help</div>
+    <%= image_tag "openproject-logo-white.svg", class: 'logo hidden-for-mobile' %>
+    <%= image_tag "openproject-logo-white-small.svg", class: 'logo hidden-for-desktop' %>
+    <div class="header--separator hidden-for-mobile"></div>
+    <div class="header--help-text hidden-for-mobile">Help</div>
   </a>
   <nav class="landing-header--button-group">
     <%= partial 'layouts/language_dropdown' %>
