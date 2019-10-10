@@ -53,7 +53,6 @@
     }
   }
 
-
   .permalink {
     margin-left: 0;
     opacity: 0;
@@ -64,8 +63,15 @@
     cursor: pointer;
   }
 
-  .panel-heading-code {
+  .panel {
+    margin-top: 15px;
+  }
+
+  .panel-heading {
     line-height: 38px;
-    padding-left: 5px;
+
+    .panel-heading-code {
+      padding-left: 5px;
+    }
   }
 }
