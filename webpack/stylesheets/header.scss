@@ -199,4 +199,16 @@
     opacity: .8;
   }
 
+  #search-form .docsearch {
+    border-color: $header-color;
+    background: transparent;
+
+    &:focus {
+      background: white !important;
+    }
+
+    &::placeholder {
+      color: $header-color;
+    }
+  }
 }
