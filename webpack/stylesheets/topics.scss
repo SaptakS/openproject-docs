@@ -16,7 +16,8 @@
     display: block;
     background-color: $white;
     border-radius: 3px;
-    box-shadow: 0 2px 4px $main-box-shadow;
+
+    box-shadow: 1px 3px 5px 2px $main-box-shadow;
     flex: 1 0 270px;
     min-width: 270px;
 
@@ -70,16 +71,6 @@
       }
     }
   }
-
-  li:hover {
-    img {
-      transform: scale(1.05);
-    }
-    .topic-info {
-      transform: translateY(4px);
-    }
-  }
-
 }
 
 .topic--background {
