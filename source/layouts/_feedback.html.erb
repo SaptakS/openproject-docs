@@ -6,199 +6,92 @@
         <a class="anchor" href="#help-and-feedback"></a>
       </h2>
       <div>
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation">
-            <a class="active" href="#docs-feedback" aria-controls="docs-feedback" role="tab" data-toggle="tab">
-              <i class="fa fa-file-text-o" aria-hidden="true"></i>
-              <strong>DOCS</strong> FEEDBACK</a>
-          </li>
-          <li role="presentation">
-            <a href="#product-feedback" aria-controls="product-feedback" role="tab" data-toggle="tab">
-              <i class="fa fa-commenting" aria-hidden="true"></i>
-              <strong>PRODUCT</strong> FEEDBACK</a>
-          </li>
-          <li role="presentation"><a href="#get-help" aria-controls="get-help" role="tab" data-toggle="tab">
-            <i class="fa fa-question-circle" aria-hidden="true"></i>
-            GET <strong>HELP</strong></a>
-          </li>
-          <li role="presentation">
-            <a href="#get-more-features" aria-controls="get-more-features" role="tab" data-toggle="tab">
-              <i class="fa fa-line-chart" aria-hidden="true"></i>
-              GET MORE <strong>FEATURES</strong></a>
-          </li>
-        </ul>
-
         <!-- Tab panes -->
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane" id="product-feedback"><!-- product-feedback tab -->
-            <div class="row" id="issue-row"><!-- issue-row -->
-              <div class="col-md-8 col-sm-12">
-                <p>If there's something <strong>you don't like</strong> about <strong>this feature</strong>
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
-                </p>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="https://gitlab.com/gitlab-org/gitlab-ce/issues/new?issue[title]=Docs%20-%20product%20feedback:%20Write%20your%20title&issue[description]=Describe%20what%20you%20would%20like%20to%20see%20improved.%0A%0A%3C!--%20Don%27t%20edit%20below%20this%20line%20--%3E%0A%0A%2Flabel%20~%22docs%5C-comments%22%20" target="_blank">
-                  <i class="fa fa-info-circle" aria-hidden="true"></i>
-                  CREATE AN ISSUE
-                </a>
-              </div>
-            </div> <!-- issue-row -->
-            <div class="row" id="feature-proposal-row"><!-- feature-proposal-row -->
-              <div class="col-md-8 col-sm-12">
-                <p>To propose <strong>functionality that GitLab does not yet offer</strong>
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
-                </p>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="https://gitlab.com/gitlab-org/gitlab-ce/issues/new?issuable_template=Feature%20proposal&issue[title]=Docs%20feedback%20-%20feature%20proposal:%20Write%20your%20title" target="_blank">
-                  <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                  SUBMIT FEATURE PROPOSAL
-                </a>
-              </div>
-            </div><!-- feature-proposal-row -->
-            <div class="row" id="feature-proposal-row"><!-- beta-testing-row -->
-              <div class="col-md-8 col-sm-12">
-                <p>To further <strong>help GitLab in shaping new features</strong>
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
-                </p>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="https://about.gitlab.com/community/gitlab-first-look/" target="_blank">
-                  <i class="fa fa-check-circle" aria-hidden="true"></i>
-                  JOIN BETA TESTING
-                </a>
-              </div>
-            </div><!-- beta-testing-row -->
-          </div><!-- product-feedback tab -->
+          <div role="tabpanel" id="docs-feedback">
 
-          <div role="tabpanel" class="tab-pane" id="get-help"><!-- get-help tab -->
-            <div class="row" id="search-row"><!-- search-row -->
-              <div class="col-md-8 col-sm-12">
-                <p>If you <strong>didn't find</strong> what you were looking for
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
-                </p>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="/search/" target="_blank">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                  SEARCH THE DOCS
-                </a>
-              </div>
-            </div><!-- search-row -->
-
-            <div class="row" id="forum-row"><!-- forum-row -->
-              <div class="col-md-8 col-sm-12">
-                <p>If you want help with something very <strong>specific to your use case</strong>,
-                  and can use some community support
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
-                </p>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <p>
-                  <a role="button" class="comments-holder btn btn-default" href="https://forum.gitlab.com/" target="_blank">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                    POST ON GITLAB FORUM
-                  </a>
-                </p>
-              </div>
-            </div><!-- forum-row -->
-
-            <div class="row" id="support-row"><!-- support-row -->
-              <div class="col-md-8 col-sm-12">
-                <p>If you <strong>have problems</strong> setting up or using this feature (depending on your GitLab
-                  subscription)
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
-                </p>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <p>
-                  <a role="button" class="comments-holder btn btn-default" href="https://about.gitlab.com/support/" target="_blank">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                    REQUEST SUPPORT
-                  </a>
-                </p>
-              </div>
-            </div><!-- support-row -->
-          </div><!-- get-help tab -->
-
-          <div role="tabpanel" class="tab-pane" id="get-more-features"><!-- get-more-features tab -->
-            <div class="row" id="sales-row"><!-- gitlab-pricing-row -->
-              <div class="col-md-8 col-sm-12">
-                <p>To view <strong>all GitLab tiers</strong> and features or to upgrade
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
-                </p>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="https://about.gitlab.com/pricing/" target="_blank">
-                  <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
-                  VIEW PRICING PAGE
-                </a>
-              </div>
-            </div><!-- gitlab-pricing-row -->
-
-            <div class="row" id="sales-row"><!-- gitlab-gold-row -->
-              <div class="col-md-8 col-sm-12">
-                <p>If you want to try all features available in <strong>GitLab.com</strong>
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
-                </p>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="https://customers.gitlab.com/trials/new?gl_com=true" target="_blank">
-                  <i class="fa fa-cloud" aria-hidden="true"></i>
-                  GITLAB GOLD FREE-TRIAL
-                </a>
-              </div>
-            </div><!-- gitlab-gold-row -->
-
-            <div class="row" id="sales-row"><!-- gitlab-ultimate-row -->
-              <div class="col-md-8 col-sm-12">
-                <p>If you want to try all features available in <strong>GitLab self-managed</strong>
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
-                </p>
-              </div>
-              <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="https://about.gitlab.com/free-trial/" target="_blank">
-                  <i class="fa fa-server" aria-hidden="true"></i>
-                  GITLAB ULTIMATE FREE-TRIAL
-                </a>
-              </div>
-            </div><!-- gitlab-ultimate-row -->
-          </div><!-- get-more-features tab -->
-
-          <div role="tabpanel" class="tab-pane active" id="docs-feedback"><!-- docs-feedback tab -->
-            <div class="row" id="edit-page-row"><!-- edit-page-row -->
+            <!-- edit-page-row -->
+            <div class="row" id="edit-page-row">
               <div class="col-md-8 col-sm-12">
                 <p>If you <strong>spot an error or a need for improvement</strong> and would like to
-                  <strong>fix it yourself</strong> in a merge request
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
+                  <strong>fix it yourself</strong> in a pull request
                 </p>
               </div>
               <div class="col-md-4 col-sm-12">
                 <p>
                   <a role="button" class="comments-holder btn btn-default"
-                     href="TODO" target="_blank">
+                     href="https://github.com/opf/openproject" target="_blank">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     EDIT THIS PAGE
                   </a>
                 </p>
               </div>
-            </div><!-- edit-page-row -->
+            </div>
+            <!-- edit-page-row -->
 
-            <div class="row" id="doc-issue-row"><!-- doc-issue-row -->
+            <!-- doc-issue-row -->
+            <div class="row" id="doc-issue-row">
               <div class="col-md-8 col-sm-12">
                 <p>If you would like to <strong>suggest an improvement to this doc</strong>
-                  <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
                 </p>
               </div>
               <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="https://gitlab.com/gitlab-org/gitlab-ce/issues/new?issue[title]=Docs%20feedback:%20Write%20your%20title&issue[description]=Link%20the%20doc%20and%20describe%20what%20is%20wrong%20with%20it.%0A%0A%3C!--%20Don%27t%20edit%20below%20this%20line%20--%3E%0A%0A%2Flabel%20~Documentation%20~%22docs%5C-comments%22%20" target="_blank">
+                <a role="button" class="comments-holder btn btn-default" href="https://community.openproject.com/projects/openproject/work_packages/new?type=1" target="_blank">
                   <i class="fa fa-info-circle" aria-hidden="true"></i>
                   CREATE AN ISSUE
                 </a>
               </div>
-            </div><!-- doc-issue-row -->
+            </div>
+            <!-- doc-issue-row -->
+
+            <!-- issue-row -->
+            <div class="row" id="issue-row">
+              <div class="col-md-8 col-sm-12">
+                <p>If there's something <strong>you don't like</strong> about <strong>this feature</strong>
+                </p>
+              </div>
+              <div class="col-md-4 col-sm-12">
+                <a role="button" class="comments-holder btn btn-default" href="https://community.openproject.com/projects/openproject/work_packages/new?type=1" target="_blank">
+                  <i class="fa fa-info-circle" aria-hidden="true"></i>
+                  CREATE AN ISSUE
+                </a>
+              </div>
+            </div>
+            <!-- issue-row -->
+
+            <div class="row" id="support-row"><!-- support-row -->
+              <div class="col-md-8 col-sm-12">
+                <p>If you <strong>have problems</strong> setting up or using this feature
+                </p>
+              </div>
+              <div class="col-md-4 col-sm-12">
+                <p>
+                  <a role="button" class="comments-holder btn btn-default" href="https://www.openproject.org/contact-us/" target="_blank">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    REQUEST SUPPORT
+                  </a>
+                </p>
+              </div>
+            </div>
+            <!-- support-row -->
+
+            <!-- forum-row -->
+            <div class="row" id="forum-row">
+              <div class="col-md-8 col-sm-12">
+                <p>If you want help with something very <strong>specific to your use case</strong>,
+                  and can use some community support
+                </p>
+              </div>
+              <div class="col-md-4 col-sm-12">
+                <p>
+                  <a role="button" class="comments-holder btn btn-default" href="https://community.openproject.com/projects/openproject/forums" target="_blank">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    POST ON OPENPROJECT FORUM
+                  </a>
+                </p>
+              </div>
+            </div>
+            <!-- forum-row -->
           </div>
         </div>
       </div>
