@@ -40,21 +40,27 @@ sections:
 
   - section_title: User Guide
     section_url: 'user-guide/'
+    generate_categories: true
 
   - section_title: Project Administration Guide
     section_url: 'project-admin-guide/'
+    generate_categories: true
 
   - section_title: Cloud Edition Guide
     section_url: 'cloud-edition-guide/'
+    generate_categories: true
 
   - section_title: Enterprise Edition Guide
     section_url: 'enterprise-edition-guide/'
+    generate_categories: true
 
   - section_title: Installation & Upgrade Guides
     section_url: 'installation-and-operations/'
+    generate_categories: true
 
   - section_title: Development
     section_url: 'development/'
+    generate_categories: true
 
   - section_title: API documentation
     section_url: '/api/'
