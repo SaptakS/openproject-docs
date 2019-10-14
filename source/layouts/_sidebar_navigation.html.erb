@@ -10,7 +10,8 @@
   <% nav_items[:sections].each do |sec| %>
     <div class="global-nav-section">
       <span class="global-nav-block-top nav-link">
-        <% section_href = "/#{dir}/#{sec[:section_url]}" %>
+        <% section_url = sec[:section_url] %>
+        <% section_href = section_url.start_with?('/') ? section_url : "/#{dir}/#{sec[:section_url]}" %>
         <a class="global-nav-link level-0 <% if current_path == "/#{dir}/#{sec[:section_url]}" %>active<% end %>" href="<%= section_href %>">
           <%= sec[:section_title] %>
         </a>
