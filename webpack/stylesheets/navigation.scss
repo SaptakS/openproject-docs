@@ -108,13 +108,13 @@
   .global-nav-section {
     &.expanded {
       background-color: $gds-gray-100;
-      box-shadow: inset 4px 0 0 $gds-indigo-800;
+      box-shadow: inset 4px 0 0 $navbar-default-link-active-color;
     }
   }
 
   .global-nav-cat.active {
     a {
-      color: $gds-indigo-800;
+      color: $navbar-default-link-active-color;
     }
   }
 
@@ -134,10 +134,10 @@
       background-color: $gds-gray-100;
       font-weight: 600;
       border-left: 4px solid;
-      color: $gds-indigo-800;
+      color: $navbar-default-link-active-color;
 
       &:hover {
-        color: $gds-indigo-800;
+        color: $navbar-default-link-hover-color;
       }
 
       &.level-1, &.level-2 {
