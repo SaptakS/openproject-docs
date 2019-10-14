@@ -5,12 +5,12 @@
       prefix="og: http://ogp.me/ns#">
 <head>
   <%= stylesheet_link_tag 'site.css' %>
-  <%= javascript_include_tag 'site.js' %>
   <%= partial 'layouts/head' %>
 </head>
 <body class="<%= page_classes %> <%= current_page.data.body_classes || '' %>">
 <%= yield %>
 <%= partial 'localizable/footer' %>
 <%= partial 'layouts/docsearch' %>
+<%= javascript_include_tag 'site.js' %>
 </body>
 </html>

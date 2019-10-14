@@ -5,7 +5,7 @@
       <p>OpenProject <strong>Help</strong></p>
     </a>
     <% unless current_page.data.disable_searchbar || current_page.url.include?('/search') %>
-      <form id="search-form" action="/search/" method="get">
+      <form id="search-form">
         <input type="text" name="q" class="docsearch" placeholder="Search" required/>
         <input type="submit" style="visibility: hidden; position:absolute;" />
       </form>
