@@ -22,15 +22,6 @@ $color12: rgba(32, 139, 196, .2); //link color lighter
   border-radius: 2px;
 }
 
-//overrides padding for the searchbox
-.main.class {
-  padding-top: 60px;
-
-  @media (max-width: $mobile-width) {
-    padding-top: 20px;
-  }
-}
-
 .algolia-docsearch-suggestion--highlight {
   background-color: $color3;
 }

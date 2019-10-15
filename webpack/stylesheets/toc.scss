@@ -51,7 +51,7 @@
 }
 
 // not wide enough to show quick nav and toc
-@media(max-width:1099px) {
+@media(max-width: $mobile-width) {
   .doc-nav {
     position: relative;
     min-height: 34px;
@@ -107,7 +107,7 @@
     float: none;
     width: inherit;
     max-width: 900px;
-    margin: auto 1% auto 10%;
+    margin: auto 0 auto 0;
   }
 }
 
