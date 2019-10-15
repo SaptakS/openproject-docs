@@ -220,6 +220,7 @@
     @media all and (max-width: $mobile-width) {
       flex-wrap: wrap;
       padding-bottom: 80px;
+      overflow: auto;
     }
   }
 }

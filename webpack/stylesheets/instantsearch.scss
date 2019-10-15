@@ -38,3 +38,12 @@ $color12: rgba(32, 139, 196, .2); //link color lighter
 .algolia-autocomplete .ds-dropdown-menu {
   width: 558px;
 }
+
+@media (max-width: $mobile-width) {
+  .search--container,
+  .algolia-autocomplete,
+  .docsearch {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
