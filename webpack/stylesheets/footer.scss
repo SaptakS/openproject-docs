@@ -90,9 +90,39 @@
   }
 }
 
-@media (max-width: 989px) {
+@media (max-width: $mobile-width) {
   .footer-link-holder {
+    margin-bottom: 30px;
+  }
+
+  .footer--separator {
+    margin: 20px 15px;
+    width: calc(100% - 30px);
+  }
+
+  .footer--generic-line-container {
+    padding: 0 30px;
+    grid-template-columns: 1fr;
+  }
+
+  .footer-social-media {
+    display: flex;
+    justify-content: space-around;
     margin-bottom: 15px;
+  }
+
+  .footer-copyright {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .link-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .footer .generic-link {
+    white-space: nowrap;
   }
 }
 
