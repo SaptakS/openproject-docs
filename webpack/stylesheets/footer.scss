@@ -2,14 +2,13 @@
 
 .footer {
   position: relative;
-  padding: 50px 0 20px 0;
+  padding: 50px 130px 20px 130px;
   background: $footer-bg;
   color: $footer-font-color;
   z-index: 9;
 
-  @media (max-width: 989px) {
-    padding-top: 40px;
-    padding-bottom: 30px;
+  @media (max-width: $mobile-width) {
+    padding: 40px 15px 30px 15px;
   }
 
   a {
@@ -30,6 +29,10 @@
     margin-bottom: 0;
     list-style: none;
   }
+}
+
+.footer--links-container {
+  padding: 0 130px;
 }
 
 .footer-link-title {
@@ -60,14 +63,13 @@
 .footer--separator {
   height: 1px;
   background: $footer-separator-color;
-  margin: 20px 130px;
-  width: calc(100% - 260px);
+  margin: 20px 0px;
+  width: 100%
 }
 
 .footer--generic-line-container {
   display: grid;
   grid-template-columns: 3fr 120px 1fr;
-  padding: 0 130px;
 }
 
 .generic-link {
@@ -91,17 +93,20 @@
 }
 
 @media (max-width: $mobile-width) {
+  .footer--links-container {
+    padding: 0;
+  }
+
   .footer-link-holder {
     margin-bottom: 30px;
   }
 
   .footer--separator {
-    margin: 20px 15px;
-    width: calc(100% - 30px);
+    margin: 20px 0px;
   }
 
   .footer--generic-line-container {
-    padding: 0 30px;
+    padding: 0px;
     grid-template-columns: 1fr;
   }
 
