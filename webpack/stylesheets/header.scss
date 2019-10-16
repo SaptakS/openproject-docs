@@ -58,7 +58,7 @@
       width: 100%;
     }
 
-    .nav-toggle .fa {
+    .fa {
       color: white;
     }
   }
@@ -133,10 +133,6 @@
     @media(max-width:$medium-width) {
       width: 210px;
     }
-
-    @media(max-width:$mobile-width) {
-      display: none;
-    }
   }
 
   input:focus {
@@ -173,6 +169,36 @@
 
     &::placeholder {
       color: $header-color;
+    }
+  }
+
+  /* Search bar on mobile */
+  @media (max-width: $mobile-width) {
+    .header--element-container {
+      &.active {
+        .fa-search,
+        .logo-container,
+        .nav-toggle {
+          display: none;
+        }
+
+        .fa {
+          position: relative;
+          top: 7px;
+          left: -5px;
+        }
+
+        #search-form {
+          width: 100%;
+        }
+      }
+
+      &:not(.active) {
+        .fa-arrow-left,
+        input {
+          display: none;
+        }
+      }
     }
   }
 }
