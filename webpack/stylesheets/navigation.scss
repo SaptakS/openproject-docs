@@ -17,7 +17,6 @@
     min-width: 190px;
 
     .nav-toggle {
-
       .arrow {
         left: 19px;
         transform: rotate(0);
@@ -94,6 +93,13 @@
       bottom: -7px;
       transform: rotate(-45deg) translateY(-4px);
     }
+  }
+}
+
+@media (max-width: $mobile-width) {
+  .nav-wrapper.active {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
