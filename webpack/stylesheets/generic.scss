@@ -12,13 +12,13 @@
 
 @media (max-width: $mobile-width) {
   .hidden-for-mobile {
-    display: none;
+    display: none !important;
   }
 }
 
 @media (min-width: $mobile-width) {
   .hidden-for-desktop {
-    display: none;
+    display: none !important;
   }
 }
 

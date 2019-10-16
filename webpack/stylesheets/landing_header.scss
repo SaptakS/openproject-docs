@@ -181,24 +181,6 @@
         width: 130px;
       }
     }
-
-    .nav-container {
-      margin: auto 0;
-      display: flex;
-    }
-
-    .nav-toggle {
-      display: none;
-
-      @media all and (max-width: $mobile-width) {
-        display: inline-block;
-        position: absolute;
-        top: 15px;
-        right: 15px;
-      }
-
-    }
-
   }
 
   .row {
