@@ -38,14 +38,14 @@
             <% else %>
               <% category_href = "/#{dir}/#{cat[:category_url]}" %>
               <% warn "current=#{current_path_notrail}, #{"/#{dir}/#{cat[:category_url]}"}" %>
-              <a class="global-nav-link level-1 <% if current_path_notrail == "/#{dir}/#{cat[:category_url]}" %>active<% end %>" href="<%= category_href %>">
+              <a class="global-nav-link level-1 <% if current_path_notrail == "/#{dir}/#{cat[:category_url]}".chomp("/") %>active<% end %>" href="<%= category_href %>">
                 <%= cat[:category_title] %>
                 <% if cat[:ee_only] %>
                   <span class="badges-drop global-nav-badges" data-toggle="tooltip" data-placement="top" title="Available in <%= cat[:ee_tier] %>"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
                   <% end %><!-- end of if cat[:ee_only] -->
               </a>
               <% end %><!-- end of if cat[:external_url] -->
-            <div class="<% if cat[:docs] %>collapse-toggle<% end %> <% if current_path_notrail == "/#{dir}/#{cat[:category_url]}" %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#<%= cat[:category_title].gsub(/[\s\/]/, '') %>"></div>
+            <div class="<% if cat[:docs] %>collapse-toggle<% end %> <% if current_path_notrail == "/#{dir}/#{cat[:category_url]}".chomp("/") %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#<%= cat[:category_title].gsub(/[\s\/]/, '') %>"></div>
           </span>
           <% end %><!-- end of sec[:section_categories] -->
         </div><!-- end of div class="collapse" -->
