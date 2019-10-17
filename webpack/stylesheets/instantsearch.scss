@@ -37,4 +37,10 @@ $color12: rgba(32, 139, 196, .2); //link color lighter
     width: 100% !important;
     box-sizing: border-box !important;
   }
+
+  .algolia-autocomplete .ds-dropdown-menu {
+    min-width: 200px !important;
+    // Extend input by the headers padding --> Span complete screen width
+    width: calc(100% + 32px);
+  }
 }
