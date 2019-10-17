@@ -1,6 +1,6 @@
 module LocaleHelpers
   def site_url
-    config[:site_url] || ''
+    (config[:site_url] || '').chomp('/')
   end
 
   def root_path

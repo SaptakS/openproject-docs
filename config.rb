@@ -20,8 +20,7 @@ helpers PathHelpers
 # Disable breadcrumbs while we don't support them
 set :breadcrumbs, false
 
-# Disable site_url locally
-set :site_url, ""
+set :site_url, "http://localhost:4567"
 
 use ::Rack::TrailingSlashes
 
@@ -84,5 +83,6 @@ activate :external_pipeline,
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
 
 configure :build do
+  set :site_url, "https://docs.openproject-edge.com"
   activate :asset_hash
 end

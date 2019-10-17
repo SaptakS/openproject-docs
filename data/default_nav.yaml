@@ -5,15 +5,6 @@
 # - Do not add anchors to the links
 # - If the URL ends with index.html, leave it empty (e.g. section_url: 'index.html' --> section_url: '')
 #
-### Options
-# - Use "ee_only: true" for categories and docs available only in EE.
-#   - When "ee_only: true", use `ee_tier:` to indicate the tiers the feature is available in:
-#.    - For Ultimate: `ee_tier: 'GitLab Ultimate and GitLab.com Gold'`
-#     - For Premium: `ee_tier: 'GitLab Premium, GitLab.com Silver, and higher tiers'`
-#     - For Starter: `ee_tier: 'GitLab Starter, GitLab.com Bronze, and higher tiers'`
-#.    - For self-managed only: `ee_tier: 'GitLab Starter and higher tiers. Not available in GitLab.com'`
-#.    - For GitLab.com only: `ee_tier: 'GitLab.com Silver only. Not available in GitLab self-managed instances'`
-# - Use "external_url: true" for external URLs in docs and categories
 
 sections:
   - section_title: Getting Started

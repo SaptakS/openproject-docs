@@ -14,18 +14,19 @@ doc_folder = ENV['OPENPROJECT_DOC_ROOT'] || 'help'
 doc_root = File.join(core_docs, doc_folder)
 
 localizable_path = File.expand_path('../source/localizable', __dir__)
-openproject_source_dir = File.join(localizable_path, 'openproject')
 
-if File.directory?(openproject_source_dir)
-  puts "Removing previous folder #{openproject_source_dir}"
-  FileUtils.rm_rf(openproject_source_dir)
+Dir.children(doc_root).each do |name|
+  path = File.join(doc_root, name)
+  next unless File.directory?(path)
+
+  puts "Removing previous folder #{name} and copying from #{path} again."
+  FileUtils.rm_rf(File.join(localizable_path, name))
+
+  FileUtils.cp_r path, localizable_path
 end
 
-puts "Copying core to #{openproject_source_dir}"
-FileUtils.copy_entry doc_root, openproject_source_dir
-
 puts 'Renaming index files to match directory index'
-Dir.glob("#{openproject_source_dir}/**/*.md").each do |path|
+Dir.glob("#{localizable_path}/**/*.md").each do |path|
   target = path.gsub(/\.md$/, '.html.md')
 
   if target.end_with? 'README.html.md'

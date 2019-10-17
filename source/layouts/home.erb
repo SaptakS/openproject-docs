@@ -5,7 +5,7 @@
     <div class="search--container" itemscope itemtype="http://schema.org/WebSite">
       <meta itemprop="url" content="https://finnlabs.github.io/openproject-docs"/>
       <form id="search-form" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
-        <meta itemprop="target" content="https://docs.gitlab.com/search/?q={q}"/>
+        <meta itemprop="target" content="<%= site_url %>/search/?q={q}"/>
         <div class="input-container">
           <%= image_tag "icon_search.svg" %>
           <input itemprop="query-input" type="text" name="q" class="docsearch" placeholder="<%= t('landing.enter_search_term') %>" autofocus required/>
