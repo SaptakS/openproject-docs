@@ -28,7 +28,7 @@
 
       <!-- nav categories -->
       <% if sec[:section_categories] %>
-        <div class="collapse <% if current_path_notrail.start_with?("/#{dir}/#{sec[:section_url]}") %>show<% end %>" id="<%= sec[:section_title].delete(' ') %>">
+        <div class="collapse <% if current_path_notrail.start_with?("/#{dir}/#{sec[:section_url]}".chomp("/")) %>show<% end %>" id="<%= sec[:section_title].delete(' ') %>">
           <% sec[:section_categories].each do |cat| %>
           <span class="global-nav-cat nav-link">
             <% if cat[:external_url] %>
