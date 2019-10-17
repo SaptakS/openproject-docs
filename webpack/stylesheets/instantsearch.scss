@@ -42,5 +42,9 @@ $color12: rgba(32, 139, 196, .2); //link color lighter
     min-width: 200px !important;
     // Extend input by the headers padding --> Span complete screen width
     width: calc(100% + 32px);
+
+    .landing-header & {
+      width: 100%;
+    }
   }
 }
