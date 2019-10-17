@@ -8,6 +8,7 @@ module LocaleHelpers
   end
 
   def localized_path(path, options = {})
+    path = path.delete_prefix('/')
     lang = options.fetch(:language, I18n.locale.to_s)
 
     if lang == 'en'
