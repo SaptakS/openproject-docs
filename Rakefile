@@ -19,10 +19,10 @@ task :deploy do
     cd tmpdir do
       puts 'Initialize github repo'
       sh 'git init .'
-      sh 'git remote add origin git@github.com:finnlabs/openproject-docs.git'
-      sh 'git fetch --depth 1'
-      sh 'git checkout gh-pages'
-      sh 'git reset --hard origin/gh-pages'
+      sh 'git remote add origin git@github.com:finnlabs/finnlabs.github.io.git'
+      sh 'git fetch'
+      sh 'git checkout master'
+      sh 'git reset --hard origin/master'
     end
 
     cd root_dir do
@@ -48,7 +48,7 @@ task :deploy do
       else
         puts 'No changes to commit.'
       end
-      sh 'git push origin gh-pages'
+      sh 'git push origin master'
     end
   end
 end

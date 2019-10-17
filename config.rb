@@ -85,8 +85,4 @@ activate :external_pipeline,
 
 configure :build do
   activate :asset_hash
-
-  # Relative assets needed to deploy to Github Pages
-  activate :relative_assets
-  set :site_url, "/openproject-docs"
 end
