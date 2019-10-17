@@ -1,27 +1,27 @@
 getting-started:
-  path: 'getting-started'
+  path: '/getting-started'
   img: 'products/getting-started.svg'
 user-guide:
-  path: 'user-guide'
+  path: '/user-guide'
   img: 'products/user-guide.svg'
 project-admin-guide:
-  path: 'project-admin-guide'
+  path: '/project-admin-guide'
   img: 'products/project-admin-guide.svg'
 cloud-edition-guide:
-  path: 'cloud-edition-guide'
+  path: '/cloud-edition-guide'
   img: 'products/openproject-cloud-edition.png'
 enterprise-edition-guide:
-  path: 'enterprise-edition-guide'
+  path: '/enterprise-edition-guide'
   img: 'products/openproject-enterprise-edition.png'
 system-admin-guide:
-  path: 'system-admin-guide'
+  path: '/system-admin-guide'
   img: 'products/system-admin-guide.svg'
 installation-and-operations:
-  path: 'installation-and-operations'
+  path: '/installation-and-operations'
   img: 'products/installation-operations.svg'
 development:
-  path: 'development'
+  path: '/development'
   img: 'products/development-guide.svg'
 api:
-  path: 'api'
+  path: '/api'
   img: 'products/api-docs.svg'

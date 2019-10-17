@@ -1,34 +1,32 @@
 <%
-  current_path = current_page.url
-  dir = current_path[%r{(?<=/)[^/]+}]
-  nav_items_entry = "#{dir}_nav"
-  nav_items_exists = data.respond_to?(nav_items_entry)
-  nav_items = nav_items_exists ? data.send(nav_items_entry) : data.default_nav
-  current_path_notrail = current_path.chomp("/")
+  current_path = current_page.url.chomp('/')
+  nav_items = data.default_nav
 %>
 <nav class="global-nav-content">
   <!-- nav sections -->
   <% nav_items[:sections].each do |sec| %>
-    <% section_url = sec[:section_url] %>
+    <%# Remove any trailing slash in case it was given %>
+    <% section_url = sec[:section_url].chomp('/') %>
     <div class="global-nav-section">
       <span class="global-nav-block-top nav-link">
-        <% section_href = section_url.start_with?('/') ? section_url : "/#{dir}/#{sec[:section_url]}" %>
-        <a class="global-nav-link level-0 <% if current_path == "/#{dir}/#{sec[:section_url]}" %>active<% end %>" href="<%= section_href %>">
+        <a class="global-nav-link level-0 <% if current_path == section_url %>active<% end %>" href="<%= section_url %>">
           <%= sec[:section_title] %>
         </a>
-        <div class="section-title <% if sec[:section_categories] %>collapse-toggle<% end %> <% if current_path == "/#{dir}/#{sec[:section_url]}" %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#<%= sec[:section_title].gsub(/[\s\/]/, '') %>"></div>
+        <div class="section-title <% if sec[:section_categories] %>collapse-toggle<% end %> <% if current_path == section_url %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#<%= sec[:section_title].gsub(/[\s\/]/, '') %>"></div>
       </span>
 
       <% if sec[:generate_categories]
-           sec[:section_categories] = product_links("#{dir}/#{section_url}")
-             .map{ |item| { category_title: item[:title], category_url: item[:path].gsub("#{dir}/", '') } }
+           # Get the section_url without leading slash
+           section_prefix = section_url.delete_prefix('/') + '/'
+           sec[:section_categories] = product_links(section_prefix)
+             .map{ |item| { category_title: item[:title], category_url: item[:path].gsub(section_prefix, '') } }
              .sort_by{ |item| item[:category_title] }
          end
       %>
 
       <!-- nav categories -->
       <% if sec[:section_categories] %>
-        <div class="collapse <% if current_path_notrail.start_with?("/#{dir}/#{sec[:section_url]}".chomp("/")) %>show<% end %>" id="<%= sec[:section_title].delete(' ') %>">
+        <div class="collapse <% if current_path.start_with?(section_url) %>show<% end %>" id="<%= sec[:section_title].delete(' ') %>">
           <% sec[:section_categories].each do |cat| %>
           <span class="global-nav-cat nav-link">
             <% if cat[:external_url] %>
@@ -36,16 +34,16 @@
                 <%= cat[:category_title] %>
               </a>
             <% else %>
-              <% category_href = "/#{dir}/#{cat[:category_url]}" %>
-              <% warn "current=#{current_path_notrail}, #{"/#{dir}/#{cat[:category_url]}"}" %>
-              <a class="global-nav-link level-1 <% if current_path_notrail == "/#{dir}/#{cat[:category_url]}".chomp("/") %>active<% end %>" href="<%= category_href %>">
+              <% category_path = cat[:category_url].chomp('/') %>
+              <% category_url = "#{section_url}/#{category_path}" %>
+              <a class="global-nav-link level-1 <% if current_path == category_url %>active<% end %>" href="<%= category_url %>">
                 <%= cat[:category_title] %>
                 <% if cat[:ee_only] %>
                   <span class="badges-drop global-nav-badges" data-toggle="tooltip" data-placement="top" title="Available in <%= cat[:ee_tier] %>"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
                   <% end %><!-- end of if cat[:ee_only] -->
               </a>
               <% end %><!-- end of if cat[:external_url] -->
-            <div class="<% if cat[:docs] %>collapse-toggle<% end %> <% if current_path_notrail == "/#{dir}/#{cat[:category_url]}".chomp("/") %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#<%= cat[:category_title].gsub(/[\s\/]/, '') %>"></div>
+            <div class="<% if cat[:docs] %>collapse-toggle<% end %> <% if current_path == category_url %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#<%= cat[:category_title].gsub(/[\s\/]/, '') %>"></div>
           </span>
           <% end %><!-- end of sec[:section_categories] -->
         </div><!-- end of div class="collapse" -->

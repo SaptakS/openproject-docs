@@ -8,50 +8,50 @@
 
 sections:
   - section_title: Getting Started
-    section_url: 'getting-started/'
+    section_url: '/getting-started'
     section_categories:
       - category_title: Introduction to OpenProject
-        category_url: 'getting-started/openproject-introduction/'
+        category_url: 'openproject-introduction'
       - category_title: Login and registration
-        category_url: 'getting-started/sign-in-registration/'
+        category_url: 'sign-in-registration'
       - category_title: Create a project
-        category_url: 'getting-started/projects/'
+        category_url: 'projects'
       - category_title: Invite team members
-        category_url: 'getting-started/invite-members/'
+        category_url: 'invite-members'
       - category_title: Introduction to Work packages
-        category_url: 'getting-started/work-packages-introduction/'
+        category_url: 'work-packages-introduction'
       - category_title: Introduction to Gantt charts
-        category_url: 'getting-started/gantt-chart-introduction/'
+        category_url: 'gantt-chart-introduction'
       - category_title: Introduction to Boards
-        category_url: 'getting-started/boards-introduction/'
+        category_url: 'boards-introduction'
       - category_title: My account
-        category_url: 'getting-started/my-account/'
+        category_url: 'my-account'
       - category_title: My page
-        category_url: 'getting-started/my-page/'
+        category_url: 'my-page'
 
   - section_title: User Guide
-    section_url: 'user-guide/'
+    section_url: '/user-guide'
     generate_categories: true
 
   - section_title: Project Administration Guide
-    section_url: 'project-admin-guide/'
+    section_url: '/project-admin-guide'
     generate_categories: true
 
   - section_title: Cloud Edition Guide
-    section_url: 'cloud-edition-guide/'
+    section_url: '/cloud-edition-guide'
     generate_categories: true
 
   - section_title: Enterprise Edition Guide
-    section_url: 'enterprise-edition-guide/'
+    section_url: '/enterprise-edition-guide'
     generate_categories: true
 
   - section_title: Installation & Upgrade Guides
-    section_url: 'installation-and-operations/'
+    section_url: '/installation-and-operations'
     generate_categories: true
 
   - section_title: Development
-    section_url: 'development/'
+    section_url: '/development'
     generate_categories: true
 
   - section_title: API documentation
-    section_url: '/api/'
+    section_url: '/api'
