@@ -27,6 +27,7 @@
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
+    "@types/jquery": "^3.3.31",
     "aglio": "^2.3.0",
     "tocbot": "^4.8.1"
   }

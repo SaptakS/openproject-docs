@@ -33,15 +33,15 @@ if (navtoggle) {
 }
 
 function toggleNavigation() {
-  nav = document.getElementsByClassName('header')[0];
+  let nav = document.getElementsByClassName('header')[0];
   nav.classList.toggle('active');
 }
 
 // move document nav to sidebar
 (function() {
-  var timeofday = document.getElementById('timeofday');
-  var tocList = document.querySelector('.js-article-content > ul#markdown-toc');
-  var main = document.querySelector('.js-main-wrapper');
+  let timeofday = document.getElementById('timeofday') as HTMLElement;
+  let tocList = document.querySelector('.js-article-content > ul#markdown-toc') as HTMLElement;
+  let main = document.querySelector('.js-main-wrapper') as HTMLElement;
 
   // Set timeofday var depending on the time //
 
@@ -65,7 +65,7 @@ function toggleNavigation() {
   // if the document has a top level nav
   if (tocList) {
     // append to the sidebar
-    var sidebar = document.getElementById('doc-nav');
+    let sidebar = document.getElementById('doc-nav');
 
     if (sidebar) {
       // if there are items
@@ -101,7 +101,7 @@ function toggleNavigation() {
 
         sidebar.appendChild(menu);
 
-        var sidebarContent = sidebar.querySelector('ul');
+        var sidebarContent = sidebar.querySelector('ul')!;
         var sidebarContentHeight = 0;
 
         // remove whitespace between elements to prevent list spacing issues
@@ -150,8 +150,8 @@ function toggleNavigation() {
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    var globalNav = document.getElementById('global-nav');
-    var media = window.matchMedia('(max-width: 1099px)');
+    let globalNav = document.getElementById('global-nav') as HTMLElement;
+    let media = window.matchMedia('(max-width: 1099px)');
 
     if (!globalNav) {
       return;
@@ -163,7 +163,7 @@ function toggleNavigation() {
       if (!media.matches) {
         isTouchingBottom =
           window.scrollY + window.innerHeight >=
-          document.querySelector('.footer').offsetTop;
+          (document.querySelector('.footer') as HTMLElement).offsetTop;
       }
 
       if (isTouchingBottom) {
@@ -178,11 +178,11 @@ function toggleNavigation() {
     });
 
     if (media.matches) {
-      var el = document.querySelector('.toc-list ')!;
+      let el = document.querySelector('.toc-list ') as HTMLElement;
       el.classList.add('collapse');
       el.classList.add('out');
       el.style.height = '34px';
-      el.previousElementSibling.classList.add('collapsed');
+      el.previousElementSibling!.classList.add('collapsed');
     }
   });
 })();
