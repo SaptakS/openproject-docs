@@ -12,7 +12,7 @@
         <div class="label">Collapse sidebar</div>
       </button>
     </div>
-    <div class="main class js-main-wrapper">
+    <div class="main class js-main-wrapper <%= current_page.data.no_toc ? '' : 'has-toc' %>">
       <% if config[:breadcrumbs] %>
         <% ancestor_array = ancestor_path_array(current_page) %>
         <% if ancestor_array %>
@@ -25,16 +25,11 @@
           <div id="doc-nav" class="doc-nav">
             <a class="toc-collapse" data-toggle="collapse" href="#markdown-toc" aria-expanded="true" aria-controls="markdown-toc"></a>
           </div>
-        <% else %>
-          <div id="doc-nav" class="doc-nav toc-no-breadcrumbs">
-            <a class="toc-collapse" role="button" data-toggle="collapse" href="#markdown-toc" aria-expanded="true" aria-controls="markdown-toc"></a>
-          </div>
         <% end %>
-      <% else %>
-        <div id="doc-nav" class="doc-nav toc-no-breadcrumbs">
-          <a class="toc-collapse" role="button" data-toggle="collapse" href="#markdown-toc" aria-expanded="true" aria-controls="markdown-toc"></a>
-        </div>
       <% end %>
+      <div id="doc-nav" class="doc-nav has-toc toc-no-breadcrumbs">
+        <a class="toc-collapse" role="button" data-toggle="collapse" href="#markdown-toc" aria-expanded="true" aria-controls="markdown-toc"></a>
+      </div>
       <div class="article-content js-article-content" role="main" itemscope itemprop="mainContentOfPage">
         <%= yield %>
       </div>
@@ -42,6 +37,7 @@
     </div>
     <div class="clear"></div>
   </div>
+
   <%#= TODO mermaid.js support ? partial 'layouts/mermaid' %>
   <%#= TODO analytics partial 'layouts/analytics' %>
 <% end %>

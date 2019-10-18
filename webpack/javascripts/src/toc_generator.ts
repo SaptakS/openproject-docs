@@ -1,3 +1,30 @@
+import * as tocbot from 'tocbot';
+
+
+(function () {
+  let main = document.querySelector('div.main');
+  if (!(main && main.classList.contains('has-toc'))) {
+    return;
+  }
+
+  let article = document.querySelector('.article-content');
+  if (!(article && article.querySelectorAll('h1,h2,h3').length > 2)) {
+    return;
+  }
+
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '#doc-nav',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '.article-content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h1, h2, h3',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+  });
+
+})();
+
 var NAV_INLINE_BREAKPOINT = 1100;
 
 var navtoggle = document.getElementById('docs-nav-toggle');
@@ -151,25 +178,11 @@ function toggleNavigation() {
     });
 
     if (media.matches) {
-      var el = document.getElementById('markdown-toc');
+      var el = document.querySelector('.toc-list ')!;
       el.classList.add('collapse');
       el.classList.add('out');
       el.style.height = '34px';
       el.previousElementSibling.classList.add('collapsed');
     }
-
-    // Adds the ability to auto-scroll to the active item in the TOC
-    $(window).on('activate.bs.scrollspy', function() {
-      const activeAnchors = document.querySelectorAll('#markdown-toc .nav-link.active');
-
-      if(activeAnchors.length) {
-        const sidebarAnchorOffset = 45;
-        const lastActiveAnchor = activeAnchors[activeAnchors.length -1];
-        const sidebar = document.getElementById('doc-nav');
-        // Takes the last active anchor in the tree and scrolls it into view.
-        lastActiveAnchor.scrollIntoView();
-        sidebar.scrollTop -= sidebarAnchorOffset;
-      }
-    });
   });
 })();

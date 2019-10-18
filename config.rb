@@ -3,11 +3,6 @@ require_relative './lib/readme_directory_indexes'
 require_relative './lib/markdown_templates'
 require_relative './lib/trailing_slashes'
 
-require_relative 'lib/locale_helpers'
-require_relative 'lib/path_helpers'
-helpers LocaleHelpers
-helpers PathHelpers
-
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 

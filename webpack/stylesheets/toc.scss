@@ -1,54 +1,17 @@
-// ToC styles
-.doc-nav {
-  h4 {
-    padding-bottom: 5px;
-    font-size: 16px;
-  }
+@import '~tocbot/src/scss/tocbot-core';
+@import '~tocbot/src/scss/tocbot-default-theme';
 
-  > ul {
-    position: relative;
-    padding: 16px 8px;
-    margin-top: 60px;
+.toc-list {
+  padding-left: 20px;
+  counter-reset: item;
+  list-style: none;
 
-    li {
-      list-style: none;
-
-      &::before {
-        content: "›";
-        margin-right: 8px;
-      }
-
-      > a {
-        font-size: 14px;
-        color: $toc-link-color;
-        display: inline;
-        padding: 3px 7px;
-
-        &:hover {
-          color: $link-color-nav-hover;
-          text-decoration: underline;
-          background-color: transparent;
-          box-shadow: none;
-        }
-      }
-      .nav-link.active {
-        font-weight: 600;
-        color: $link-color-nav;
-        background-color: transparent;
-
-        &:hover, &:only-child {
-          color: $link-color-nav-hover;
-          text-decoration: underline;
-          background-color: transparent;
-        }
-      }
-    }
+  li:before {
+    content: counters(item, ".") " ";
+    counter-increment: item
   }
 }
 
-.nav-pills {
-  flex-wrap: nowrap;
-}
 
 // not wide enough to show quick nav and toc
 @media(max-width: $mobile-width) {
@@ -123,7 +86,6 @@
     top: 0;
     right: 8px;
     margin-top: 55px;
-    overflow: scroll;
     height: 100%;
 
     &.toc-no-breadcrumbs {
@@ -146,8 +108,8 @@
   $doc-nav-width: $doc-nav-desired-width;
 
   .main.class.has-toc {
-    width: 64vw;
-    max-width: 64vw;
+    width: 60vw;
+    max-width: 60vw;
     float: left;
   }
 
