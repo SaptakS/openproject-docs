@@ -31,7 +31,7 @@ page '/*.txt', layout: false
 
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
-activate :i18n, mount_at_root: :en, langs: [:en, :de]
+activate :i18n, mount_at_root: :en, langs: [:en]
 
 configure :development do
   activate :livereload
