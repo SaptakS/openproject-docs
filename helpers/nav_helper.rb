@@ -15,7 +15,6 @@ module NavHelper
     # Then search all index pages
     items
       .select { |entry| entry[:is_index] }
-      .sort_by { |entry| entry[:title] }
       .each do |entry|
       # Ignore the main index of this resource
       next if entry[:path] == "/#{section_name}/index"
@@ -27,7 +26,6 @@ module NavHelper
     # Then search all other pages
     items
       .reject { |entry| entry[:is_index] }
-      .sort_by { |entry| entry[:title] }
       .each do |entry|
 
       path_parts = entry[:resource].path.split('/')
@@ -48,6 +46,7 @@ module NavHelper
     end
 
     # Then return all sorted items
-    categories.values + result
+    (categories.values + result)
+      .sort_by { |entry| entry[:title] }
   end
 end
