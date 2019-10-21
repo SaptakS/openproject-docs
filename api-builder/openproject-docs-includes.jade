@@ -110,7 +110,7 @@ mixin Examples(resourceGroup, resource, action)
 mixin ResourceGroup(resourceGroup, getButtonClass, multipage)
     .panel.panel-default
         .panel-heading
-            h3(id="#{slug(resourceGroup.name)}")
+            h1(id="#{slug(resourceGroup.name)}")
                 = resourceGroup.name || 'Resource Group'
                 | &nbsp;
                 a.permalink(href="##{multipage ? 'page:' : ''}#{slug(resourceGroup.name)}")

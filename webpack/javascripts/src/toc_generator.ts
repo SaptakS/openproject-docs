@@ -21,6 +21,8 @@ import * as tocbot from 'tocbot';
     headingSelector: 'h1, h2, h3',
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
+    // Slower timeout
+    throttleTimeout: 150
   });
 
 })();

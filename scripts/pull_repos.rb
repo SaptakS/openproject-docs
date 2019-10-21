@@ -38,7 +38,7 @@ end
 
 puts 'Building API docs'
 Dir.chdir(File.join(middleman_root, 'api-builder')) do
-  path = File.join(ENV['OPENPROJECT_CORE'], 'docs', 'api', 'apiv3-doc-stable.apib')
+  path = File.join(ENV['OPENPROJECT_CORE'], 'docs', 'api', 'apiv3', 'index.apib')
   target_path = File.join(middleman_root, 'source', 'api.html.erb')
   aglio_path = File.join(middleman_root, 'node_modules', '.bin', 'aglio')
 
