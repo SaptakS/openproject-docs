@@ -208,16 +208,29 @@ a.global-nav-link {
   width: 100%;
 }
 
-.nav-link {
-  padding: 0;
-  display: flex;
-  justify-content: space-between;
+.global-nav {
+  .nav-link {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-link:hover {
+    background-color: $link-color-bg-active;
+  }
 }
 
-.nav-link:hover {
-  background-color: $link-color-bg-active;
+.nav-pills .nav-link.active {
+  background-color: $color-primary;
 }
-// scss-lint:enable QualifyingElement
+
+.feedback-tabs a {
+  padding: 10px 15px;
+  display: block;
+  margin-right: 2px;
+  border-radius: 4px 4px 0 0;
+  text-decoration: none;
+}
 
 .global-nav-block-top {
   font-weight: 600;

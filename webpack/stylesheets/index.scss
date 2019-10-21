@@ -77,23 +77,6 @@
     font-style: italic;
   }
 
-  // Override bootstrap defaults
-  .nav-tabs > li > a {
-    padding: 10px 15px;
-    display: block;
-    margin-right: 2px;
-    border-radius: 4px 4px 0 0;
-    text-decoration: none;
-
-    &.active {
-      background-color: $gds-white;
-    }
-  }
-
-  .nav-link {
-    padding: 0;
-  }
-
   code {
     word-break: normal;
     padding: 2px 4px;
@@ -105,7 +88,6 @@
   }
 
 }
-
 //
 // Algolia search override
 // https://community.algolia.com/docsearch/styling.html
@@ -117,7 +99,3 @@
     overflow-x: hidden;
   }
 }
-// Algolia search override end
-
-
-//end of in-page styles
