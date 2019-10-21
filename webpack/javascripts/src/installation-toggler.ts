@@ -34,7 +34,7 @@
     content.setAttribute('aria-labelledby', `install-tab-${i}`);
 
     item.children[0].remove();
-    content.append(...item.children);
+    content.append(...Array.from(item.children));
 
     if (i === 0) {
       link.classList.add('active');

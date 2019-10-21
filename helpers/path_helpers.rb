@@ -11,21 +11,6 @@ module PathHelpers
     end
   end
 
-  def product_links(path, with_index: false)
-    pages_for_product(path, with_index: with_index)
-      .map do |resource|
-      path = '/' + resource.path.gsub(/\.html$/, '').delete_prefix('/')
-
-      {
-        resource: resource,
-        is_index: path.end_with?('index'),
-        title: resource.metadata[:page][:title] || resource.data.title || derive_title(resource),
-        path: path,
-        url: path.chomp('/index')
-      }
-    end
-  end
-
   def derive_title(page = current_page)
     rendered = Nokogiri::HTML(page.render({layout: false}))
 
