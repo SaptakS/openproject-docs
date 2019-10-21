@@ -1,22 +1,27 @@
 require 'nokogiri'
 
 module PathHelpers
-  def pages_for_product(path)
+  def pages_for_product(path, with_index: false)
     sitemap.resources.select do |resource|
       rpath = resource.path
 
       rpath.end_with?('.html') &&
-        !rpath.end_with?('index.html') &&
+        (with_index || !rpath.end_with?('index.html')) &&
         rpath.start_with?(path)
     end
   end
 
-  def product_links(path)
-    pages_for_product(path)
+  def product_links(path, with_index: false)
+    pages_for_product(path, with_index: with_index)
       .map do |resource|
+      path = '/' + resource.path.gsub(/\.html$/, '').delete_prefix('/')
+
       {
+        resource: resource,
+        is_index: path.end_with?('index'),
         title: resource.metadata[:page][:title] || resource.data.title || derive_title(resource),
-        path: resource.path.gsub(/\.html$/, '')
+        path: path,
+        url: path.chomp('/index')
       }
     end
   end

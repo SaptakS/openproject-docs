@@ -3,55 +3,55 @@
 ### Rules
 # - Do not start the URL with "/"
 # - Do not add anchors to the links
-# - If the URL ends with index.html, leave it empty (e.g. section_url: 'index.html' --> section_url: '')
+# - If the URL ends with index.html, leave it empty (e.g. path: 'index.html' --> path: '')
 #
 
 sections:
-  - section_title: Getting Started
-    section_url: '/getting-started'
+  - title: Getting Started
+    path: '/getting-started'
     section_categories:
-      - category_title: Introduction to OpenProject
-        category_url: 'openproject-introduction'
-      - category_title: Login and registration
-        category_url: 'sign-in-registration'
-      - category_title: Create a project
-        category_url: 'projects'
-      - category_title: Invite team members
-        category_url: 'invite-members'
-      - category_title: Introduction to Work packages
-        category_url: 'work-packages-introduction'
-      - category_title: Introduction to Gantt charts
-        category_url: 'gantt-chart-introduction'
-      - category_title: Introduction to Boards
-        category_url: 'boards-introduction'
-      - category_title: My account
-        category_url: 'my-account'
-      - category_title: My page
-        category_url: 'my-page'
+      - title: Introduction to OpenProject
+        path: 'openproject-introduction'
+      - title: Login and registration
+        path: 'sign-in-registration'
+      - title: Create a project
+        path: 'projects'
+      - title: Invite team members
+        path: 'invite-members'
+      - title: Introduction to Work packages
+        path: 'work-packages-introduction'
+      - title: Introduction to Gantt charts
+        path: 'gantt-chart-introduction'
+      - title: Introduction to Boards
+        path: 'boards-introduction'
+      - title: My account
+        path: 'my-account'
+      - title: My page
+        path: 'my-page'
 
-  - section_title: User Guide
-    section_url: '/user-guide'
+  - title: User Guide
+    path: '/user-guide'
     generate_categories: true
 
-  - section_title: Project Administration Guide
-    section_url: '/project-admin-guide'
+  - title: Project Administration Guide
+    path: '/project-admin-guide'
     generate_categories: true
 
-  - section_title: Cloud Edition Guide
-    section_url: '/cloud-edition-guide'
+  - title: Cloud Edition Guide
+    path: '/cloud-edition-guide'
     generate_categories: true
 
-  - section_title: Enterprise Edition Guide
-    section_url: '/enterprise-edition-guide'
+  - title: Enterprise Edition Guide
+    path: '/enterprise-edition-guide'
     generate_categories: true
 
-  - section_title: Installation & Upgrade Guides
-    section_url: '/installation-and-operations'
+  - title: Installation & Upgrade Guides
+    path: '/installation-and-operations'
     generate_categories: true
 
-  - section_title: Development
-    section_url: '/development'
+  - title: Development
+    path: '/development'
     generate_categories: true
 
-  - section_title: API documentation
-    section_url: '/api'
+  - title: API documentation
+    path: '/api'
