@@ -87,6 +87,12 @@
     display: flex;
   }
 
+  // Center YT embed iframes
+  iframe {
+    margin: 40px auto;
+    display: block;
+    box-shadow: 0 4px 18px 0 rgba($color-dark, .1), 0 6px 20px 0 rgba($color-dark, .09);
+  }
 }
 //
 // Algolia search override
