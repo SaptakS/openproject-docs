@@ -162,9 +162,11 @@
   #search-form .docsearch {
     border-color: $header-color;
     background: transparent;
+    color: white;
 
     &:focus {
       background: white !important;
+      color: $black;
     }
 
     &::placeholder {
