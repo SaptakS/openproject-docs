@@ -15,9 +15,9 @@ doc_root = File.join(core_docs, doc_folder)
 
 localizable_path = File.expand_path('../source/localizable', __dir__)
 
-Dir.children(doc_root).each do |name|
-  path = File.join(doc_root, name)
-  next unless File.directory?(path)
+Pathname.new(doc_root).children.each do |path|
+  name = File.basename(path)
+  next unless path.directory?
 
   puts "Removing previous folder #{name} and copying from #{path} again."
   FileUtils.rm_rf(File.join(localizable_path, name))
