@@ -1,0 +1,10 @@
+include openproject-docs-includes.jade
+
+
+- var resourceGroup = api.resourceGroups && api.resourceGroups[0];
+div
+  block content
+    .description!= markdown(api.description)
+    if resourceGroup
+      h1 #{resourceGroup.name}
+      +ResourceGroup(resourceGroup)

@@ -441,13 +441,13 @@ li {
   }
 }
 
-// https://gitlab.com/gitlab-org/gitlab-docs/issues/107#note_36655246
+// Ensure heading is visible when being scrolled to
 h1, h2, h3, h4, h5, h6 {
   &[id]::before {
     display: block;
     content: " ";
-    margin-top: -75px;
-    height: 75px;
+    margin-top: -55px;
+    height: 55px;
     visibility: hidden;
   }
 }

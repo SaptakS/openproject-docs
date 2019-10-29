@@ -4,6 +4,7 @@
 require 'pathname'
 require 'fileutils'
 require 'pry'
+require 'parallel'
 
 middleman_root = File.expand_path('../', __dir__)
 
@@ -38,26 +39,30 @@ end
 
 puts 'Building API docs'
 Dir.chdir(File.join(middleman_root, 'api-builder')) do
-  path = File.join(ENV['OPENPROJECT_CORE'], 'docs', 'api', 'apiv3', 'index.apib')
-  target_path = File.join(middleman_root, 'source', 'api.html.erb')
+  core_path = Pathname.new ENV['OPENPROJECT_CORE']
+  source_dir = File.join(core_path.to_s, 'docs', 'api', 'apiv3')
+  target_dir = File.join(middleman_root, 'source', 'api')
   aglio_path = File.join(middleman_root, 'node_modules', '.bin', 'aglio')
 
-  FileUtils.rm target_path, force: true
+  FileUtils.rm_rf target_dir
+  FileUtils.mkdir_p target_dir
 
-  # Execute
-  `NOCACHE=1 #{aglio_path} -t openproject-docs-layout.jade -i #{path} -o #{target_path}`
+  entries = Dir.glob("#{source_dir}/**/*.apib")
 
-  # Prepend layout
-  api = File.read(target_path)
+  Parallel.each(entries, progress: 'Processing API entries') do |api_file|
+    filepath = Pathname.new(api_file)
+    filename = filepath.basename('.apib').to_s
 
-  File.open(target_path, 'w') do |f|
-    f.write <<~HEADER
-      ---
-      layout: api
-      ---
+    # Ignore the index file
+    next if filename == 'index'
 
-    HEADER
+    # Make introduction the new index
+    filename = 'index' if filename == 'introduction'
 
-    f.write api
+    # Create a filename under API
+    target_path = File.join(target_dir, "#{filename}.html.erb")
+
+    # Execute aglio on that file
+    `NOCACHE=1 #{aglio_path} -t openproject-docs-single-page.jade -i #{api_file} -o #{target_path}`
   end
 end

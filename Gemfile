@@ -5,6 +5,7 @@ gem 'middleman-livereload'
 gem 'middleman-syntax', '~> 3.2'
 gem 'activesupport'
 gem 'nokogiri'
+gem 'parallel'
 
 gem 'kramdown', '~> 1.17'
 

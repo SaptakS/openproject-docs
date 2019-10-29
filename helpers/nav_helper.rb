@@ -22,7 +22,7 @@ module NavHelper
   # Generates the sidebar menu for the given section_prefix
   # e.g., "user-guide" will find all pages behind source/user-guide/,
   # group them by subfolders (if any) and sorts the nav items
-  def generate_section_navigation(section)
+  def generate_section_navigation(section, prioritized_order = [])
     section_name = section.delete_prefix('/').chomp('/')
     result = []
 
@@ -63,14 +63,14 @@ module NavHelper
       end
     end
 
-    # Sort the inner
-
     # Then return all sorted items
+    prioritized_order ||= []
+    sort_array = ->(entry) { [prioritized_order.index(entry[:path]) || 1000, -entry[:priority], entry[:title]] }
     (categories.values + result)
-      .sort_by { |entry| [-entry[:priority], entry[:title]] }
+      .sort_by(&sort_array)
       .map do |item|
 
-      item[:children]&.sort_by! { |entry| [-entry[:priority], entry[:title]] }
+      item[:children]&.sort_by!(&sort_array)
 
       item
     end

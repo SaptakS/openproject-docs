@@ -18,10 +18,11 @@
         <% if breadcrumbs&.length > 0 %>
           <ul class="breadcrumbs">
             <% breadcrumbs.each do |item| %>
+              <% title = breadcrumb_title(item) %>
               <% if item == current_page %>
-                <li class="breadcrumb"><%= item.data.title || derive_title(item) %></li>
+                <li class="breadcrumb"><%= title %></li>
               <% else %>
-                <li class="breadcrumb"><%= link_to(item.data.title || derive_title(item), item) %></li>
+                <li class="breadcrumb"><%= link_to(title, item) %></li>
               <% end %>
             <% end %>
           </ul>

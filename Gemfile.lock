@@ -129,6 +129,7 @@ DEPENDENCIES
   middleman-livereload
   middleman-syntax (~> 3.2)
   nokogiri
+  parallel
   pry
   pry-byebug
 

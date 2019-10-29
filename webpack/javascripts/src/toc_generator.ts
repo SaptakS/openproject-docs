@@ -3,14 +3,25 @@ import * as tocbot from 'tocbot';
 
 (function () {
   let main = document.querySelector('div.main');
-  if (!(main && main.classList.contains('has-toc'))) {
+  let article = document.querySelector('.article-content');
+  if (!article || !(main && main.classList.contains('has-toc'))) {
     return;
   }
 
-  let article = document.querySelector('.article-content');
-  if (!(article && article.querySelectorAll('h1,h2,h3').length > 2)) {
-    return;
-  }
+  article
+    .querySelectorAll('h1[id],h2[id],h3[id]')
+    .forEach((heading) => {
+      // Remove any generated permalink (from api pages, e.g.)
+      let permalink = heading.querySelector('.permalink');
+      permalink && heading.removeChild(permalink);
+
+      let anchor = document.createElement('a');
+      anchor.href = `#${heading.id}`;
+      anchor.setAttribute('aria-hidden', 'true');
+      anchor.classList.add('permalink', 'fa', 'fa-link');
+
+      heading.appendChild(anchor);
+    });
 
   tocbot.init({
     // Where to render the table of contents.

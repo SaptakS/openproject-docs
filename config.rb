@@ -42,7 +42,10 @@ activate :markdown_templates
 set :markdown_engine, :kramdown
 set :markdown, fenced_code_blocks: true,
                parse_block_html: true,
-               smartypants: true
+               smartypants: true,
+               default_lang: 'Plain Text',
+               hard_wrap: false,
+               auto_ids: true
 
 activate :external_pipeline,
          name: :webpack,

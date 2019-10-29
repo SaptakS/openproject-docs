@@ -66,7 +66,7 @@ mixin Parameters(params)
                                     = ' '
 
 mixin RequestResponse(title, request, resourceGroup, resource, action)
-    - var id = hash(resourceGroup.name.toString() + resource.name.toString() + action.name.toString() + action.method.toString() + title.toString() + request.name.toString() + request.headers.toString() + request.body.toString() + request.schema.toString())
+    - var id = "collapse-" + hash(resourceGroup.name.toString() + resource.name.toString() + action.name.toString() + action.method.toString() + title.toString() + request.name.toString() + request.headers.toString() + request.body.toString() + request.schema.toString())
     - var content = request.description || Object.keys(request.headers).length || request.body || request.schema
     li.list-group-item
         strong
@@ -109,17 +109,11 @@ mixin Examples(resourceGroup, resource, action)
 
 mixin ResourceGroup(resourceGroup, getButtonClass, multipage)
     .panel.panel-default
-        .panel-heading
-            h1(id="#{slug(resourceGroup.name)}")
-                = resourceGroup.name || 'Resource Group'
-                | &nbsp;
-                a.permalink(href="##{multipage ? 'page:' : ''}#{slug(resourceGroup.name)}")
-                    i.fa.fa-link
         .panel-body
             if resourceGroup.description
                 != markdown(resourceGroup.description)
             each resource in resourceGroup.resources
-                h4(id="#{slug(resourceGroup.name)}-#{slug(resource.name)}")
+                h2(id="#{slug(resourceGroup.name)}-#{slug(resource.name)}")
                     = resource.name || 'Resources'
                     | &nbsp;
                     a.permalink(href="##{(multipage ? 'page:' + slug(resourceGroup.name) + ',header:' : '')}#{slug(resourceGroup.name)}-#{slug(resource.name)}")
@@ -141,7 +135,7 @@ mixin ResourceGroup(resourceGroup, getButtonClass, multipage)
                                     span(style="text-transform: lowercase")= action.name
                             case action.method
                                 when 'POST': - var btnClass = 'btn-success'
-                                when 'GET': - var btnClass = 'btn-' + getButtonClass
+                                when 'GET': - var btnClass = 'btn-primary'
                                 when 'PUT': - var btnClass = 'btn-warning'
                                 when 'PATCH': - var btnClass = 'btn-warning'
                                 when 'DELETE': - var btnClass = 'btn-danger'

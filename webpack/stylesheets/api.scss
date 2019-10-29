@@ -42,23 +42,7 @@
   opacity: .5
 }
 
-#op-api-content {
-  h1:hover,
-  h2:hover,
-  h3:hover,
-  h4:hover,
-  h5:hover {
-    .permalink {
-      opacity: 1
-    }
-  }
-
-  .permalink {
-    margin-left: 0;
-    opacity: 0;
-    transition: opacity .25s ease;
-  }
-
+body.api {
   .list-group-item a {
     cursor: pointer;
   }
@@ -73,5 +57,14 @@
     .panel-heading-code {
       padding-left: 5px;
     }
+  }
+
+  .list-group-item .pull-right {
+    color: $button-primary;
+  }
+
+  pre code {
+    background: transparent;
+    color: initial
   }
 }
