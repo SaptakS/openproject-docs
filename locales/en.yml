@@ -1,5 +1,7 @@
 ---
 en:
+  breakpoints:
+    current_page: 'Current page'
   products:
     getting-started:
       title: 'Getting started'

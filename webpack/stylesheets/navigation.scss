@@ -288,16 +288,15 @@ a.global-nav-link {
 }
 
 // Styles for breadcrumbs navigation
-.breadcrumbs {
-  white-space: nowrap;
-  overflow-x: auto;
+ul.breadcrumbs {
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
   padding: 0;
 
   .breadcrumb {
-    text-overflow: ellipsis;
+    flex: 0 0 auto;
     display: inline-block;
-    overflow-x: hidden;
-    // Override bootstrap
     padding: 0;
     margin-bottom: 0;
     background-color: transparent;

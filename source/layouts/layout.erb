@@ -14,20 +14,20 @@
     </div>
     <div class="main class js-main-wrapper <%= current_page.data.no_toc ? '' : 'has-toc' %>">
       <% if config[:breadcrumbs] %>
-        <% ancestor_array = ancestor_path_array(current_page) %>
-        <% if ancestor_array %>
+        <% breadcrumbs = build_breadcrumbs %>
+        <% if breadcrumbs&.length > 0 %>
           <ul class="breadcrumbs">
-            <% ancestor_array.reverse_each do |item| %>
-              <li class="breadcrumb"><%= link_to item.key?(:title) ? "#{item[:title]}" : "Breadcrumb", item %></li>
+            <% breadcrumbs.each do |item| %>
+              <% if item == current_page %>
+                <li class="breadcrumb"><%= item.data.title || derive_title(item) %></li>
+              <% else %>
+                <li class="breadcrumb"><%= link_to(item.data.title || derive_title(item), item) %></li>
+              <% end %>
             <% end %>
-            <li class="breadcrumb"><%= current_page.data.title || "Current page" %></li>
           </ul>
-          <div id="doc-nav" class="doc-nav">
-            <a class="toc-collapse" data-toggle="collapse" href="#markdown-toc" aria-expanded="true" aria-controls="markdown-toc"></a>
-          </div>
         <% end %>
       <% end %>
-      <div id="doc-nav" class="doc-nav has-toc toc-no-breadcrumbs">
+      <div id="doc-nav" class="doc-nav has-toc">
         <a class="toc-collapse" role="button" data-toggle="collapse" href="#markdown-toc" aria-expanded="true" aria-controls="markdown-toc"></a>
       </div>
       <div class="article-content js-article-content" role="main" itemscope itemprop="mainContentOfPage">

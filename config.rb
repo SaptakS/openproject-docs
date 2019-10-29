@@ -11,10 +11,7 @@ require_relative './lib/trailing_slashes'
 
 
 # Docs specific settings
-
-# Disable breadcrumbs while we don't support them
-set :breadcrumbs, false
-
+set :breadcrumbs, true
 set :site_url, "http://localhost:4567"
 
 use ::Rack::TrailingSlashes
