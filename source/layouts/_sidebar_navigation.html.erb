@@ -7,6 +7,14 @@
   <% nav_items[:sections].each do |sec| %>
     <%# Remove any trailing slash in case it was given %>
     <% section_url = sec[:path].chomp('/') %>
+
+    <% if sec[:generate_categories]
+         # Get the section_url without leading slash
+         section_prefix = section_url.delete_prefix('/') + '/'
+         sec[:section_categories] = generate_section_navigation(section_prefix, sec[:prioritized_order])
+       end
+    %>
+
     <div class="global-nav-section">
       <span class="global-nav-block-top nav-link">
         <a class="global-nav-link level-0 <% if current_path == section_url %>active<% end %>" href="<%= section_url %>">
@@ -15,14 +23,6 @@
         <div class="section-title <% if sec[:section_categories] %>collapse-toggle<% end %> <% if current_path == section_url %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#<%= sec[:title].parameterize %>"></div>
       </span>
 
-      <% if sec[:generate_categories]
-           # Get the section_url without leading slash
-           section_prefix = section_url.delete_prefix('/') + '/'
-           sec[:section_categories] = generate_section_navigation(section_prefix, sec[:prioritized_order])
-         end
-      %>
-
-      <!-- nav categories -->
       <% if sec[:section_categories] %>
         <div class="collapse <% if current_path.start_with?(section_url) %>show<% end %>" id="<%= sec[:title].parameterize %>">
           <% sec[:section_categories].each do |cat| %>
@@ -37,13 +37,12 @@
                 <%= cat[:title] %>
                 <% if cat[:ee_only] %>
                   <span class="badges-drop global-nav-badges" data-toggle="tooltip" data-placement="top" title="Available in <%= cat[:ee_tier] %>"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
-                  <% end %><!-- end of if cat[:ee_only] -->
+                  <% end %>
               </a>
-              <% end %><!-- end of if cat[:external_url] -->
+              <% end %>
             <div class="<% if cat[:children] %>collapse-toggle<% end %> <% if current_path == category_path %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#<%= cat[:title].parameterize %>"></div>
           </span>
 
-          <!-- nav docs -->
           <% if cat[:children] %>
             <div class="collapse <% if current_path.start_with?(category_path) %>show<% end %>" id="<%= cat[:title].parameterize %>">
               <% cat[:children].each do |doc| %>
@@ -58,17 +57,17 @@
                       <%= doc[:title] %>
                       <% if doc[:ee_only] %>
                         <span class="badges-drop global-nav-badges" data-toggle="tooltip" data-placement="top" title="Available in <%= doc[:ee_tier] %>"><i class="fa fa-info-circle" aria-hidden="true"></i></span>
-                      <% end %><!-- end if doc[:ee_only] -->
+                      <% end %>
                     </a>
-                    <% end %><!-- end of if doc[:external_url] -->
+                    <% end %>
                 </span>
-                <% end %><!-- end of cat[:docs] -->
+                <% end %>
             </div>
-            <% end %><!-- end of if cat[:docs].nil? -->
+            <% end %>
 
-          <% end %><!-- end of sec[:section_categories] -->
-        </div><!-- end of div class="collapse" -->
-        <% end %><!-- end of if sec[:section_categories].nil? -->
-    </div><!-- end of div class="global-nav-section" -->
-    <% end %><!-- end of nav_items[:sections] -->
+          <% end %>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
 </nav>
