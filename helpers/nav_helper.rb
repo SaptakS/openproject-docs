@@ -3,19 +3,24 @@ module NavHelper
   def product_links(path, with_index: false)
     pages_for_product(path, with_index: with_index)
       .map do |resource|
-      path = '/' + resource.path.gsub(/\.html$/, '').delete_prefix('/')
-      title = resource.metadata[:page][:title] || resource.data.title || derive_title(resource)
 
-      {
-        resource: resource,
-        is_index: path.end_with?('index'),
-        title: resource.data.nav&.title || title,
-        priority: (resource.data.nav&.priority || 1).to_i,
-        data: resource.data,
-        path: path,
-        url: path.chomp('/index')
-      }
-    end
+        # Skip this item if requested by its frontmatter
+        next if resource.data.sidebar_navigation == false
+
+        path = '/' + resource.path.gsub(/\.html$/, '').delete_prefix('/')
+        title = resource.metadata[:page][:title] || resource.data.title || derive_title(resource)
+
+        {
+          resource: resource,
+          is_index: path.end_with?('index'),
+          title: resource.data.sidebar_navigation&.title || title,
+          priority: (resource.data.sidebar_navigation&.priority || 1).to_i,
+          data: resource.data,
+          path: path,
+          url: path.chomp('/index')
+        }
+      end
+      .compact
   end
 
   ##
