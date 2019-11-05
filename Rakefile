@@ -23,6 +23,8 @@ task :deploy do
       sh 'git fetch'
       sh 'git checkout master'
       sh 'git reset --hard origin/master'
+      # Clean any old files not in current build
+      sh 'rm -rf *'
     end
 
     cd root_dir do
