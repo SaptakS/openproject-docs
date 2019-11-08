@@ -49,16 +49,19 @@
   function toggleSidebar() {
     const mediaQuery = window.matchMedia('(max-width: 1099px)');
     const navWrapper = document.querySelector('.nav-wrapper');
+    const toggleIcon = document.querySelector('.nav-toggle');
 
-    if (!navWrapper) {
+    if (!navWrapper || !toggleIcon) {
       return;
     }
 
     if (mediaQuery.matches) {
       navWrapper.classList.remove('active');
+      toggleIcon.classList.remove('nav-open');
       return;
     }
 
     navWrapper.classList.add('active');
+    toggleIcon.classList.add('nav-open');
   }
 })();

@@ -31,5 +31,6 @@
     }
 
     target.classList.toggle(classToToggle);
+    toggle.parentElement.classList.toggle('nav-open');
   }
 })();
