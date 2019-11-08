@@ -50,18 +50,21 @@
     const mediaQuery = window.matchMedia('(max-width: 1099px)');
     const navWrapper = document.querySelector('.nav-wrapper');
     const toggleIcon = document.querySelector('.nav-toggle');
+    const overlay = document.querySelector('.content-overlay');
 
-    if (!navWrapper || !toggleIcon) {
+    if (!navWrapper || !toggleIcon || !overlay) {
       return;
     }
 
     if (mediaQuery.matches) {
       navWrapper.classList.remove('active');
+      overlay.classList.remove('active');
       toggleIcon.classList.remove('nav-open');
       return;
     }
 
     navWrapper.classList.add('active');
+    overlay.classList.add('active');
     toggleIcon.classList.add('nav-open');
   }
 })();

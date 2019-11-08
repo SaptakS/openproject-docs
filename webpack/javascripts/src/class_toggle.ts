@@ -24,13 +24,16 @@
     const targetSelector = toggle.dataset.target;
     const classToToggle = toggle.dataset.glClassToggle;
     const target = document.querySelector(targetSelector);
+    const overlay = document.querySelector('.content-overlay');
 
     if(!target) {
       console.warn('No target found for selector > ', targetSelector);
       return;
     }
-
     target.classList.toggle(classToToggle);
     toggle.parentElement.classList.toggle('nav-open');
+    if (overlay !== null) {
+      overlay.classList.toggle('active');
+    }
   }
 })();

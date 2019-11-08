@@ -99,7 +99,23 @@
 @media (max-width: $mobile-width) {
   .nav-wrapper.active {
     width: 100%;
-    max-width: 100%;
+  }
+
+  .content-overlay.active {
+    background: #fff;
+    transition: background .3s;
+  }
+
+  .content-overlay.active {
+    position: fixed;
+    height: 100vh;
+    background: #000;
+    top: 50px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: .4;
+    z-index: 1;
   }
 }
 
