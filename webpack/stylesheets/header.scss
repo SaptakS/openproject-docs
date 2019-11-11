@@ -15,7 +15,7 @@
   }
 
   @media all and (max-width: $mobile-width) {
-    height: 50px;
+    height: 55px;
     padding: 6px 15px;
 
     .logo {
@@ -125,7 +125,8 @@
     border: 1px solid $search-border;
     border-radius: $border-radius;
     -webkit-appearance: none;
-    padding: 7px 11px 7px 28px;
+    padding: 0px 11px;
+    height: $search-form-height;
     width: 260px;
     background: $white url("/images/icon_search.svg") 9px 12px / 14px no-repeat;
     outline: 0;
@@ -160,6 +161,7 @@
   }
 
   #search-form .docsearch {
+    height: $search-form-height;
     border-color: $header-color;
     background: transparent;
     color: white;
@@ -186,12 +188,23 @@
 
         .fa {
           position: relative;
-          top: 7px;
+          top: 5px;
           left: -5px;
         }
 
         #search-form {
           width: 100%;
+
+          .docsearch {
+            height: $search-form-height-mobile;
+            padding: 7px 11px;
+            background: white !important;
+            color: $black;
+
+            &::placeholder {
+              color: $black;
+            }
+          }
         }
       }
 
