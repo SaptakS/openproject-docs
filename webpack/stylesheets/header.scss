@@ -2,6 +2,7 @@
   z-index: 10;
   background: $header-background-color;
   position: fixed;
+  height: 55px;
   width: 100%;
   padding: 6px 24px;
   border-bottom: 1px solid $border-color;
@@ -11,11 +12,18 @@
   white-space: nowrap;
 
   .logo-container {
-    margin-right: 24px;
+    margin-right: 30px;
+
+    .header--help-text {
+      font-size: 22px;
+    }
+
+    .header--separator {
+      height: 32px;
+    }
   }
 
   @media all and (max-width: $mobile-width) {
-    height: 55px;
     padding: 6px 15px;
 
     .logo {
@@ -24,7 +32,7 @@
   }
 
   img {
-    height: 40px;
+    height: 30px;
   }
 
   p {
@@ -131,7 +139,7 @@
     background: $white url("/images/icon_search.svg") 9px 12px / 14px no-repeat;
     outline: 0;
 
-    @media(max-width:$medium-width) {
+    @media(max-width:$mobile-width) {
       width: calc(100% - 15px) !important;
     }
   }
@@ -174,6 +182,10 @@
     &::placeholder {
       color: $header-color;
     }
+  }
+
+  .header-link:visited {
+    color: $color-white;
   }
 
   /* Search bar on mobile */
