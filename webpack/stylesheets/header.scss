@@ -69,6 +69,21 @@
     .fa {
       color: white;
     }
+
+    .nav-toggle {
+      cursor: pointer;
+      // fixed width prevents openproject logo to jump
+      width: 13px;
+    }
+
+    .fa-times,
+    .nav-open .fa-bars {
+      display: none;
+    }
+
+    .nav-open .fa-times {
+      display: block;
+    }
   }
 
   .btn-versions {

@@ -47,18 +47,23 @@
   }
 
   function toggleSidebar() {
-    const mediaQuery = window.matchMedia('(max-width: 1099px)');
+    const mediaQuery = window.matchMedia('(max-width: 900px)');
     const navWrapper = document.querySelector('.nav-wrapper');
+    const toggleIcon = document.querySelector('.nav-toggle');
+    const overlay = document.querySelector('.content-overlay');
 
-    if (!navWrapper) {
+    if (!navWrapper || !toggleIcon || !overlay) {
       return;
     }
 
     if (mediaQuery.matches) {
       navWrapper.classList.remove('active');
-      return;
+      overlay.classList.remove('active');
+      toggleIcon.classList.remove('nav-open');
+    } else {
+      navWrapper.classList.add('active');
+      overlay.classList.add('active');
+      toggleIcon.classList.add('nav-open');
     }
-
-    navWrapper.classList.add('active');
   }
 })();
