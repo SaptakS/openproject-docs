@@ -6,7 +6,7 @@
   padding-top: 56px;
   max-width: 220px;
   width: 0px;
-  height: 100vh;
+  height: 100%;
   transition: all .3s;
   background: $global-nav-bg;
   border-right: 1px solid $global-nav-border-color;
@@ -108,7 +108,7 @@
 
   .content-overlay.active {
     position: fixed;
-    height: 100vh;
+    height: 100%;
     background: #000;
     top: 50px;
     left: 0;
