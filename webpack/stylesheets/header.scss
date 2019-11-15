@@ -2,6 +2,7 @@
   z-index: 10;
   background: $header-background-color;
   position: fixed;
+  height: 55px;
   width: 100%;
   padding: 6px 24px;
   border-bottom: 1px solid $border-color;
@@ -11,11 +12,18 @@
   white-space: nowrap;
 
   .logo-container {
-    margin-right: 24px;
+    margin-right: 30px;
+
+    .header--help-text {
+      font-size: 22px;
+    }
+
+    .header--separator {
+      height: 32px;
+    }
   }
 
   @media all and (max-width: $mobile-width) {
-    height: 50px;
     padding: 6px 15px;
 
     .logo {
@@ -24,7 +32,7 @@
   }
 
   img {
-    height: 40px;
+    height: 30px;
   }
 
   p {
@@ -125,12 +133,15 @@
     border: 1px solid $search-border;
     border-radius: $border-radius;
     -webkit-appearance: none;
-    padding: 7px 11px 7px 28px;
+    padding: 0px 11px;
+    height: $search-form-height;
     width: 260px;
     background: $white url("/images/icon_search.svg") 9px 12px / 14px no-repeat;
     outline: 0;
+    // The font-size is necessary to avoid iOS to zoom in when being focused
+    font-size: 16px;
 
-    @media(max-width:$medium-width) {
+    @media(max-width: $mobile-width) {
       width: calc(100% - 15px) !important;
     }
   }
@@ -160,6 +171,7 @@
   }
 
   #search-form .docsearch {
+    height: $search-form-height;
     border-color: $header-color;
     background: transparent;
     color: white;
@@ -174,6 +186,10 @@
     }
   }
 
+  .header-link:visited {
+    color: $color-white;
+  }
+
   /* Search bar on mobile */
   @media (max-width: $mobile-width) {
     .header--element-container {
@@ -186,12 +202,23 @@
 
         .fa {
           position: relative;
-          top: 7px;
+          top: 5px;
           left: -5px;
         }
 
         #search-form {
           width: 100%;
+
+          .docsearch {
+            height: $search-form-height-mobile;
+            padding: 7px 11px;
+            background: white !important;
+            color: $black;
+
+            &::placeholder {
+              color: $black;
+            }
+          }
         }
       }
 
