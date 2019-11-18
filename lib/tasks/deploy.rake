@@ -7,8 +7,8 @@ end
 
 desc 'Build and publish to Github Pages'
 task :deploy do
-  root_dir = File.expand_path('.', __dir__)
-  build_dir = File.expand_path('build', __dir__)
+  root_dir = File.expand_path('../../', __dir__)
+  build_dir = File.expand_path('build', root_dir)
 
   puts root_dir
   puts build_dir

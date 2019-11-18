@@ -4,6 +4,7 @@ gem 'middleman', '~> 4.2'
 gem 'middleman-livereload'
 gem 'middleman-syntax', '~> 3.2'
 gem 'activesupport'
+gem 'actionview', '~> 5.0', require: false
 gem 'nokogiri'
 gem 'parallel'
 gem "ruby-progressbar", "~> 1.10"

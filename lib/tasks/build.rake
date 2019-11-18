@@ -16,6 +16,12 @@ task :build do
   doc_folder = ENV['OPENPROJECT_DOC_ROOT'] || 'help'
   doc_root = File.join(core_docs, doc_folder)
 
+  commit = Dir.chdir(core_docs) do
+    `git rev-parse HEAD`.strip
+  end
+
+  puts "Building from core@#{commit}"
+
   localizable_path = File.expand_path('source/localizable', middleman_root)
 
   Pathname.new(doc_root).children.each do |path|
@@ -67,5 +73,17 @@ task :build do
       # Execute aglio on that file
       `NOCACHE=1 #{aglio_path} -t openproject-docs-single-page.jade -i #{api_file} -o #{target_path}`
     end
+  end
+
+  puts 'Done. Updating build data'
+
+  buildinfo = {
+    commit: commit,
+    url: "https://github.com/opf/openproject/commit/#{commit}",
+    timestamp: Time.now
+  }
+
+  File.open(File.join(middleman_root, 'data', 'buildinfo.yml'), 'w') do |file|
+    file.write(buildinfo.to_yaml)
   end
 end
