@@ -41,6 +41,7 @@ activate :markdown_templates
 
 set :markdown_engine, :kramdown
 set :markdown, fenced_code_blocks: true,
+               input: "GFM",
                parse_block_html: true,
                smartypants: true,
                default_lang: 'Plain Text',
