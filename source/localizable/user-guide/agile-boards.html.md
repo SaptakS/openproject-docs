@@ -1,8 +1,10 @@
 ---
-title: Agile Boards
-description: How to get started with Boards for Scrum and Agile Project Management.
+sidebar_navigation:
+  title: Agile Boards
+  priority: 860
+description: How to get started with agile Boards for Kanban, Scrum and Agile Project Management.
 robots: index, follow
-keywords: agile boards
+keywords: agile boards, Kanban, Scrum, agile project management
 ---
 
 # Boards for Agile Project Management (Premium feature)
@@ -13,8 +15,6 @@ Boards can be for anything you would like to keep track of within your projects:
 
 <div class="alert alert-info" role="alert">
 **Note**: OpenProject Boards is a Premium Feature and can only be used with the [Cloud Edition]( ./cloud-edition-guide/#cloud) or OpenProject [Enterprise Edition](./enterprise-edition-guide/#enterprise). And upgrade from the free Community Edition to the Cloud or Enterprise Edition is easily possible.
-
-
 </div>
 
 | Feature                                                      | Documentation for                                            |

@@ -1,5 +1,5 @@
 ---
-nav:
+sidebar_navigation:
   title: Project overview
   priority: 900
 description: Learn how to configure a project overview page
@@ -26,6 +26,8 @@ The project overview is a single dashboard page where all important project info
 You can add project information as widgets to the dashboard and not only order but also re-size the widgets according to your needs.
 
 Furthermore, you can add text widgets, custom texts, links and other information to your overview page.
+
+Open the project overview by navigating to **Overview** in the project menu on the left.
 
 ![project overview](image-20191112132919003.png)
 
