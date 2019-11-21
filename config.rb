@@ -48,6 +48,8 @@ set :markdown, fenced_code_blocks: true,
                hard_wrap: false,
                auto_ids: true
 
+activate :syntax, line_numbers: false
+
 activate :external_pipeline,
          name: :webpack,
          command: build? ?
