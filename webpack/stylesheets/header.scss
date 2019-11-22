@@ -2,7 +2,8 @@
   z-index: 10;
   background: $header-background-color;
   position: fixed;
-  height: 55px;
+  top: 0;
+  height: $header-height;
   width: 100%;
   padding: 6px 24px;
   border-bottom: 1px solid $border-color;
@@ -10,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   white-space: nowrap;
+  transition: top 0.5s;
 
   .logo-container {
     margin-right: 30px;
