@@ -7,8 +7,10 @@
   let prevScrollPos = window.pageYOffset;
 
   window.addEventListener('scroll', function() {
-    // Only on mobile screen sizes and when sidebar is closed
-    if (window.innerWidth >= 680 || $('.nav-wrapper').hasClass('active')) {
+    // Only on mobile screen sizes and when sidebar is closed and search not opened
+    if (window.innerWidth >= 680 ||
+        $('.nav-wrapper').hasClass('active') ||
+        $('.header--element-container').hasClass('active')) {
       return;
     }
 
