@@ -97,17 +97,24 @@
     color: $color-white;
   }
 
-  .landing-header-top {
+  .landing-header-top--container {
     position: sticky;
     top: 0px;
     z-index: 1000;
     background: #24689f;
-    padding: 15px 130px 10px 130px;
     text-align: left;
+
+  }
+
+  .landing-header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     white-space: nowrap;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 0;
 
     p {
       margin: 0;
