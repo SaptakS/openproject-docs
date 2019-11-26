@@ -15,19 +15,19 @@ en:
       badge_color: 'red'
     project-admin-guide:
       title: 'Project Admin guide'
-      text: 'Learn about the first steps with OpenProject'
+      text: 'Manage your projects in OpenProject'
     cloud-edition-guide:
       title: 'Cloud Edition guide'
-      text: 'Learn about the first steps with OpenProject'
+      text: 'Manage your OpenProject Cloud Edition'
     enterprise-edition-guide:
       title: 'Enterprise Edition guide'
-      text: 'Learn about the first steps with OpenProject'
+      text: 'Manage your OpenProject Enterprise Edition'
     system-admin-guide:
       title: 'System Admin guide'
-      text: 'Learn about the first steps with OpenProject'
+      text: 'Learn how to configure your OpenProject'
     installation-and-operations:
       title: 'Installation and operations guide'
-      text: 'Learn about the first steps with OpenProject'
+      text: 'Find out how to install and operate OpenProject'
     development:
       title: 'Development'
       text: 'Learn about how to contribute to OpenProject'
