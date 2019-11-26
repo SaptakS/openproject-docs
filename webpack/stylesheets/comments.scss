@@ -109,15 +109,12 @@
       border: solid 1px $tabs-border;
       background-color: $inactive-tabs;
 
-      &:hover {
+      &:hover,
+      &.active {
         color: $body-color;
         border: solid 1px $border-color;
         background-color: $color-white;
       }
-    }
-
-    &.active > a {
-      background-color: $feedback-bg !important;
     }
   }
 }
