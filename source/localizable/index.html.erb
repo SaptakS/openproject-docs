@@ -31,46 +31,18 @@ body_classes: landing
   <div class="popular-topics">
     <h1>Most popular topics</h1>
     <div class="popular-topics--container">
+      <% I18n.t('popular_topics').each do |_, item| %>
       <div class="popular-topics--item">
-        <a href="/ee/user/project/import/">
-          <header><%= I18n.t('landing.topics.migration') %></header>
+        <a href="<%= item[:link] %>">
+          <header><%= item[:title] %></header>
           <div>
             <p>
-              <%= I18n.t('landing.topics.migration_text') %>
+              <%= item[:text] %>
             </p>
           </div>
         </a>
       </div>
-      <div class="popular-topics--item">
-        <a href="/ee/user/project/import/">
-          <header><%= I18n.t('landing.topics.migration') %></header>
-          <div>
-            <p>
-              <%= I18n.t('landing.topics.migration_text') %>
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="popular-topics--item">
-        <a href="/ee/user/project/import/">
-          <header><%= I18n.t('landing.topics.migration') %></header>
-          <div>
-            <p>
-              <%= I18n.t('landing.topics.migration_text') %>
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="popular-topics--item">
-        <a href="/ee/user/project/import/">
-          <header><%= I18n.t('landing.topics.migration') %></header>
-          <div>
-            <p>
-              <%= I18n.t('landing.topics.migration_text') %>
-            </p>
-          </div>
-        </a>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

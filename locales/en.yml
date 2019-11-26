@@ -34,6 +34,23 @@ en:
     api:
       title: 'API'
       text: 'Learn about the API powering OpenProject'
+  popular_topics:
+    installation:
+      title: 'Installing OpenProject'
+      text: 'Learn how to download and install OpenProject on your own servers.'
+      link: '/installation-and-operations'
+    premium-features:
+      title: 'Premium features'
+      text: 'Find out about the OpenProject premium features to boost your project management.'
+      link: 'https://openproject.org/enterprise-edition#premium-features'
+    hosting:
+      title: 'OpenProject hosting'
+      text: 'Get started easily with OpenProject hosting from the experts'
+      link: 'https://openproject.org/hosting'
+    support:
+      title: 'Support'
+      text: 'Find out how to get maintenance and support for OpenProject in your organization.'
+      link: 'https://openproject.org/pricing#support'
   landing:
     first_steps: 'First steps'
     all_features: 'All features'

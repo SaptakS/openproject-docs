@@ -187,24 +187,6 @@
     margin: 0;
     max-width: 100%;
   }
-
-  .popular-topics {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 30px 160px;
-
-    h1 {
-      text-align: center;
-      color: #555;
-    }
-
-    @media all and (max-width: $mobile-width) {
-      flex-wrap: wrap;
-      padding-bottom: 80px;
-      overflow: auto;
-    }
-  }
 }
 
 // End of old styles
