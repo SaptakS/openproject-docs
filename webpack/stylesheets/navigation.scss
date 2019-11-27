@@ -2,11 +2,9 @@
 .nav-wrapper {
   display: flex;
   flex-direction: column;
-  position: fixed;
   padding-top: 56px;
   max-width: 220px;
   width: 0px;
-  height: 100%;
   transition: all .3s;
   background: $global-nav-bg;
   border-right: 1px solid $global-nav-border-color;

@@ -44,6 +44,10 @@ body {
   color: $body-color;
 }
 
+.wrapper {
+  display: flex;
+}
+
 a, a:visited {
   text-decoration: none;
   color: $link-color;
