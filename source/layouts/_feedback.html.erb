@@ -36,45 +36,39 @@
         <!-- Nav tabs -->
 
         <!-- Tab panes -->
-        <div class="tab-content">
+        <div class="tab-content help-and-feedback--tabs">
           <!-- get-help tab -->
           <div role="tabpanel" class="tab-pane active" id="get-help">
             <!-- search-row -->
-            <div class="row" id="search-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>If you <strong>did not find</strong> what you were looking for
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
                 </p>
               </div>
               <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="/" target="_blank">
+                <a role="button" class="trigger-search-button comments-holder btn btn-default" href="/" target="_blank">
                   <i class="fa fa-search" aria-hidden="true"></i>
                   SEARCH THE DOCS
                 </a>
               </div>
             </div>
-            <!-- search-row -->
-            <!-- forum-row -->
-            <div class="row" id="forum-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>If you <strong>need help from the community</strong> or want to <strong>support others</strong>
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
                 </p>
               </div>
               <div class="col-md-4 col-sm-12">
-                <p>
-                  <a role="button" class="comments-holder btn btn-default" href="https://community.openproject.com/projects/openproject/forums" target="_blank">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                    POST ON OPENPROJECT FORUM
-                  </a>
-                </p>
+                <a role="button" class="comments-holder btn btn-default" href="https://community.openproject.com/projects/openproject/forums" target="_blank">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                  POST ON OPENPROJECT FORUM
+                </a>
               </div>
             </div>
-            <!-- forum-row -->
-            <!-- support-row -->
-            <div class="row" id="support-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
-                <p>If you are eligible for <strong>professional support</strong> and have more questions using this features
+                <p>If you are eligible for <strong>professional support</strong> and have more questions
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
                 </p>
               </div>
@@ -87,31 +81,22 @@
                 </p>
               </div>
             </div>
-            <!-- support-row -->
           </div>
-          <!-- get-help tab -->
-
-          <!-- docs-feedback tab -->
           <div role="tabpanel" class="tab-pane" id="docs-feedback">
-            <!-- edit-page-row -->
-            <div class="row" id="edit-page-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
-                <p>If you find an <strong>error or need for improvement</strong> you can <strong>fix it yourself</strong> with a pull request
+                <p>If you find a fixable <strong>error or need for improvement</strong> on this page
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
                 </p>
               </div>
               <div class="col-md-4 col-sm-12">
-                <p>
-                  <a role="button" class="comments-holder btn btn-default" href="https://github.com/opf/openproject" target="_blank">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    EDIT THIS PAGE
-                  </a>
-                </p>
+                <a role="button" class="comments-holder btn btn-default" href="https://github.com/opf/openproject" target="_blank">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  EDIT THIS PAGE
+                </a>
               </div>
             </div>
-            <!-- edit-page-row -->
-            <!-- doc-issue-row -->
-            <div class="row" id="doc-issue-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>If you would like to <strong>suggest an update or improvement</strong> to this documentation
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
@@ -124,29 +109,23 @@
                 </a>
               </div>
             </div>
-            <!-- doc-issue-row -->
-            <!-- doc-translation-row -->
-            <div class="row" id="doc-issue-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>If you want to contribute to <strong>translate this documentation to another language</strong>
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
                 </p>
               </div>
               <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="/ToDo" target="_blank">
+                <a role="button" class="comments-holder btn btn-default" href="https://crowdin.com/project/openproject" target="_blank">
                   <i class="fa fa-info-circle" aria-hidden="true"></i>
                   Translate on Crowdin
                 </a>
               </div>
             </div>
-            <!-- doc-translation-row -->
           </div>
-          <!-- docs-feedback tab -->
 
-          <!-- product-feedback tab -->
           <div role="tabpanel" class="tab-pane" id="product-feedback">
-            <!-- issue-row -->
-            <div class="row" id="issue-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>If there's something <strong>you don't like or understand</strong> about this feature
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
@@ -159,9 +138,7 @@
                 </a>
               </div>
             </div>
-            <!-- issue-row -->
-            <!-- feature-proposal-row -->
-            <div class="row" id="feature-proposal-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>If you want to <strong>propose a new feature</strong> that OpenProject does not offer yet
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
@@ -174,29 +151,22 @@
                 </a>
               </div>
             </div>
-            <!-- feature-proposal-row -->
-            <!-- beta-testing-row -->
-            <div class="row" id="feature-proposal-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>To further help OpenProject to <strong>shape and test new features</strong>
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
                 </p>
               </div>
               <div class="col-md-4 col-sm-12">
-                <a role="button" class="comments-holder btn btn-default" href="/ToDo" target="_blank">
+                <a role="button" class="comments-holder btn btn-default" href="https://www.openproject.org/contact-us/" target="_blank">
                   <i class="fa fa-check-circle" aria-hidden="true"></i>
                   JOIN BETA TESTING
                 </a>
               </div>
             </div>
-            <!-- beta-testing-row -->
           </div>
-          <!-- product-feedback tab -->
-
-          <!-- get-more-features tab -->
           <div role="tabpanel" class="tab-pane" id="get-more-features">
-            <!-- gitlab-pricing-row -->
-            <div class="row" id="sales-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>To view OpenProject <strong>premium features</strong> and pricing
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
@@ -209,9 +179,7 @@
                 </a>
               </div>
             </div>
-            <!-- gitlab-pricing-row -->
-            <!-- gitlab-gold-row -->
-            <div class="row" id="sales-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>If you want to try all <strong>premium features</strong> in the <strong>OpenProject Cloud Edition</strong> 14 days for free
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
@@ -224,9 +192,7 @@
                 </a>
               </div>
             </div>
-            <!-- gitlab-gold-row -->
-            <!-- gitlab-ultimate-row -->
-            <div class="row" id="sales-row">
+            <div class="row">
               <div class="col-md-8 col-sm-12">
                 <p>If you want to <strong>try all premium features</strong> in your <strong>on premise Community installation</strong> 14 days for free
                   <i class="fa fa-arrow-right black-icon" aria-hidden="true"></i>
@@ -239,11 +205,8 @@
                 </a>
               </div>
             </div>
-            <!-- gitlab-ultimate-row -->
           </div>
-          <!-- get-more-features tab -->
         </div>
-        <!-- Tab panes -->
       </div>
     </div>
   </div>
