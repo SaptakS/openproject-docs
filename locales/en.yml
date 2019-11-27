@@ -5,35 +5,35 @@ en:
   products:
     getting-started:
       title: 'Getting started'
-      text: 'Learn about the first steps with OpenProject'
+      text: 'Learn about the first steps </br>with OpenProject'
       badge: 'First steps'
       badge_color: 'green'
     user-guide:
       title: 'User guide'
-      text: 'In-depth guide of all features in OpenProject'
+      text: 'In-depth guide of all features </br>in OpenProject'
       badge: 'All features'
       badge_color: 'red'
     project-admin-guide:
       title: 'Project Admin guide'
-      text: 'Manage your projects in OpenProject'
+      text: 'Manage your projects </br>in OpenProject'
     cloud-edition-guide:
       title: 'Cloud Edition guide'
-      text: 'Manage your OpenProject Cloud Edition'
+      text: 'Manage your OpenProject </br>Cloud Edition'
     enterprise-edition-guide:
       title: 'Enterprise Edition guide'
-      text: 'Manage your OpenProject Enterprise Edition'
+      text: 'Manage your OpenProject </br>Enterprise Edition'
     system-admin-guide:
       title: 'System Admin guide'
-      text: 'Learn how to configure your OpenProject'
+      text: 'Learn how to configure your </br>OpenProject'
     installation-and-operations:
       title: 'Installation and operations guide'
-      text: 'Find out how to install and operate OpenProject'
+      text: 'Find out how to install </br>and operate OpenProject'
     development:
       title: 'Development'
-      text: 'Learn about how to contribute to OpenProject'
+      text: 'Learn about how to contribute </br>to OpenProject'
     api:
       title: 'API'
-      text: 'Learn about the API powering OpenProject'
+      text: 'Learn about the API </br>powering OpenProject'
   popular_topics:
     installation:
       title: 'Installing OpenProject'
