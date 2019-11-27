@@ -59,6 +59,7 @@ task :build do
 
     Parallel.each(entries, progress: 'Processing API entries') do |api_file|
       filepath = Pathname.new(api_file)
+      relative_file = filepath.relative_path_from(core_path)
       filename = filepath.basename('.apib').to_s
 
       # Ignore the index file
@@ -72,6 +73,18 @@ task :build do
 
       # Execute aglio on that file
       `NOCACHE=1 #{aglio_path} -t openproject-docs-single-page.jade -i #{api_file} -o #{target_path}`
+
+      # Add the frontmatter
+      input = File.read target_path
+
+      File.open(target_path, 'w') do |f|
+        f.puts <<~FRONTMATTER
+          ---
+          source_path: #{relative_file}
+          ---
+        FRONTMATTER
+        f.puts input
+      end
     end
   end
 
