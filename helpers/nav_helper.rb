@@ -29,49 +29,46 @@ module NavHelper
   # group them by subfolders (if any) and sorts the nav items
   def generate_section_navigation(section, prioritized_order = [])
     section_name = section.delete_prefix('/').chomp('/')
-    result = []
 
-    # First, get all items under this prefix
+    # First, get all index pages under this section
     items = product_links(section, with_index: true)
     categories = {}
 
-    # Then search all index pages
-    items
-      .select { |entry| entry[:is_index] }
-      .each do |entry|
-      # Ignore the main index of this resource
-      next if entry[:path] == "/#{section_name}/index"
+    # Remember dangling pages that are in a folder with no index page
+    # We just render them in the first level navigation
+    dangling_pages = []
 
-      subpath = entry[:resource].path.split('/')[1]
-      categories[subpath] = entry.merge(children: [])
+    # Then search all index pages
+    # to build the first level
+    items
+      .select { |entry| entry[:path].match? %r{/#{section_name}/[^/]+/index} }
+      .each do |entry|
+      category = entry[:resource].path.split('/')[1]
+      categories[category] = entry.merge(children: [])
     end
 
-    # Then search all other pages
+    # Then search other sub pages
+    # to find the second level by looking for anything BUT
+    # the index pages of children of this section
     items
-      .reject { |entry| entry[:is_index] }
+      .select { |entry| entry[:path].match? %r{/#{section_name}/.+?/(?!index)} }
       .each do |entry|
 
       path_parts = entry[:resource].path.split('/')
 
-      # Add to main if no subpath involved
-      if path_parts.length <= 2
-        result << entry
-        next
-      end
-
-      subpath = path_parts[1]
-      if categories[subpath]
-        categories[subpath][:children] << entry
+      category = path_parts[1]
+      if categories[category]
+        categories[category][:children] << entry
       else
-        warn "Pages exist, but no index at #{section_name}/#{subpath} exists. Adding to main."
-        result << entry
+        warn "Pages exist, but no index at #{section_name}/#{category} exists. Adding to dangling."
+        dangling_pages << entry
       end
     end
 
     # Then return all sorted items
     prioritized_order ||= []
     sort_array = ->(entry) { [prioritized_order.index(entry[:path]) || 1000, -entry[:priority], entry[:title]] }
-    (categories.values + result)
+    (categories.values + dangling_pages)
       .sort_by(&sort_array)
       .map do |item|
 

@@ -40,10 +40,10 @@
                 <% end %>
               </a>
               <% end %>
-            <div class="<% if cat[:children] %>collapse-toggle<% end %> <% if current_path == category_path %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#nav-sub-children-<%= cat[:title].parameterize %>"></div>
+            <div class="<% if cat[:children] && !cat[:children].empty? %>collapse-toggle<% end %> <% if current_path == category_path %>active<% else %>collapsed<% end %>" data-toggle="collapse" aria-expanded="false" data-target="#nav-sub-children-<%= cat[:title].parameterize %>"></div>
           </span>
 
-          <% if cat[:children] %>
+          <% if cat[:children] && !cat[:children].empty? %>
             <div class="collapse <% if current_path.start_with?(category_path) %>show<% end %>" id="nav-sub-children-<%= cat[:title].parameterize %>">
               <% cat[:children].each do |doc| %>
                 <% doc_path = (doc[:url] || doc[:path]).chomp('/') %>
