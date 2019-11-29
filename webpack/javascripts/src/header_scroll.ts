@@ -1,25 +1,35 @@
 /*
  * Hides mobile header on scroll down and shows it on scroll up
- * by moving it in and out of the screen
+ * by sliding it in and out of the screen
  */
 (function () {
-  const headerHeight = '55px';
+  const headerHeight = 55;
   let prevScrollPos = window.pageYOffset;
 
-  window.addEventListener('scroll', function() {
-    // Only on mobile screen sizes and when sidebar is closed and search not opened
-    if (window.innerWidth >= 680 ||
-        $('.nav-wrapper').hasClass('active') ||
-        $('.header--element-container').hasClass('active')) {
+  if (window.innerWidth <= 680) {
+    window.addEventListener('scroll', mobileScrollHandler);
+  }
+
+  function mobileScrollHandler() {
+    // Condition needed for safari browser to avoid negative positions
+    let currentScrollPos = window.pageYOffset! < 0 ? 0 : window.pageYOffset!;
+    // Only on mobile and if sidebar is not opened or search bar is opened
+    if ($('.nav-wrapper').hasClass('active') ||
+        $('.header--element-container').hasClass('active') ||
+        Math.abs(currentScrollPos - prevScrollPos) <= headerHeight) { // to avoid flickering at the end of the page
       return;
     }
 
-    let currentScrollPos = window.pageYOffset;
-    if (prevScrollPos >= currentScrollPos) {
-      $('.header, #landing-header-bar').css({ top: '0px'});
-    } else {
-      $('.header, #landing-header-bar').css({ top: '-' + headerHeight });
+    let marginTop:number = -headerHeight;
+    if (prevScrollPos !== undefined && currentScrollPos !== undefined && (prevScrollPos > currentScrollPos)) {
+      marginTop = 0;
     }
+    toggleTopMenu(marginTop);
     prevScrollPos = currentScrollPos;
-  });
+  }
+
+  // Slide top menu in or out of viewport
+  function toggleTopMenu(marginTop:number) {
+    $('.header, #landing-header-bar').css({ top: marginTop + 'px' });
+  }
 })();
