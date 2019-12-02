@@ -122,8 +122,7 @@
     }
 
     .logo {
-      height: 40px;
-      margin-right: 6px;
+      height: 33px; // same height as on OpenProject website
     }
 
     .logo-container {
@@ -198,8 +197,7 @@
 // End of old styles
 
 .header--help-text {
-  padding-left: 5px;
-  font-size: 32px;
+  font-size: 26px;
   margin-top: -4px;
 }
 
@@ -207,7 +205,7 @@
   width: 1px;
   background: white;
   margin: 0 15px;
-  height: 42px;
+  height: 33px;
 }
 
 .landing-header--button-group {
