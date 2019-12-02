@@ -28,6 +28,9 @@ en:
     installation-and-operations:
       title: 'Installation and operations guide'
       text: 'Find out how to install </br>and operate OpenProject'
+    release-notes:
+      title: 'Release Notes'
+      text: 'See the latest changes </br>in OpenProject'
     development:
       title: 'Development'
       text: 'Learn about how to contribute </br>to OpenProject'

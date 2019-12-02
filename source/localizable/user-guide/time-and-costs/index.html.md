@@ -2,9 +2,9 @@
 sidebar_navigation:
   title: Time and costs
   priority: 800
-description: Create and manage a wiki in OpenProject.
+description: Time tracking and cost reporting in OpenProject.
 robots: index, follow
-keywords: wiki
+keywords: Time tracking, cost reporting
 ---
 
 # Time tracking and cost reporting
@@ -23,6 +23,6 @@ Create budgets, log time and costs on specific work packages and  create time an
 
 ## Time tracking, budgets and cost report video tutorial
 
-Watch this short video to get a fist overview about time and cost reporting and budgets in OpenProject.
+Watch this short video to get a first overview about time and cost reporting and budgets in OpenProject.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CU0pcDQvZuM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

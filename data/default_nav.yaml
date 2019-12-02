@@ -33,10 +33,6 @@ sections:
     path: '/user-guide'
     generate_categories: true
 
-  - title: Project Administration Guide
-    path: '/project-admin-guide'
-    generate_categories: true
-
   - title: Cloud Edition Guide
     path: '/cloud-edition-guide'
     generate_categories: true
@@ -48,6 +44,11 @@ sections:
   - title: Installation & Upgrade Guides
     path: '/installation-and-operations'
     generate_categories: true
+
+  - title: Release notes
+    path: '/release-notes'
+    generate_categories: true
+    sorter: sort_by_release_date
 
   - title: Development
     path: '/development'

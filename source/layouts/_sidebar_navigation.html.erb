@@ -11,7 +11,7 @@
     <% if sec[:generate_categories]
          # Get the section_url without leading slash
          section_prefix = section_url.delete_prefix('/') + '/'
-         sec[:section_categories] = generate_section_navigation(section_prefix, sec[:prioritized_order])
+         sec[:section_categories] = generate_section_navigation(section_prefix, sec)
        end
     %>
 

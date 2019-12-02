@@ -27,7 +27,7 @@ module NavHelper
   # Generates the sidebar menu for the given section_prefix
   # e.g., "user-guide" will find all pages behind source/user-guide/,
   # group them by subfolders (if any) and sorts the nav items
-  def generate_section_navigation(section, prioritized_order = [])
+  def generate_section_navigation(section, args = {})
     section_name = section.delete_prefix('/').chomp('/')
 
     # First, get all index pages under this section
@@ -66,15 +66,30 @@ module NavHelper
     end
 
     # Then return all sorted items
-    prioritized_order ||= []
-    sort_array = ->(entry) { [prioritized_order.index(entry[:path]) || 1000, -entry[:priority], entry[:title]] }
-    (categories.values + dangling_pages)
-      .sort_by(&sort_array)
-      .map do |item|
+    sorter = args[:sorter] || :sort_by_priority
+    sorted = send(sorter, categories.values + dangling_pages, args)
 
-      item[:children]&.sort_by!(&sort_array)
-
-      item
+    sorted.each do |item|
+      item[:children] = send(sorter, item[:children], args) if item[:children]
     end
+
+    sorted
+  end
+
+  def sort_by_priority(pages, args = {})
+    prioritized_order = args[:prioritized_order] || []
+
+    pages.sort_by do |entry|
+      [prioritized_order.index(entry[:path]) || 1000, -entry[:priority], entry[:title]]
+    end
+  end
+
+  ##
+  # Lambda callback to be used by sidebar navigation to properly
+  # create sort order
+  def sort_by_release_date(pages, args = {})
+    pages
+      .sort_by { |entry| entry[:data].release_date }
+      .reverse
   end
 end
