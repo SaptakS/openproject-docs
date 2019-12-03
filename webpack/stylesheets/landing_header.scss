@@ -97,17 +97,24 @@
     color: $color-white;
   }
 
-  .landing-header-top {
+  .landing-header-top--container {
     position: sticky;
     top: 0px;
     z-index: 1000;
     background: #24689f;
-    padding: 15px 130px 10px 130px;
     text-align: left;
+
+  }
+
+  .landing-header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     white-space: nowrap;
+    max-width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
 
     p {
       margin: 0;
@@ -115,8 +122,7 @@
     }
 
     .logo {
-      height: 40px;
-      margin-right: 6px;
+      height: 33px; // same height as on OpenProject website
     }
 
     .logo-container {
@@ -191,8 +197,7 @@
 // End of old styles
 
 .header--help-text {
-  padding-left: 5px;
-  font-size: 32px;
+  font-size: 26px;
   margin-top: -4px;
 }
 
@@ -200,7 +205,7 @@
   width: 1px;
   background: white;
   margin: 0 15px;
-  height: 42px;
+  height: 33px;
 }
 
 .landing-header--button-group {
@@ -210,7 +215,7 @@
 .landing-header--btn {
   height: 40px;
   color: white !important;
-  padding: 5px 10px;
+  padding: 8px 15px;
   border-radius: 2px;
 
   &:hover {
@@ -230,9 +235,16 @@
 }
 
 .landing-header--signin-btn {
+  display: flex;
+  align-items: center;
   background: transparent;
   border: 1px solid white;
   color: white;
+
+  i {
+    font-size: 1.5em;
+    margin-right: 10px;
+  }
 
   &:hover {
     background: hsla(0,0%,100%,.2);

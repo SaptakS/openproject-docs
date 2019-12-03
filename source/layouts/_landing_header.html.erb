@@ -1,31 +1,34 @@
-<div class="landing-header-top" id="landing-header-bar">
-  <a class="header-link logo-container flex-container justify-center align-center" href="/">
-    <%= image_tag "openproject-logo-white.svg", class: 'logo hidden-for-mobile' %>
-    <%= image_tag "openproject-logo-white-small.svg", class: 'logo hidden-for-desktop' %>
-    <div class="header--separator hidden-for-mobile"></div>
-    <div class="header--help-text hidden-for-mobile">Help</div>
-  </a>
-  <nav class="landing-header--button-group">
-    <%= partial 'layouts/language_dropdown' %>
-    <a href="https://start.openproject.com/"
-       target="_blank"
-       title="<%= t('landing.get_started_for_free') %>"
-       class="landing-header--btn landing-header--get-started-btn animated">
-      <%= t('landing.get_started_for_free') %>
+<div class="landing-header-top--container">
+  <div class="landing-header-top" id="landing-header-bar">
+    <a class="header-link logo-container flex-container justify-center align-center" href="/">
+      <%= image_tag "openproject-logo-white.svg", class: 'logo hidden-for-mobile' %>
+      <%= image_tag "openproject-logo-white-small.svg", class: 'logo hidden-for-desktop' %>
+      <div class="header--separator hidden-for-mobile"></div>
+      <div class="header--help-text hidden-for-mobile">Help</div>
     </a>
-    <a href="https://www.openproject.org/signin/"
-       target="_blank"
-       title="<%= t('landing.sign_in') %>"
-      class="landing-header--btn landing-header--signin-btn animated">
-      <%= t('landing.sign_in') %>
-    </a>
-<!--    <a class="header-link nav-item flex-container justify-center align-center"-->
-<!--       href="<%#= switch_language_path('en') %>">-->
-<!--      <p>(English)</p>-->
-<!--    </a>-->
-<!--    <a class="header-link nav-item flex-container justify-center align-center"-->
-<!--      href="<%#= switch_language_path('de') %>">-->
-<!--      <p>(Deutsch)</p>-->
-<!--    </a>-->
-  </nav>
+    <nav class="landing-header--button-group">
+      <%= partial 'layouts/language_dropdown' %>
+      <a href="https://start.openproject.com/"
+         target="_blank"
+         title="<%= t('landing.get_started_for_free') %>"
+         class="landing-header--btn landing-header--get-started-btn animated">
+        <%= t('landing.get_started_for_free') %>
+      </a>
+      <a href="https://www.openproject.org/signin/"
+         target="_blank"
+         title="<%= t('landing.sign_in') %>"
+         class="landing-header--btn landing-header--signin-btn animated">
+         <i class="fa fa-lock" aria-hidden="true"></i>
+         <%= t('landing.sign_in') %>
+      </a>
+  <!--    <a class="header-link nav-item flex-container justify-center align-center"-->
+  <!--       href="<%#= switch_language_path('en') %>">-->
+  <!--      <p>(English)</p>-->
+  <!--    </a>-->
+  <!--    <a class="header-link nav-item flex-container justify-center align-center"-->
+  <!--      href="<%#= switch_language_path('de') %>">-->
+  <!--      <p>(Deutsch)</p>-->
+  <!--    </a>-->
+    </nav>
+  </div>
 </div>
