@@ -13,6 +13,10 @@
   white-space: nowrap;
   transition: top 0.5s;
 
+  .-header-scrolled & {
+    top: - $header-height;
+  }
+
   .logo-container {
     margin-right: 30px;
 

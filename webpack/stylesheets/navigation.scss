@@ -96,8 +96,10 @@
 
 @media (max-width: $mobile-width) {
   .nav-wrapper.active {
-    width: 75vw;
+    width: 70vw;
     max-width: none;
+    position: fixed;
+    height: 100%;
   }
 
   .content-overlay.active {

@@ -20,16 +20,16 @@
       return;
     }
 
-    let marginTop:number = -headerHeight;
+    let headerHidden:boolean = true;
     if (prevScrollPos !== undefined && currentScrollPos !== undefined && (prevScrollPos > currentScrollPos)) {
-      marginTop = 0;
+      headerHidden = false;
     }
-    toggleTopMenu(marginTop);
+    toggleTopMenu(headerHidden);
     prevScrollPos = currentScrollPos;
   }
 
   // Slide top menu in or out of viewport
-  function toggleTopMenu(marginTop:number) {
-    $('.header, #landing-header-bar').css({ top: marginTop + 'px' });
+  function toggleTopMenu(headerHidden:boolean) {
+    $('body').toggleClass('-header-scrolled', headerHidden);
   }
 })();
