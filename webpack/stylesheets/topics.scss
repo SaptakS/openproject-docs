@@ -3,7 +3,7 @@
   top: -80px;
   max-width: $content-width;
   margin: auto;
-  padding: 0 20px;
+  padding: 0 15px;
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(3, 1fr);
@@ -116,13 +116,18 @@
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
+
+  @media all and (max-width: $mobile-width) {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    grid-gap: 15px;
+  }
 }
 
 .popular-topics {
   width: 100%;
   max-width: $content-width;
   margin: auto;
-  padding: 0 30px 160px;
+  padding: 0 15px 160px;
 
   h1 {
     text-align: center;
