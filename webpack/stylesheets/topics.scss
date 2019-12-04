@@ -116,7 +116,6 @@
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: 1rem;
 
   @media all and (max-width: $mobile-width) {
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
