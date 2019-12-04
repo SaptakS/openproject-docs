@@ -33,7 +33,7 @@
 
   }
 
-  &.-header-scrolled .landing-header-top {
+  &.-header-scrolled .landing-header-top--container {
     top: - $header-height;
   }
 
@@ -107,6 +107,7 @@
     z-index: 1000;
     background: #24689f;
     text-align: left;
+    transition: top 0.5s;
 
   }
 
@@ -119,7 +120,6 @@
     margin-left: auto;
     margin-right: auto;
     padding: 15px;
-    transition: top 0.5s;
 
     p {
       margin: 0;
