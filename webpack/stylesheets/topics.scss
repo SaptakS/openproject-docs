@@ -127,6 +127,7 @@
   h1 {
     text-align: center;
     color: $topic-ee-header-color;
+    margin-bottom: 25px;
   }
 
   @media all and (max-width: $mobile-width) {
@@ -141,15 +142,17 @@
     color: #333;
 
     &:hover {
+      color: $link-color-hover;
       text-decoration: none;
     }
   }
 
   header {
+    display: inline-block;
     font-size: 20px;
     font-weight: bold;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #ccc;
   }
 }
