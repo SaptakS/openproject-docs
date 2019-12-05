@@ -83,6 +83,6 @@ activate :external_pipeline,
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings
 
 configure :build do
-  set :site_url, "https://docs.openproject-edge.com"
+  set :site_url, "https://docs.openproject.org"
   activate :asset_hash
 end
