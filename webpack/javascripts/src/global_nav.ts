@@ -42,8 +42,6 @@
   function resizeHandler() {
     const debounceDelay = 250; // the debounce ensures that we don't call the event handler unnecessarily
 
-    console.log('RESIZE');
-
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(toggleSidebar, debounceDelay);
   }

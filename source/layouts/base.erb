@@ -3,17 +3,18 @@
       xml:lang="<%= I18n.locale %>"
       lang="<%= I18n.locale %>"
       prefix="og: http://ogp.me/ns#">
-<head>
-  <%= stylesheet_link_tag 'site.css' %>
-  <%= partial 'layouts/head' %>
-  <!-- Start of HubSpot Embed Code -->
-  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/6372544.js"></script>
-  <!-- End of HubSpot Embed Code -->
-</head>
-<body class="<%= page_classes %> <%= current_page.data.body_classes || '' %>">
-<%= yield %>
-<%= partial 'localizable/footer' %>
-<%= partial 'layouts/docsearch' %>
-<%= javascript_include_tag 'site.js' %>
-</body>
+  <head>
+    <%= stylesheet_link_tag 'site.css' %>
+    <%= partial 'layouts/head' %>
+    <!-- Start of HubSpot Embed Code -->
+    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/5842801.js"></script>
+    <!-- End of HubSpot Embed Code -->
+  </head>
+  <body class="<%= page_classes %> <%= current_page.data.body_classes || '' %>">
+    <%= partial 'localizable/cookie_warning' %>
+    <%= yield %>
+    <%= partial 'localizable/footer' %>
+    <%= partial 'layouts/docsearch' %>
+    <%= javascript_include_tag 'site.js' %>
+  </body>
 </html>
