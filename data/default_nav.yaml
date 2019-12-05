@@ -57,6 +57,7 @@ sections:
   - title: API documentation
     path: '/api'
     generate_categories: true
+    has_index_html: false
     prioritized_order:
       - /api/basic-objects
       - /api/group-objects

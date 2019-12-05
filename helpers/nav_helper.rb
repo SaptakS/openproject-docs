@@ -40,8 +40,19 @@ module NavHelper
 
     # Then search all index pages
     # to build the first level
+    suffix = '/index'
+    if args[:has_index_html] == false
+      suffix = ''
+    end
+
+    # Since some menu elements have no index html file structure (e.g. API files)
+    # we need to select those with another regex
     items
-      .select { |entry| entry[:path].match? %r{/#{section_name}/[^/]+/index} }
+      .select { |entry|
+        entry[:path].match?(%r{/#{section_name}/([^/]+)#{suffix}}) &&
+        # Filter out the index page (e.g 'api/index')
+        (!(args[:has_index_html] == false) || !entry[:path].end_with?('index'))
+      }
       .each do |entry|
       category = entry[:resource].path.split('/')[1]
       categories[category] = entry.merge(children: [])
