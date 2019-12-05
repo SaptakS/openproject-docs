@@ -42,6 +42,8 @@
   function resizeHandler() {
     const debounceDelay = 250; // the debounce ensures that we don't call the event handler unnecessarily
 
+    console.log('RESIZE');
+
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(toggleSidebar, debounceDelay);
   }
@@ -56,11 +58,7 @@
       return;
     }
 
-    if (mediaQuery.matches) {
-      navWrapper.classList.remove('active');
-      overlay.classList.remove('active');
-      toggleIcon.classList.remove('nav-open');
-    } else {
+    if (!mediaQuery.matches) {
       navWrapper.classList.add('active');
       overlay.classList.add('active');
       toggleIcon.classList.add('nav-open');
