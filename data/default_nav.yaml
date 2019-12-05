@@ -33,6 +33,10 @@ sections:
     path: '/user-guide'
     generate_categories: true
 
+  - title: System Admin Guide
+    path: '/system-admin-guide'
+    generate_categories: true
+
   - title: Cloud Edition Guide
     path: '/cloud-edition-guide'
     generate_categories: true
