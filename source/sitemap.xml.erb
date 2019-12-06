@@ -8,7 +8,7 @@ directory_index: false
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <% pages.each do |p| %>
   <url>
-    <loc>https://docs.openproject-edge.com<%=p.url.gsub('/index.html','')%></loc>
+    <loc>https://docs.openproject.com<%=p.url.gsub('/index.html','')%></loc>
     <changefreq>weekly</changefreq>
     <priority><%= p.data.sitemap_priority || 0.5 %></priority>
   </url>
