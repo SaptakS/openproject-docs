@@ -12,7 +12,10 @@
 
   &.active {
     width: 15%;
-    min-width: 190px;
+
+    @media(max-width:1100px) {
+      width: 20%;
+    }
 
     .nav-toggle {
       .arrow {
