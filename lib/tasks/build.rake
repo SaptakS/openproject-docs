@@ -3,7 +3,6 @@
 
 require 'pathname'
 require 'fileutils'
-require 'pry'
 require 'parallel'
 
 desc 'Build and publish to Github Pages'
@@ -16,11 +15,15 @@ task :build do
   doc_folder = ENV['OPENPROJECT_DOC_ROOT'] || 'help'
   doc_root = File.join(core_docs, doc_folder)
 
-  commit = Dir.chdir(core_docs) do
-    `git rev-parse HEAD`.strip
+  no_git = `which git`.empty?
+  commit = nil
+
+  unless no_git
+    commit = Dir.chdir(core_docs) { `git rev-parse HEAD`.strip rescue "" }
+    commit = nil if commit.empty?
   end
 
-  puts "Building from core@#{commit}"
+  puts "Building from core@#{commit || core_docs}"
 
   localizable_path = File.expand_path('source/localizable', middleman_root)
 
@@ -88,15 +91,21 @@ task :build do
     end
   end
 
-  puts 'Done. Updating build data'
+  puts 'Done.'
 
-  buildinfo = {
-    commit: commit,
-    url: "https://github.com/opf/openproject/commit/#{commit}",
-    timestamp: Time.now
-  }
+  if no_git
+    puts "Not changing build data (no git)"
+  else
+    puts "Updating build data"
 
-  File.open(File.join(middleman_root, 'data', 'buildinfo.yml'), 'w') do |file|
-    file.write(buildinfo.to_yaml)
+    buildinfo = {
+      commit: commit,
+      url: "https://github.com/opf/openproject/commit/#{commit}",
+      timestamp: Time.now
+    }
+
+    File.open(File.join(middleman_root, 'data', 'buildinfo.yml'), 'w') do |file|
+      file.write(buildinfo.to_yaml)
+    end
   end
 end
