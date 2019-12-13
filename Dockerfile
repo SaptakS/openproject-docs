@@ -59,3 +59,4 @@ RUN bundle exec rake build
 RUN bundle exec middleman build --clean
 
 RUN rm -rf /usr/share/nginx/html && mv build /usr/share/nginx/html
+RUN sed -i "s/localhost/${SITE_URL//http*:\/\//}/" /etc/nginx/conf.d/default.conf
