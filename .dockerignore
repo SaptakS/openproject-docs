@@ -1,0 +1,9 @@
+.bundle
+.cache
+.tmp
+.DS_Store
+.sass-cache
+build/
+node_modules/
+*.env
+Dockerfile
