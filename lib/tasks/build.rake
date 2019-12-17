@@ -4,6 +4,7 @@
 require 'pathname'
 require 'fileutils'
 require 'parallel'
+require 'psych' # required for .to_yaml
 
 desc 'Build and publish to Github Pages'
 task :build do
