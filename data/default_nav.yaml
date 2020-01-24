@@ -9,25 +9,7 @@
 sections:
   - title: Getting Started
     path: '/getting-started'
-    section_categories:
-      - title: Introduction to OpenProject
-        path: '/getting-started/openproject-introduction'
-      - title: Login and registration
-        path: '/getting-started/sign-in-registration'
-      - title: Create a project
-        path: '/getting-started/projects'
-      - title: Invite team members
-        path: '/getting-started/invite-members'
-      - title: Introduction to Work packages
-        path: '/getting-started/work-packages-introduction'
-      - title: Introduction to Gantt charts
-        path: '/getting-started/gantt-chart-introduction'
-      - title: Introduction to Boards
-        path: '/getting-started/boards-introduction'
-      - title: My account
-        path: '/getting-started/my-account'
-      - title: My page
-        path: '/getting-started/my-page'
+    generate_categories: true
 
   - title: User Guide
     path: '/user-guide'
