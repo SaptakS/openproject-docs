@@ -7,12 +7,15 @@
   list-style: none;
 
   li:before {
-    content: counters(item, ".");
-    counter-increment: item;
     padding-right: 5px;
   }
 }
 
+// For numbered list use the counters CSS feature
+ol.toc-list li:before {
+  content: counters(item, ".");
+  counter-increment: item;
+}
 
 // not wide enough to show quick nav and toc
 @media(max-width: $mobile-width) {

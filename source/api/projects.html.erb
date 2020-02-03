@@ -1,7 +1,9 @@
 ---
 source_path: docs/api/apiv3/endpoints/projects.apib
 ---
-<div><div class="description"></div><h1>Projects</h1><div class="panel panel-default"><div class="panel-body"><h2 id="header-actions-1">Actions <a class="permalink" href="#header-actions-1" aria-hidden="true">¶</a></h2>
+<div><div class="description"></div><h1>Projects</h1><div class="panel panel-default"><div class="panel-body"><p>Projects are containers structuring the information (e.g. work packages, wikis) into smaller groups. They can be used in a classic project management approach but also when structuring work by departments.</p>
+<p>As containers, they also control behaviour of the elements within them. One of the most important aspects of this is that projects limit permissions by having members with a certain permission set (roles) assigned to them.</p>
+<h2 id="header-actions-1">Actions <a class="permalink" href="#header-actions-1" aria-hidden="true">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -12,12 +14,27 @@ source_path: docs/api/apiv3/endpoints/projects.apib
 </thead>
 <tbody>
 <tr>
+<td style="text-align:center">update</td>
+<td>Form endpoint that aids in updating this projet</td>
+<td><strong>Permission</strong>: edit project</td>
+</tr>
+<tr>
+<td style="text-align:center">updateImmediately</td>
+<td>Directly update this project</td>
+<td><strong>Permission</strong>: edit project</td>
+</tr>
+<tr>
+<td style="text-align:center">delete</td>
+<td>Delete this project</td>
+<td><strong>Permission</strong>: admin</td>
+</tr>
+<tr>
 <td style="text-align:center">createWorkPackage</td>
 <td>Form endpoint that aids in preparing and creating a work package</td>
 <td><strong>Permission</strong>: add work packages</td>
 </tr>
 <tr>
-<td style="text-align:center">createWorkPackageImmediate</td>
+<td style="text-align:center">createWorkPackageImmediately</td>
 <td>Directly creates a work package in the project</td>
 <td><strong>Permission</strong>: add work packages</td>
 </tr>
@@ -84,6 +101,14 @@ source_path: docs/api/apiv3/endpoints/projects.apib
 <td>READ</td>
 <td></td>
 </tr>
+<tr>
+<td style="text-align:center">parent</td>
+<td>Parent project of the project</td>
+<td>Project</td>
+<td></td>
+<td>READ/WRITE</td>
+<td><strong>Permission</strong> edit project</td>
+</tr>
 </tbody>
 </table>
 <p>Depending on custom fields defined for projects, additional links might exist.</p>
@@ -104,42 +129,56 @@ source_path: docs/api/apiv3/endpoints/projects.apib
 <td>Projects’s id</td>
 <td>Integer</td>
 <td>x &gt; 0</td>
-<td>READ</td>
+<td>READ/WRITE</td>
 </tr>
 <tr>
 <td style="text-align:center">identifier</td>
 <td></td>
 <td>String</td>
 <td></td>
-<td>READ</td>
+<td>READ/WRITE</td>
 </tr>
 <tr>
 <td style="text-align:center">name</td>
 <td></td>
 <td>String</td>
 <td></td>
-<td>READ</td>
+<td>READ/WRITE</td>
+</tr>
+<tr>
+<td style="text-align:center">active</td>
+<td>Indicates whether the project is currently active or already archived</td>
+<td>Boolean</td>
+<td></td>
+<td>READ/WRITE</td>
 </tr>
 <tr>
 <td style="text-align:center">status</td>
-<td>The project’s status</td>
+<td>Denotes the status of the project, so wether the project is on track, at risk is having trouble.</td>
 <td>String</td>
-<td>‘active’ or ‘archived’</td>
-<td>READ</td>
+<td>“on track”, “at risk” or “off track”</td>
+<td>READ/WRITE</td>
+</tr>
+<tr>
+<td style="text-align:center">statusExplanation</td>
+<td>A text detailing and explaining why the project has the reported status</td>
+<td>Formattable</td>
+<td></td>
+<td>READ/WRITE</td>
 </tr>
 <tr>
 <td style="text-align:center">public</td>
 <td>Indicates whether the project is accessible for everybody</td>
 <td>Boolean</td>
 <td></td>
-<td>READ</td>
+<td>READ/WRITE</td>
 </tr>
 <tr>
 <td style="text-align:center">description</td>
 <td></td>
 <td>Formattable</td>
 <td></td>
-<td>READ</td>
+<td>READ/WRITE</td>
 </tr>
 <tr>
 <td style="text-align:center">createdAt</td>
@@ -159,7 +198,7 @@ source_path: docs/api/apiv3/endpoints/projects.apib
 </table>
 <p>Depending on custom fields defined for projects, additional properties might exist.</p>
 <h2 id="projects-project">Project&nbsp;<a href="#projects-project" class="permalink"><i class="fa fa-link"></i></a></h2><section id="projects-project-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">View project</span></div><div style="float:left"><a href="#projects-project-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects/{id}</code></div></div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>Project id</p>
-</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-d4c42670adf79869c5da578959dbac97" class="pull-right collapsed">Toggle details</a></li><li id="collapse-d4c42670adf79869c5da578959dbac97" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code><span class="hljs-collection">{
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-d5bae831c46de5918894c88b76200a3d" class="pull-right collapsed">Toggle details</a></li><li id="collapse-d5bae831c46de5918894c88b76200a3d" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code><span class="hljs-collection">{
     <span class="hljs-string">"_type"</span>: <span class="hljs-string">"Project"</span>,
     <span class="hljs-string">"_links"</span>: <span class="hljs-collection">{
         <span class="hljs-string">"self"</span>: <span class="hljs-collection">{
@@ -193,12 +232,21 @@ source_path: docs/api/apiv3/endpoints/projects.apib
             <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/users/315"</span>,
             <span class="hljs-string">"method"</span>: <span class="hljs-string">"A user"</span>
         }</span>,
+        <span class="hljs-string">"projects"</span>: <span class="hljs-collection">{
+          <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/123"</span>
+        }</span>
     }</span>,
     <span class="hljs-string">"id"</span>: <span class="hljs-number">1</span>,
     <span class="hljs-string">"identifier"</span>: <span class="hljs-string">"project_identifier"</span>,
     <span class="hljs-string">"name"</span>: <span class="hljs-string">"Project example"</span>,
-    <span class="hljs-string">"status"</span>: active,
+    <span class="hljs-string">"active"</span>: <span class="hljs-literal">true</span>,
     <span class="hljs-string">"public"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"on track"</span>,
+    <span class="hljs-string">"statusExplanation"</span>: <span class="hljs-collection">{
+        <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+        <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Everything **fine**"</span>,
+        <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Everything &lt;strong&gt;fine&lt;/strong&gt;&lt;/p&gt;"</span>
+    }</span>,
     <span class="hljs-string">"description"</span>: <span class="hljs-collection">{
         <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
         <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Lorem **ipsum** dolor sit amet"</span>,
@@ -217,13 +265,146 @@ That’s why a 404 is returned here, even if a 403 might be more appropriate.</e
   "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
   "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:NotFound"</span></span>,
   "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"The specified project does not exist."</span>
-</span>}</code></pre></li></ul></section><h2 id="projects-projects">Projects&nbsp;<a href="#projects-projects" class="permalink"><i class="fa fa-link"></i></a></h2><section id="projects-projects-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">List projects</span></div><div style="float:left"><a href="#projects-projects-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects{?filters}</code></div></div><div class="panel-body"><p>Returns a collection of projects. The collection can be filtered via query parameters similar to how work packages are filtered. In addition to the provided filter, the result set is always limited to only contain projects the client is allowed to see.</p>
+</span>}</code></pre></li></ul></section><section id="projects-project-patch" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Update Project</span></div><div style="float:left"><a href="#projects-project-patch" class="btn btn-xs btn-warning">PATCH</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects/{id}</code></div></div><div class="panel-body"><p>Updates the given project by applying the attributes provided in the body.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>Project id</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request&nbsp;&nbsp;<code>Update project</code></strong><a data-toggle="collapse" data-target="#collapse-22ce2367a631cd265533883a0fd34a1c" class="pull-right collapsed">Toggle details</a></li><li id="collapse-22ce2367a631cd265533883a0fd34a1c" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"A new project name"</span></span>,
+  "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"at risk"</span></span>,
+  "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">customField35</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/users/3"</span>
+    </span>}
+  </span>}
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-bd27e0c49edec7e59a69a64dda8534f6" class="pull-right collapsed">Toggle details</a></li><li id="collapse-bd27e0c49edec7e59a69a64dda8534f6" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-collection">{
+    <span class="hljs-string">"_type"</span>: <span class="hljs-string">"Project"</span>,
+    <span class="hljs-string">"_links"</span>: <span class="hljs-collection">{
+        <span class="hljs-string">"self"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1"</span>,
+            <span class="hljs-string">"title"</span>: <span class="hljs-string">"Lorem"</span>
+        }</span>,
+        <span class="hljs-string">"createWorkPackage"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/work_packages/form"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"post"</span>
+        }</span>,
+        <span class="hljs-string">"createWorkPackageImmediate"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/work_packages"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"post"</span>
+        }</span>,
+        <span class="hljs-string">"categories"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/categories"</span>
+        }</span>,
+        <span class="hljs-string">"types"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/types"</span>
+        }</span>,
+        <span class="hljs-string">"versions"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/versions"</span>
+        }</span>,
+        <span class="hljs-string">"workPackages"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/work_packages"</span>
+        }</span>
+        <span class="hljs-string">"memberships"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/memberships?filters=[{"</span>project<span class="hljs-string">":{"</span>operator<span class="hljs-string">":"</span>=<span class="hljs-string">","</span>values<span class="hljs-string">":["</span><span class="hljs-number">1</span><span class="hljs-string">"]}}]
+        },
+        "</span>customField456: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/users/315"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"A user"</span>
+        }</span>,
+        <span class="hljs-string">"projects"</span>: <span class="hljs-collection">{
+          <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/123"</span>
+        }</span>
+    }</span>,
+    <span class="hljs-string">"id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-string">"identifier"</span>: <span class="hljs-string">"project_identifier"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Project example"</span>,
+    <span class="hljs-string">"active"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"public"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"on track"</span>,
+    <span class="hljs-string">"statusExplanation"</span>: <span class="hljs-collection">{
+        <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+        <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Everything **fine**"</span>,
+        <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Everything &lt;strong&gt;fine&lt;/strong&gt;&lt;/p&gt;"</span>
+    }</span>,
+    <span class="hljs-string">"description"</span>: <span class="hljs-collection">{
+        <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+        <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Lorem **ipsum** dolor sit amet"</span>,
+        <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Lorem &lt;strong&gt;ipsum&lt;/strong&gt; dolor sit amet&lt;/p&gt;"</span>
+    }</span>,
+    <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2014-05-21T08:51:20Z"</span>,
+    <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2014-05-21T08:51:20Z"</span>,
+    <span class="hljs-string">"customField123"</span>: <span class="hljs-number">123</span>
+}</span>
+</span></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>400</code></strong><a data-toggle="collapse" data-target="#collapse-fe9f28ca3cdfef60ed05025dfea724a8" class="pull-right collapsed">Toggle details</a></li><li id="collapse-fe9f28ca3cdfef60ed05025dfea724a8" class="list-group-item panel-collapse collapse"><div class="description"><p>Occurs when the client did not send a valid JSON object in the request body.</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:InvalidRequestBody"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"The request body was not a single JSON object."</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>403</code></strong><a data-toggle="collapse" data-target="#collapse-83010721586baf1be08d50f616d31efa" class="pull-right collapsed">Toggle details</a></li><li id="collapse-83010721586baf1be08d50f616d31efa" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the client does not have sufficient permissions.</p>
+<p><strong>Required permission:</strong> edit project for the project to be altered</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:MissingPermission"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"You are not authorized to access this resource."</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>404</code></strong><a data-toggle="collapse" data-target="#collapse-8ce286051259f59dc635c7062cd68e6f" class="pull-right collapsed">Toggle details</a></li><li id="collapse-8ce286051259f59dc635c7062cd68e6f" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the project does not exist or the client does not have sufficient permissions
+to see it.</p>
+<p><strong>Required permission:</strong> view project</p>
+<p><em>Note: A client without sufficient permissions shall not be able to test for the existence of
+a version. That’s why a 404 is returned here, even if a 403 might be more appropriate.</em></p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:NotFound"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"The requested resource could not be found."</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>422</code></strong><a data-toggle="collapse" data-target="#collapse-0ff02ba9276500880e60d79a4fd72624" class="pull-right collapsed">Toggle details</a></li><li id="collapse-0ff02ba9276500880e60d79a4fd72624" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if:</p>
+<ul>
+<li>a constraint for a property was violated (<code>PropertyConstraintViolation</code>)</li>
+</ul>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:PropertyConstraintViolation"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Name can't be blank."</span></span>,
+  "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">details</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">attribute</span>": <span class="hljs-value"><span class="hljs-string">"name"</span>
+    </span>}
+  </span>}
+</span>}</code></pre></li></ul></section><section id="projects-project-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Delete Project</span></div><div style="float:left"><a href="#projects-project-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects/{id}</code></div></div><div class="panel-body"><p>Deletes the project permanently. As this is a lengthy process, the actual deletion is carried out asynchronously.
+So the project might exist well after the request has returned successfully. To prevent unwanted changes to
+the project scheduled for deletion, it is archived at once.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>Project id</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>204</code></strong><a data-toggle="collapse" data-target="#collapse-76d2577e58be813d47addac18a0bae5c" class="pull-right collapsed">Toggle details</a></li><li id="collapse-76d2577e58be813d47addac18a0bae5c" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the project was successfully deleted. There is currently no end point to query for the actual deletion status.
+Such an end point <em>might</em> be added in the future.</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>403</code></strong><a data-toggle="collapse" data-target="#collapse-574db44acd6b4d090c493661bf67f52a" class="pull-right collapsed">Toggle details</a></li><li id="collapse-574db44acd6b4d090c493661bf67f52a" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the client does not have sufficient permissions.</p>
+<p><strong>Required permission:</strong> admin</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:MissingPermission"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"You are not authorized to access this resource."</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>404</code></strong><a data-toggle="collapse" data-target="#collapse-da92afd6428daf98f1e790aab4c6fedd" class="pull-right collapsed">Toggle details</a></li><li id="collapse-da92afd6428daf98f1e790aab4c6fedd" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the project does not exist or the client does not have sufficient permissions
+to see it.</p>
+<p><strong>Required permission:</strong> view project</p>
+<p><em>Note: A client without sufficient permissions shall not be able to test for the existence of
+a version. That’s why a 404 is returned here, even if a 403 might be more appropriate.</em></p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:NotFound"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"The requested resource could not be found."</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>422</code></strong><a data-toggle="collapse" data-target="#collapse-26298f9743ed1de27170a4f90164b064" class="pull-right collapsed">Toggle details</a></li><li id="collapse-26298f9743ed1de27170a4f90164b064" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the project cannot be deleted. This can happen when there are still references to the project in other projects
+that need to be severed at first.</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:PropertyConstraintViolation"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Work packages in non descendant projects reference versions of the project or its descendants."</span></span>,
+  "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">details</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">attribute</span>": <span class="hljs-value"><span class="hljs-string">"base"</span>
+    </span>}
+  </span>}
+</span>}</code></pre></li></ul></section><h2 id="projects-projects">Projects&nbsp;<a href="#projects-projects" class="permalink"><i class="fa fa-link"></i></a></h2><section id="projects-projects-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">List projects</span></div><div style="float:left"><a href="#projects-projects-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects{?filters,sortBy}</code></div></div><div class="panel-body"><p>Returns a collection of projects. The collection can be filtered via query parameters similar to how work packages are filtered. In addition to the provided filter, the result set is always limited to only contain projects the client is allowed to see.</p>
 </div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>filters</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>[{ &quot;ancestor&quot;: { &quot;operator&quot;: &quot;=&quot;, &quot;values&quot;: ['1'] }&quot; }]</span></span><p>JSON specifying filter conditions.
 Accepts the same format as returned by the <a href="#queries">queries</a> endpoint.
 Currently supported filters are:</p>
 <ul>
 <li>
-<p>status: based on the status of the project</p>
+<p>active: based on the active property of the project</p>
 </li>
 <li>
 <p>ancestor: filters projects by their ancestor. A project is not considered to be it’s own ancestor.</p>
@@ -244,11 +425,37 @@ Currently supported filters are:</p>
 <p>principal: based on members of the project.</p>
 </li>
 <li>
-<p>type_id: based on the types active in a project.
+<p>type_id: based on the types active in a project.</p>
+</li>
+<li>
+<p>id: based on projects’ id.
 There might also be additional filters based on the custom fields that have been configured.</p>
 </li>
 </ul>
-</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-f0b55e23c0b101d63afb003f395b1b64" class="pull-right collapsed">Toggle details</a></li><li id="collapse-f0b55e23c0b101d63afb003f395b1b64" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+</dd><dt>sortBy</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>[[&quot;id&quot;, &quot;asc&quot;]]</span></span><p>JSON specifying sort criteria.
+Currently supported orders are:</p>
+<ul>
+<li>
+<p>id</p>
+</li>
+<li>
+<p>name</p>
+</li>
+<li>
+<p>created_on</p>
+</li>
+<li>
+<p>public</p>
+</li>
+<li>
+<p>latest_activity_at</p>
+</li>
+<li>
+<p>required_disk_space
+There might also be additional orders based on the custom fields that have been configured.</p>
+</li>
+</ul>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-438b3cb0b79751439f17c341ed670104" class="pull-right collapsed">Toggle details</a></li><li id="collapse-438b3cb0b79751439f17c341ed670104" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
   <span class="hljs-string">"_links"</span>: {
     <span class="hljs-string">"self"</span>: {
       <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects"</span>
@@ -279,12 +486,21 @@ There might also be additional filters based on the custom fields that have been
           },
           <span class="hljs-string">"versions"</span>: {
             <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/6/versions"</span>
+          },
+          <span class="hljs-string">"projects"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/123"</span>
           }
         },
         <span class="hljs-string">"id"</span>: <span class="hljs-number">6</span>,
         <span class="hljs-string">"identifier"</span>: <span class="hljs-string">"a_project"</span>,
         <span class="hljs-string">"name"</span>: <span class="hljs-string">"A project"</span>,
-        <span class="hljs-string">"status"</span>: <span class="hljs-string">"active"</span>,
+        <span class="hljs-string">"active"</span>: true,
+        <span class="hljs-string">"status"</span>: <span class="hljs-string">"on track"</span>,
+        <span class="hljs-string">"statusExplanation"</span>: {
+            <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+            <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Everything **fine**"</span>,
+            <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Everything &lt;strong&gt;fine&lt;/strong&gt;&lt;/p&gt;"</span>
+        },
         <span class="hljs-string">"public"</span>: false,
         <span class="hljs-string">"description"</span>: {
             <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
@@ -315,12 +531,21 @@ There might also be additional filters based on the custom fields that have been
           },
           <span class="hljs-string">"versions"</span>: {
             <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/14/versions"</span>
+          },
+          <span class="hljs-string">"projects"</span>: {
+            <span class="hljs-string">"href"</span>: null
           }
         },
         <span class="hljs-string">"id"</span>: <span class="hljs-number">14</span>,
         <span class="hljs-string">"identifier"</span>: <span class="hljs-string">"another_project"</span>,
         <span class="hljs-string">"name"</span>: <span class="hljs-string">"Another project"</span>,
-        <span class="hljs-string">"status"</span>: <span class="hljs-string">"archived"</span>,
+        <span class="hljs-string">"active"</span>: false,
+        <span class="hljs-string">"status"</span>: <span class="hljs-string">"off track"</span>,
+        <span class="hljs-string">"statusSxplanation"</span>: {
+            <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+            <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Uh **oh**"</span>,
+            <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Uh &lt;strong&gt;oh&lt;/strong&gt;&lt;/p&gt;"</span>
+        },
         <span class="hljs-string">"public"</span>: true,
         <span class="hljs-string">"description"</span>: {
             <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
@@ -333,7 +558,109 @@ There might also be additional filters based on the custom fields that have been
       }]
     }
   }
-}</code></pre></li></ul></section><h2 id="projects-projects-schema">Projects schema&nbsp;<a href="#projects-projects-schema" class="permalink"><i class="fa fa-link"></i></a></h2><section id="projects-projects-schema-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">View project schema</span></div><div style="float:left"><a href="#projects-projects-schema-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects/schemas</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-ba06249be9f159233aac2ded991d9708" class="pull-right collapsed">Toggle details</a></li><li id="collapse-ba06249be9f159233aac2ded991d9708" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+}</code></pre></li></ul></section><section id="projects-projects-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create project</span></div><div style="float:left"><a href="#projects-projects-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects{?filters,sortBy}</code></div></div><div class="panel-body"><p>Creates a new project, applying the attributes provided in the body.</p>
+<p>You can use the form and schema to be retrieve the valid attribute values and by that be guided towards successful creation.</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request&nbsp;&nbsp;<code>Create project</code></strong><a data-toggle="collapse" data-target="#collapse-b0442026e2ae89b813fead36a4f11ade" class="pull-right collapsed">Toggle details</a></li><li id="collapse-b0442026e2ae89b813fead36a4f11ade" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"new_project_identifier"</span></span>,
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"New project name"</span></span>,
+  "<span class="hljs-attribute">customField35</span>": <span class="hljs-value"><span class="hljs-string">"Text custom field value"</span></span>,
+  "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"on track"</span></span>,
+  "<span class="hljs-attribute">statusExplanation</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+    "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-string">"Everything **fine**"</span></span>,
+    "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Everything &lt;strong&gt;fine&lt;/strong&gt;&lt;/p&gt;"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">customField12</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/users/5"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">parent</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/6"</span>
+    </span>}
+  </span>}
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#collapse-c5bb08ff8beabfb4eee41823e34a5a3d" class="pull-right collapsed">Toggle details</a></li><li id="collapse-c5bb08ff8beabfb4eee41823e34a5a3d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-collection">{
+    <span class="hljs-string">"_type"</span>: <span class="hljs-string">"Project"</span>,
+    <span class="hljs-string">"_links"</span>: <span class="hljs-collection">{
+        <span class="hljs-string">"self"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1"</span>,
+            <span class="hljs-string">"title"</span>: <span class="hljs-string">"Lorem"</span>
+        }</span>,
+        <span class="hljs-string">"createWorkPackage"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/work_packages/form"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"post"</span>
+        }</span>,
+        <span class="hljs-string">"createWorkPackageImmediate"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/work_packages"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"post"</span>
+        }</span>,
+        <span class="hljs-string">"categories"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/categories"</span>
+        }</span>,
+        <span class="hljs-string">"types"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/types"</span>
+        }</span>,
+        <span class="hljs-string">"versions"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/versions"</span>
+        }</span>,
+        <span class="hljs-string">"workPackages"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/1/work_packages"</span>
+        }</span>
+        <span class="hljs-string">"memberships"</span>: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/memberships?filters=[{"</span>project<span class="hljs-string">":{"</span>operator<span class="hljs-string">":"</span>=<span class="hljs-string">","</span>values<span class="hljs-string">":["</span><span class="hljs-number">1</span><span class="hljs-string">"]}}]
+        },
+        "</span>customField456: <span class="hljs-collection">{
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/users/315"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"A user"</span>
+        }</span>,
+        <span class="hljs-string">"projects"</span>: <span class="hljs-collection">{
+          <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/123"</span>
+        }</span>
+    }</span>,
+    <span class="hljs-string">"id"</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-string">"identifier"</span>: <span class="hljs-string">"project_identifier"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Project example"</span>,
+    <span class="hljs-string">"active"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"public"</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"on track"</span>,
+    <span class="hljs-string">"statusExplanation"</span>: <span class="hljs-collection">{
+        <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+        <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Everything **fine**"</span>,
+        <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Everything &lt;strong&gt;fine&lt;/strong&gt;&lt;/p&gt;"</span>
+    }</span>,
+    <span class="hljs-string">"description"</span>: <span class="hljs-collection">{
+        <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+        <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Lorem **ipsum** dolor sit amet"</span>,
+        <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Lorem &lt;strong&gt;ipsum&lt;/strong&gt; dolor sit amet&lt;/p&gt;"</span>
+    }</span>,
+    <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2014-05-21T08:51:20Z"</span>,
+    <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2014-05-21T08:51:20Z"</span>,
+    <span class="hljs-string">"customField123"</span>: <span class="hljs-number">123</span>
+}</span>
+</span></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>400</code></strong><a data-toggle="collapse" data-target="#collapse-d1296ca1cec2af1c353580bff2f1979e" class="pull-right collapsed">Toggle details</a></li><li id="collapse-d1296ca1cec2af1c353580bff2f1979e" class="list-group-item panel-collapse collapse"><div class="description"><p>Occurs when the client did not send a valid JSON object in the request body.</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:InvalidRequestBody"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"The request body was not a single JSON object."</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>403</code></strong><a data-toggle="collapse" data-target="#collapse-20dfeec1b5ecddeec09c7a26241fdd63" class="pull-right collapsed">Toggle details</a></li><li id="collapse-20dfeec1b5ecddeec09c7a26241fdd63" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the client does not have sufficient permissions.</p>
+<p><strong>Required permission:</strong> add project which is a global permission</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:MissingPermission"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"You are not authorized to access this resource."</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>422</code></strong><a data-toggle="collapse" data-target="#collapse-8fe07d130c13245e3e5692339b65f8b3" class="pull-right collapsed">Toggle details</a></li><li id="collapse-8fe07d130c13245e3e5692339b65f8b3" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if:</p>
+<ul>
+<li>a constraint for a property was violated (<code>PropertyConstraintViolation</code>)</li>
+</ul>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:PropertyConstraintViolation"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Name can't be blank."</span></span>,
+  "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">details</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">attribute</span>": <span class="hljs-value"><span class="hljs-string">"name"</span>
+    </span>}
+  </span>}
+</span>}</code></pre></li></ul></section><h2 id="projects-projects-schema">Projects schema&nbsp;<a href="#projects-projects-schema" class="permalink"><i class="fa fa-link"></i></a></h2><section id="projects-projects-schema-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">View project schema</span></div><div style="float:left"><a href="#projects-projects-schema-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects/schemas</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-fb4803cb39b8a7c13697c077d1f2b06b" class="pull-right collapsed">Toggle details</a></li><li id="collapse-fb4803cb39b8a7c13697c077d1f2b06b" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Schema"</span></span>,
   "<span class="hljs-attribute">_dependencies</span>": <span class="hljs-value">[]</span>,
   "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
@@ -375,10 +702,31 @@ There might also be additional filters based on the custom fields that have been
     "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
     "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
   </span>}</span>,
+  "<span class="hljs-attribute">active</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Boolean"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Active"</span></span>,
+    "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}</span>,
   "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"String"</span></span>,
     "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Status"</span></span>,
     "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">statusExplanation</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Formattable"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Status explanation"</span></span>,
+    "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">parent</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Project"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Subproject of"</span></span>,
+    "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
     "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
     "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
     "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
@@ -445,11 +793,690 @@ There might also be additional filters based on the custom fields that have been
       "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/schema"</span>
     </span>}
   </span>}
+</span>}</code></pre></li></ul></section><h2 id="projects-project-create-form">Project create form&nbsp;<a href="#projects-project-create-form" class="permalink"><i class="fa fa-link"></i></a></h2><p>This endpoint returns a form allowing a guided creation of new projects.</p>
+<p>For more details and all possible responses see the general specification of <a href="#forms">Forms</a>.</p>
+<section id="projects-project-create-form-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Project create form</span></div><div style="float:left"><a href="#projects-project-create-form-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/project/form</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Request&nbsp;&nbsp;<code>Create project form</code></strong><a data-toggle="collapse" data-target="#collapse-e4b5ec49cf4fa26a2bade1f3737112ef" class="pull-right collapsed">Toggle details</a></li><li id="collapse-e4b5ec49cf4fa26a2bade1f3737112ef" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"new_project_identifier"</span></span>,
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"New project name"</span></span>,
+  "<span class="hljs-attribute">customField35</span>": <span class="hljs-value"><span class="hljs-string">"Text custom field value"</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-56eafd051d6f515990f5401e13b900f2" class="pull-right collapsed">Toggle details</a></li><li id="collapse-56eafd051d6f515990f5401e13b900f2" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Form"</span></span>,
+  "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">payload</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"new_project_identifier"</span></span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"New project name"</span></span>,
+      "<span class="hljs-attribute">active</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+      "<span class="hljs-attribute">public</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+        "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+        "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">customField30</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">customField34</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">customField35</span>": <span class="hljs-value"><span class="hljs-string">"Text custom field value"</span></span>,
+      "<span class="hljs-attribute">customField41</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+        "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">customField42</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+      "<span class="hljs-attribute">statusExplanation</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+        "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+        "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;&lt;/p&gt;"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">customField26</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+          "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">customField31</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+          "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">parent</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+        </span>}
+      </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">schema</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Schema"</span></span>,
+      "<span class="hljs-attribute">_dependencies</span>": <span class="hljs-value">[]</span>,
+      "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Integer"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ID"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"String"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Name"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">minLength</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">maxLength</span>": <span class="hljs-value"><span class="hljs-number">255</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">identifier</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"String"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Identifier"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">minLength</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">maxLength</span>": <span class="hljs-value"><span class="hljs-number">100</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">description</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Formattable"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Description"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">public</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Boolean"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Public"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">active</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Boolean"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Active"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"String"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Status"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">parent</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Project"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Subproject of"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
+        "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">allowedValues</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/available_parent_projects"</span>
+          </span>}
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"DateTime"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Created on"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">updatedAt</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"DateTime"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Updated on"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">customField26</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"User"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Project user"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
+        "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">allowedValues</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/principals?filters=%5B%7B%22status%22%3A%7B%22operator%22%3A%22%21%22%2C%22values%22%3A%5B%220%22%2C%223%22%5D%7D%7D%2C%7B%22type%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%22User%22%5D%7D%7D%2C%7B%22member%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%22%22%5D%7D%7D%5D&amp;pageSize=0"</span>
+          </span>}
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">customField30</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Integer"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"some project cf"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">customField31</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CustomOption"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"list project cf"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
+        "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">allowedValues</span>": <span class="hljs-value">[
+            {
+              "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"CustomOption"</span></span>,
+              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">513</span></span>,
+              "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"abc"</span></span>,
+              "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+                  "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/513"</span></span>,
+                  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"abc"</span>
+                </span>}
+              </span>}
+            </span>},
+            {
+              "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"CustomOption"</span></span>,
+              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">514</span></span>,
+              "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"def"</span></span>,
+              "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+                  "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/514"</span></span>,
+                  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"def"</span>
+                </span>}
+              </span>}
+            </span>},
+            {
+              "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"CustomOption"</span></span>,
+              "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">515</span></span>,
+              "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"ghi"</span></span>,
+              "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+                  "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/515"</span></span>,
+                  "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"ghi"</span>
+                </span>}
+              </span>}
+            </span>}
+          ]
+        </span>}</span>,
+        "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">allowedValues</span>": <span class="hljs-value">[
+            {
+              "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/513"</span></span>,
+              "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"abc"</span>
+            </span>},
+            {
+              "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/514"</span></span>,
+              "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"def"</span>
+            </span>},
+            {
+              "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/515"</span></span>,
+              "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"ghi"</span>
+            </span>}
+          ]
+        </span>}
+      </span>}</span>,
+      "<span class="hljs-attribute">customField34</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Boolean"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Bool Project CF"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">customField35</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"String"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"text project cf"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">customField41</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Formattable"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Long text project cf"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">customField42</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Date"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Date project cf"</span></span>,
+        "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+      </span>}</span>,
+      "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{}
+    </span>}</span>,
+    "<span class="hljs-attribute">validationErrors</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">identifier</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+        "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:PropertyConstraintViolation"</span></span>,
+        "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Identifier has already been taken."</span></span>,
+        "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">details</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">attribute</span>": <span class="hljs-value"><span class="hljs-string">"identifier"</span>
+          </span>}
+        </span>}
+      </span>}
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/form"</span></span>,
+      "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"post"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">validate</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/form"</span></span>,
+      "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"post"</span>
+    </span>}
+  </span>}
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>400</code></strong><a data-toggle="collapse" data-target="#collapse-8e78460daf848d193867e6069d3a86a3" class="pull-right collapsed">Toggle details</a></li><li id="collapse-8e78460daf848d193867e6069d3a86a3" class="list-group-item panel-collapse collapse"><div class="description"><p>Occurs when the client did not send a valid JSON object in the request body.</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:InvalidRequestBody"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"The request body was not a single JSON object."</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>403</code></strong><a data-toggle="collapse" data-target="#collapse-817acba2866d1165170001c73205429c" class="pull-right collapsed">Toggle details</a></li><li id="collapse-817acba2866d1165170001c73205429c" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the client does not have sufficient permissions.</p>
+<p><strong>Required permission:</strong> add project which is a global permission</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:MissingPermission"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"You are not authorized to access this resource."</span>
+</span>}</code></pre></li></ul></section><h2 id="projects-project-update-form">Project update form&nbsp;<a href="#projects-project-update-form" class="permalink"><i class="fa fa-link"></i></a></h2><p>This endpoint returns a form allowing a guided modification of existing projects.
+The returned payload part of the form will be contain a merge between the already existing properties’ values (as long as they are writeable) and the provided values with the later having precedence.</p>
+<p>For more details and all possible responses see the general specification of <a href="#forms">Forms</a>.</p>
+<section id="projects-project-update-form-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Project update form</span></div><div style="float:left"><a href="#projects-project-update-form-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects/{id}/form</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Request&nbsp;&nbsp;<code>Update project form</code></strong><a data-toggle="collapse" data-target="#collapse-2cfa456e1691ba8e0d3d8c98e83fa200" class="pull-right collapsed">Toggle details</a></li><li id="collapse-2cfa456e1691ba8e0d3d8c98e83fa200" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"new_project_identifier"</span></span>,
+  "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"New project name"</span></span>,
+  "<span class="hljs-attribute">customField35</span>": <span class="hljs-value"><span class="hljs-string">"Text custom field value"</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-1247db202d46c502afef7dbe021c3ff3" class="pull-right collapsed">Toggle details</a></li><li id="collapse-1247db202d46c502afef7dbe021c3ff3" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+    "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Form"</span></span>,
+    "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">payload</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">identifier</span>": <span class="hljs-value"><span class="hljs-string">"new_project_identifier"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"New project name"</span></span>,
+            "<span class="hljs-attribute">active</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            "<span class="hljs-attribute">public</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+            "<span class="hljs-attribute">description</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+                "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+                "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">customField30</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+            "<span class="hljs-attribute">customField34</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+            "<span class="hljs-attribute">customField35</span>": <span class="hljs-value"><span class="hljs-string">"Text custom field value"</span></span>,
+            "<span class="hljs-attribute">customField41</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+                "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">customField42</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"at risk"</span></span>,
+            "<span class="hljs-attribute">statusExplanation</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+                "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-string">"There is some risk of failure"</span></span>,
+                "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;There is some risk of failure&lt;/p&gt;"</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">customField26</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+                    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+                </span>}</span>,
+                "<span class="hljs-attribute">customField31</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-literal">null</span></span>,
+                    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-literal">null</span>
+                </span>}</span>,
+                "<span class="hljs-attribute">parent</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/45"</span>
+                </span>}
+            </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">schema</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Schema"</span></span>,
+            "<span class="hljs-attribute">_dependencies</span>": <span class="hljs-value">[]</span>,
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Integer"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ID"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"String"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Name"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">minLength</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">maxLength</span>": <span class="hljs-value"><span class="hljs-number">255</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">identifier</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"String"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Identifier"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">minLength</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">maxLength</span>": <span class="hljs-value"><span class="hljs-number">100</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">description</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Formattable"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Description"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">public</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Boolean"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Public"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">active</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Boolean"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Active"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            }</span>,
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"String"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Status"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            }</span>,
+            "<span class="hljs-attribute">parent</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Project"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Subproject of"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
+                "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">allowedValues</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/available_parent_projects?of=123"</span>
+                    </span>}
+                </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"DateTime"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Created on"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">updatedAt</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"DateTime"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Updated on"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">customField26</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"User"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Project user"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
+                "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">allowedValues</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/principals?filters=%5B%7B%22status%22%3A%7B%22operator%22%3A%22%21%22%2C%22values%22%3A%5B%220%22%2C%223%22%5D%7D%7D%2C%7B%22type%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%22User%22%5D%7D%7D%2C%7B%22member%22%3A%7B%22operator%22%3A%22%3D%22%2C%22values%22%3A%5B%22%22%5D%7D%7D%5D&amp;pageSize=0"</span>
+                    </span>}
+                </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">customField30</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Integer"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"some project cf"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">customField31</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"CustomOption"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"list project cf"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span></span>,
+                "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">allowedValues</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"CustomOption"</span></span>,
+                            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">513</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"abc"</span></span>,
+                            "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+                                    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/513"</span></span>,
+                                    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"abc"</span>
+                                </span>}
+                            </span>}
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"CustomOption"</span></span>,
+                            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">514</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"def"</span></span>,
+                            "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+                                    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/514"</span></span>,
+                                    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"def"</span>
+                                </span>}
+                            </span>}
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"CustomOption"</span></span>,
+                            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">515</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"ghi"</span></span>,
+                            "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                                "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+                                    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/515"</span></span>,
+                                    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"ghi"</span>
+                                </span>}
+                            </span>}
+                        </span>}
+                    ]
+                </span>}</span>,
+                "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">allowedValues</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/513"</span></span>,
+                            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"abc"</span>
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/514"</span></span>,
+                            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"def"</span>
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/custom_options/515"</span></span>,
+                            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"ghi"</span>
+                        </span>}
+                    ]
+                </span>}
+            </span>}</span>,
+            "<span class="hljs-attribute">customField34</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Boolean"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Bool Project CF"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">customField35</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"String"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"text project cf"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">customField41</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Formattable"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Long text project cf"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">customField42</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"Date"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Date project cf"</span></span>,
+                "<span class="hljs-attribute">required</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">hasDefault</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">writable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">visibility</span>": <span class="hljs-value"><span class="hljs-string">"default"</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{}
+        </span>}</span>,
+        "<span class="hljs-attribute">validationErrors</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">identifier</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+                "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:PropertyConstraintViolation"</span></span>,
+                "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"Identifier has already been taken."</span></span>,
+                "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">details</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">attribute</span>": <span class="hljs-value"><span class="hljs-string">"identifier"</span>
+                    </span>}
+                </span>}
+            </span>}
+        </span>}
+    </span>}</span>,
+    "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/5/form"</span></span>,
+            "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"post"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">validate</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/5/form"</span></span>,
+            "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"post"</span>
+        </span>}
+    </span>}
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>400</code></strong><a data-toggle="collapse" data-target="#collapse-dc69976aa5ab3997cb99b509fd460cc0" class="pull-right collapsed">Toggle details</a></li><li id="collapse-dc69976aa5ab3997cb99b509fd460cc0" class="list-group-item panel-collapse collapse"><div class="description"><p>Occurs when the client did not send a valid JSON object in the request body.</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:InvalidRequestBody"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"The request body was not a single JSON object."</span>
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>403</code></strong><a data-toggle="collapse" data-target="#collapse-e4fb77578fdd570bd1bc8148f6019c9e" class="pull-right collapsed">Toggle details</a></li><li id="collapse-e4fb77578fdd570bd1bc8148f6019c9e" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the client does not have sufficient permissions.</p>
+<p><strong>Required permission:</strong> edit projects in the project</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:MissingPermission"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"You are not authorized to access this resource."</span>
+</span>}</code></pre></li></ul></section><h2 id="projects-available-parent-project-candidates">Available parent project candidates&nbsp;<a href="#projects-available-parent-project-candidates" class="permalink"><i class="fa fa-link"></i></a></h2><section id="projects-available-parent-project-candidates-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">List available parent project candidates</span></div><div style="float:left"><a href="#projects-available-parent-project-candidates-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/projects/available_parent_projects{?filters,of,sortBy}</code></div></div><div class="panel-body"><p>Lists projects which can become parent to another project. Only sound candidates are returned.
+For instance a project cannot become parent of itself or it’s children.</p>
+<p>To specify the project for which a parent is queried for, the <code>of</code> parameter can be provided. If no <code>of</code>
+parameter is provided, a new project is assumed. Then, the check for the hierarchy is omitted as a new project cannot be
+part of a hierarchy yet.</p>
+<p>Candidates can be filtered. Most commonly one will want to filter by name or identifier.
+You can do this through the <code>filters</code> parameter which works just like the work package index.</p>
+<p>For instance to find all parent candidates with “rollout” in their name:</p>
+<pre><code>?<span class="hljs-atom">filters</span>=[{<span class="hljs-string">"name_and_identifier"</span>:{<span class="hljs-string">"operator"</span>:<span class="hljs-string">"~"</span>,<span class="hljs-string">"values"</span>:[<span class="hljs-string">"rollout"</span>]}}]</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>filters</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>[{ &quot;ancestor&quot;: { &quot;operator&quot;: &quot;=&quot;, &quot;values&quot;: ['1'] }&quot; }]</span></span><p>JSON specifying filter conditions.</p>
+</dd><dt>of</dt><dd><code>number or identifier</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>123</span></span><p>The id or identifier of the project the parent candidate is determined for</p>
+</dd><dt>sortBy</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>[[&quot;id&quot;, &quot;asc&quot;]]</span></span><p>JSON specifying sort criteria.
+Accepts the same format as returned by the <a href="#queries">queries</a> endpoint and allows all the filters and sortBy supported by the project list end point.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-6593c7f457d0ccf102ec0be3680638c6" class="pull-right collapsed">Toggle details</a></li><li id="collapse-6593c7f457d0ccf102ec0be3680638c6" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  <span class="hljs-string">"_links"</span>: {
+    <span class="hljs-string">"self"</span>: {
+      <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/available_parent_projects?of=123"</span>
+    }
+  },
+  <span class="hljs-string">"_type"</span>: <span class="hljs-string">"Collection"</span>,
+  <span class="hljs-string">"total"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-string">"count"</span>: <span class="hljs-number">2</span>,
+  <span class="hljs-string">"_embedded"</span>: {
+    <span class="hljs-string">"elements"</span>: [
+      {
+        <span class="hljs-string">"_type"</span>: <span class="hljs-string">"Project"</span>,
+        <span class="hljs-string">"_links"</span>: {
+          <span class="hljs-string">"self"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/6"</span>,
+            <span class="hljs-string">"title"</span>: <span class="hljs-string">"A project"</span>
+          },
+          <span class="hljs-string">"createWorkPackage"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/6/work_packages/form"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"post"</span>
+          },
+          <span class="hljs-string">"createWorkPackageImmediate"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/6/work_packages"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"post"</span>
+          },
+          <span class="hljs-string">"categories"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/6/categories"</span>
+          },
+          <span class="hljs-string">"versions"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/6/versions"</span>
+          }
+        },
+        <span class="hljs-string">"id"</span>: <span class="hljs-number">6</span>,
+        <span class="hljs-string">"identifier"</span>: <span class="hljs-string">"a_project"</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"A project"</span>,
+        <span class="hljs-string">"active"</span>: true,
+        <span class="hljs-string">"status"</span>: <span class="hljs-string">"on track"</span>,
+        <span class="hljs-string">"statusExplanation"</span>: {
+            <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+            <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Everything **fine**"</span>,
+            <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Everything &lt;strong&gt;fine&lt;/strong&gt;&lt;/p&gt;"</span>
+        },
+        <span class="hljs-string">"public"</span>: false,
+        <span class="hljs-string">"description"</span>: {
+            <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+            <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Lorem **ipsum** dolor sit amet"</span>,
+            <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Lorem &lt;strong&gt;ipsum&lt;/strong&gt; dolor sit amet&lt;/p&gt;"</span>
+        },
+        <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2015-07-06T13:28:14+00:00"</span>,
+        <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2015-10-01T09:55:02+00:00"</span>,
+        <span class="hljs-string">"type"</span>: <span class="hljs-string">"Customer Project"</span>
+      },
+      {
+        <span class="hljs-string">"_type"</span>: <span class="hljs-string">"Project"</span>,
+        <span class="hljs-string">"_links"</span>: {
+          <span class="hljs-string">"self"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/14"</span>,
+            <span class="hljs-string">"title"</span>: <span class="hljs-string">"Another project"</span>
+          },
+          <span class="hljs-string">"createWorkPackage"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/14/work_packages/form"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"post"</span>
+          },
+          <span class="hljs-string">"createWorkPackageImmediate"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/14/work_packages"</span>,
+            <span class="hljs-string">"method"</span>: <span class="hljs-string">"post"</span>
+          },
+          <span class="hljs-string">"categories"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/14/categories"</span>
+          },
+          <span class="hljs-string">"versions"</span>: {
+            <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/projects/14/versions"</span>
+          }
+        },
+        <span class="hljs-string">"id"</span>: <span class="hljs-number">14</span>,
+        <span class="hljs-string">"identifier"</span>: <span class="hljs-string">"another_project"</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"Another project"</span>,
+        <span class="hljs-string">"active"</span>: true,
+        <span class="hljs-string">"status"</span>: <span class="hljs-string">"on track"</span>,
+        <span class="hljs-string">"statusExplanation"</span>: {
+            <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+            <span class="hljs-string">"raw"</span>: <span class="hljs-string">"Everything super **fine**"</span>,
+            <span class="hljs-string">"html"</span>: <span class="hljs-string">"&lt;p&gt;Everything super &lt;strong&gt;fine&lt;/strong&gt;&lt;/p&gt;"</span>
+        },
+        <span class="hljs-string">"public"</span>: true,
+        <span class="hljs-string">"description"</span>: {
+            <span class="hljs-string">"format"</span>: <span class="hljs-string">"markdown"</span>,
+            <span class="hljs-string">"raw"</span>: <span class="hljs-string">""</span>,
+            <span class="hljs-string">"html"</span>: <span class="hljs-string">""</span>
+        },
+        <span class="hljs-string">"createdAt"</span>: <span class="hljs-string">"2016-02-29T12:50:20+00:00"</span>,
+        <span class="hljs-string">"updatedAt"</span>: <span class="hljs-string">"2016-02-29T12:50:20+00:00"</span>,
+        <span class="hljs-string">"type"</span>: null
+      }]
+    }
+  }
+}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>403</code></strong><a data-toggle="collapse" data-target="#collapse-401969e573b7b6bf9402d24e4bf3a88a" class="pull-right collapsed">Toggle details</a></li><li id="collapse-401969e573b7b6bf9402d24e4bf3a88a" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the client does not have sufficient permissions.</p>
+<p><strong>Required permission:</strong> edit project in a project or the global add project permission</p>
+</div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,
+  "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:MissingPermission"</span></span>,
+  "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"You are not authorized to access this resource."</span>
 </span>}</code></pre></li></ul></section><h2 id="projects-projects-by-version">Projects by version&nbsp;<a href="#projects-projects-by-version" class="permalink"><i class="fa fa-link"></i></a></h2><section id="projects-projects-by-version-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">List projects with version</span></div><div style="float:left"><a href="#projects-projects-by-version-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/versions/{id}/projects</code></div></div><div class="panel-body"><p>This endpoint lists the projects where the given version is available.</p>
 <p>The projects returned depend on the sharing settings of the given version,
 but are also limited to the projects that the current user is allowed to see.</p>
 </div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>Version id</p>
-</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-3b40a6fa5e3fbe77fa77183518670420" class="pull-right collapsed">Toggle details</a></li><li id="collapse-3b40a6fa5e3fbe77fa77183518670420" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-ce78e183c1b4cfe920f3b693e1589857" class="pull-right collapsed">Toggle details</a></li><li id="collapse-ce78e183c1b4cfe920f3b693e1589857" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
     "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
       "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/versions/2/projects"</span>
@@ -481,6 +1508,13 @@ but are also limited to the projects that the current user is allowed to see.</p
           "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
           "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-string">"Lorem **ipsum** dolor sit amet"</span></span>,
           "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Lorem &lt;strong&gt;ipsum&lt;/strong&gt; dolor sit amet&lt;/p&gt;"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">active</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"on track"</span></span>,
+        "<span class="hljs-attribute">statusExplanation</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+          "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-string">"Everything **fine**"</span></span>,
+          "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Everything &lt;strong&gt;fine&lt;/strong&gt;&lt;/p&gt;"</span>
         </span>}</span>,
         "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2014-05-21T08:51:20Z"</span></span>,
         "<span class="hljs-attribute">updatedAt</span>": <span class="hljs-value"><span class="hljs-string">"2014-05-21T08:51:20Z"</span>

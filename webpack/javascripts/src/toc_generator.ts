@@ -4,6 +4,7 @@ import * as tocbot from 'tocbot';
 (function () {
   let main = document.querySelector('div.main');
   let article = document.querySelector('.article-content');
+  let disableNumbers = !!document.querySelector('meta[name="openproject:plaintoc"]');
   if (!article || !(main && main.classList.contains('has-toc'))) {
     return;
   }
@@ -33,7 +34,9 @@ import * as tocbot from 'tocbot';
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: true,
     // Slower timeout
-    throttleTimeout: 150
+    throttleTimeout: 150,
+    // Use ordered/numbered lists?
+    orderedList: !disableNumbers
   });
 
 })();

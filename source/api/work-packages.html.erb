@@ -2171,7 +2171,66 @@ Only linked revisions from repositories are shown if the user has the view chang
   "<span class="hljs-attribute">errorIdentifier</span>": <span class="hljs-value"><span class="hljs-string">"urn:openproject-org:api:v3:errors:NotFound"</span></span>,
   "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"The specified work project does not exist."</span>
 </span>}</code></pre></li></ul></section><h2 id="work-packages-work-package-activities">Work Package activities&nbsp;<a href="#work-packages-work-package-activities" class="permalink"><i class="fa fa-link"></i></a></h2><section id="work-packages-work-package-activities-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">List work package activities</span></div><div style="float:left"><a href="#work-packages-work-package-activities-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/work_packages/{id}/activities{?notify}</code></div></div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>id</dt><dd><code>integer</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>1</span></span><p>Work package id</p>
-</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-6770b3d71196f8c39bda117e2c842e34" class="pull-right collapsed">Toggle details</a></li><li id="collapse-6770b3d71196f8c39bda117e2c842e34" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>Returns <span class="hljs-operator">the</span> activity resource</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>404</code></strong><a data-toggle="collapse" data-target="#collapse-59d44b72a908ff5dc2ac5f71feeb9937" class="pull-right collapsed">Toggle details</a></li><li id="collapse-59d44b72a908ff5dc2ac5f71feeb9937" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the work package does not exist or the client does not have sufficient permissions to see it.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-75df9ba05cdfbed65264b80b71ef73db" class="pull-right collapsed">Toggle details</a></li><li id="collapse-75df9ba05cdfbed65264b80b71ef73db" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/work_packages/1/revisions"</span>
+    </span>}
+  </span>}</span>,
+  "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+  "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+  "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Collection"</span></span>,
+  "<span class="hljs-attribute">_embedded</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">elements</span>": <span class="hljs-value">[
+      {
+        "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Activity"</span></span>,
+        "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/activity/1"</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">workPackage</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/work_packages/1"</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">user</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/users/1"</span>
+          </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">details</span>": <span class="hljs-value">[]</span>,
+        "<span class="hljs-attribute">comment</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+          "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum dolor sit amet."</span></span>,
+          "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2014-05-21T08:51:20Z"</span></span>,
+        "<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+      </span>},
+      {
+        "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Activity"</span></span>,
+        "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/activity/2"</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">workPackage</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/work_packages/1"</span>
+          </span>}</span>,
+          "<span class="hljs-attribute">user</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/users/1"</span>
+          </span>}
+        </span>}</span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">details</span>": <span class="hljs-value">[]</span>,
+        "<span class="hljs-attribute">comment</span>": <span class="hljs-value">{
+          "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"markdown"</span></span>,
+          "<span class="hljs-attribute">raw</span>": <span class="hljs-value"><span class="hljs-string">"Lorem ipsum dolor sit amet."</span></span>,
+          "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">"&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">createdAt</span>": <span class="hljs-value"><span class="hljs-string">"2014-05-21T08:51:22Z"</span></span>,
+        "<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+      </span>}
+    ]
+  </span>}
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>404</code></strong><a data-toggle="collapse" data-target="#collapse-59d44b72a908ff5dc2ac5f71feeb9937" class="pull-right collapsed">Toggle details</a></li><li id="collapse-59d44b72a908ff5dc2ac5f71feeb9937" class="list-group-item panel-collapse collapse"><div class="description"><p>Returned if the work package does not exist or the client does not have sufficient permissions to see it.</p>
 <p><strong>Required permission:</strong> view work package</p>
 </div><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Error"</span></span>,

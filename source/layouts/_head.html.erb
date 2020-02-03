@@ -9,6 +9,12 @@
 <% end %>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="docsearch:language" content="<%= I18n.locale %>" />
+<% if current_page&.data&.no_toc %>
+<meta name="openproject:notoc" content="true" />
+<% end %>
+<% if current_page&.data&.unnumbered_toc %>
+  <meta name="openproject:plaintoc" content="true" />
+<% end %>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />

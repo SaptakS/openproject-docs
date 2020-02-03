@@ -1,11 +1,12 @@
 ---
-title: Projects
-description: Create and set up a new project in OpenProject. 
+sidebar_navigation:
+  title: Manage projects
+  priority: 600
+description: Manage projects in OpenProject.
 robots: index, follow
 keywords: projects
 ---
-
-# Projects
+# Manage projects
 
 In OpenProject you can create multiple projects to collaborate with your team members, track issues, document and share information with stakeholders, organize things. A project is a way to structure your work in OpenProject.
 
@@ -75,7 +76,7 @@ OpenProject, for example, uses the projects to structured the different modules/
 
 ## Project Settings
 
-You can specify further advanced settings for your project. Navigate to your project settings by [selecting a project](#select-a-project), and click **Project settings** in the project menu on the bottom and select the tab **Information**.
+You can specify further advanced settings for your project. Navigate to your project settings by [selecting a project](#select-a-project), and click **Project settings** in the project menu on the bottom.
 
 - You can define whether the project should have a parent by selecting **Subproject of**. This way, you can [change the project hierarchy](#change-the-project-hierarchy).
 
@@ -96,7 +97,7 @@ You can specify further advanced settings for your project. Navigate to your pro
 
 ### Change the project hierarchy
 
-To change the project's hierarchy, navigate to the project's [advanced settings](#project-settings) and click the tab **Information** and change the **Subproject of** field.
+To change the project's hierarchy, navigate to the project's [advanced settings](#project-settings) and change the **Subproject of** field.
 
 ![change-subproject](1566217261607.png)
 

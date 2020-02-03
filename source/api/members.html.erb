@@ -337,22 +337,22 @@ Currently supported filters are:</p>
   </span>}
 </span>}</code></pre></li></ul></section><section id="memberships-memberships-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">Create membership</span></div><div style="float:left"><a href="#memberships-memberships-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/memberships{?filters}</code></div></div><div class="panel-body"><p>Creates a new membership applying the attributes provided in the body.</p>
 <p>You can use the form and schema to be retrieve the valid attribute values and by that be guided towards successful creation.</p>
-</div><ul class="list-group"><li class="list-group-item"><strong>Request&nbsp;&nbsp;<code>Create memberships</code></strong><a data-toggle="collapse" data-target="#collapse-f68de3dbe00c6b293a6a8f82355e2401" class="pull-right collapsed">Toggle details</a></li><li id="collapse-f68de3dbe00c6b293a6a8f82355e2401" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-collection">{
-  project: <span class="hljs-collection">{
-    href: <span class="hljs-string">"/api/v3/projects/1"</span>
-  }</span>,
-  principal: <span class="hljs-collection">{
-    href: <span class="hljs-string">"/api/v3/users/5"</span>
-  }</span>,
-  roles: <span class="hljs-collection">[
-    <span class="hljs-collection">{
-      href: <span class="hljs-string">"/api/v3/roles/5"</span>
-    }</span>,
-    <span class="hljs-collection">{
-      href: <span class="hljs-string">"/api/v3/roles/8"</span>
-    }</span>
-  ]</span>
-}</span></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#collapse-d695081e9b511669300f9dd8077c2d22" class="pull-right collapsed">Toggle details</a></li><li id="collapse-d695081e9b511669300f9dd8077c2d22" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+</div><ul class="list-group"><li class="list-group-item"><strong>Request&nbsp;&nbsp;<code>Create memberships</code></strong><a data-toggle="collapse" data-target="#collapse-7879b83055bc9a66bcd395b434eae2ce" class="pull-right collapsed">Toggle details</a></li><li id="collapse-7879b83055bc9a66bcd395b434eae2ce" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">project</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/projects/1"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">principal</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/users/5"</span>
+  </span>}</span>,
+  "<span class="hljs-attribute">roles</span>": <span class="hljs-value">[
+    {
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/roles/5"</span>
+    </span>},
+    {
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/roles/8"</span>
+    </span>}
+  ]
+</span>}</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>201</code></strong><a data-toggle="collapse" data-target="#collapse-d695081e9b511669300f9dd8077c2d22" class="pull-right collapsed">Toggle details</a></li><li id="collapse-d695081e9b511669300f9dd8077c2d22" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
     <span class="hljs-string">"_links"</span>:
         <span class="hljs-string">"self"</span>: {
             <span class="hljs-string">"href"</span>: <span class="hljs-string">"/api/v3/memberships/11"</span>,

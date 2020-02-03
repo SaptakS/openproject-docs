@@ -4,6 +4,8 @@ source_path: docs/api/apiv3/endpoints/configuration.apib
 <div><div class="description"></div><h1>Configuration</h1><div class="panel panel-default"><div class="panel-body"><p>The configuration endpoint allows to read certain configuration parameters of the OpenProject instance.
 Note that there is no 1:1 relationship between this endpoint and the settings you can find in your settings.yml.</p>
 <p>For now this endpoint will only allow access to settings deemed useful for a client to know in general.</p>
+<p>As clients might rely on the combination of both, the system settings as well as the current user’s preferences, the resource
+embeds the current user’s preferences so client can fetch both with one request.</p>
 <table>
 <thead>
 <tr>
@@ -19,6 +21,13 @@ Note that there is no 1:1 relationship between this endpoint and the settings yo
 <td style="text-align:center">self</td>
 <td>The configuration</td>
 <td>Configuration</td>
+<td></td>
+<td>READ</td>
+</tr>
+<tr>
+<td style="text-align:center">userPreferences</td>
+<td>The preferences of the current user</td>
+<td>UserPreferences</td>
 <td></td>
 <td>READ</td>
 </tr>
@@ -52,10 +61,15 @@ Note that there is no 1:1 relationship between this endpoint and the settings yo
 </tr>
 </tbody>
 </table>
-<h2 id="configuration-configuration">Configuration&nbsp;<a href="#configuration-configuration" class="permalink"><i class="fa fa-link"></i></a></h2><section id="configuration-configuration-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">View configuration</span></div><div style="float:left"><a href="#configuration-configuration-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/configuration</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-838b532e702be06b60ec008dce315274" class="pull-right collapsed">Toggle details</a></li><li id="collapse-838b532e702be06b60ec008dce315274" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
+<h2 id="configuration-configuration">Configuration&nbsp;<a href="#configuration-configuration" class="permalink"><i class="fa fa-link"></i></a></h2><section id="configuration-configuration-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">View configuration</span></div><div style="float:left"><a href="#configuration-configuration-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden" class="panel-heading-code"><code>/api/v3/configuration</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#collapse-0df0ebacbf1775528c7ec7aab52dc8e2" class="pull-right collapsed">Toggle details</a></li><li id="collapse-0df0ebacbf1775528c7ec7aab52dc8e2" class="list-group-item panel-collapse collapse"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/hal+json</span><br/></code></pre><h5>Body</h5><pre><code>{
   "<span class="hljs-attribute">_type</span>": <span class="hljs-value"><span class="hljs-string">"Configuration"</span></span>,
   "<span class="hljs-attribute">_links</span>": <span class="hljs-value">{
-    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/configuration"</span>
+    "<span class="hljs-attribute">self</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/configuration"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">userPreferences</span>": <span class="hljs-value">{
+      "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"/api/v3/my_preferences"</span>
+    </span>}
   </span>}</span>,
   "<span class="hljs-attribute">maximumAttachmentFileSize</span>": <span class="hljs-value"><span class="hljs-number">5242880</span></span>,
   "<span class="hljs-attribute">perPageOptions</span>": <span class="hljs-value">[
