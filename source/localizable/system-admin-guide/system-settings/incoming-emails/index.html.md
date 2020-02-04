@@ -17,4 +17,4 @@ To adapt incoming email settings, go to System settings on the tab **Incoming em
 
 ![Sys-admin-system-setting-incoming-emails](Sys-admin-system-setting-incoming-emails.png)
 
-**To set up incoming email**, please visit our [Operations guide](../../../installation-and-operations/operation/#). (To Do: Migrate incoming email guide from: https://www.openproject.org/operations/configuration/incoming-emails/)
+**To set up incoming email**, please visit our [Operations guide](/installation-and-operations/operation/incoming-emails/).

@@ -51,3 +51,20 @@ docker run -d \
   -e SMTP_PASSWORD="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" \
   ...
 ```
+
+## Available configuration options
+
+* `email_delivery_method`: The way emails should be delivered. Possible values: `smtp` or `sendmail`
+
+## SMTP Options
+
+Please see the [Configuration guide](../) and [Environment variables guide](../environment) on how to set these values.
+
+* `smtp_address`: SMTP server hostname, e.g. `smtp.example.net`
+* `smtp_port`: SMTP server port. Common options are `25` and `587`.
+* `smtp_domain`: The domain told to the SMTP server, probably the hostname of your OpenProject instance (sent in the HELO domain command). Example: `example.net`
+* `smtp_authentication`: Authentication method, possible values: `plain`, `login`, `cram_md5` (optional, only when authentication is required)
+* `smtp_user_name`: Username for authentication against the SMTP server (optional, only when authentication is required)
+* `smtp_password` (optional, only when authentication is required)
+* `smtp_enable_starttls_auto`: You can disable STARTTLS here in case it doesn't work. Make sure you don't login to a SMTP server over a public network when using this. This setting can't currently be used via environment variables, since setting options to `false` is only possible via a YAML file. (default: true, optional)
+* `smtp_openssl_verify_mode`: Define how the SMTP server certificate is validated. Make sure you don't just disable verification here unless both, OpenProject and SMTP servers are on a private network. Possible values: `none`, `peer`, `client_once` or `fail_if_no_peer_cert`

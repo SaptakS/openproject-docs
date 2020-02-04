@@ -4,7 +4,7 @@ sidebar_navigation:
   priority: 0
 ---
 
-# Adding plugins
+# Adding plugins (DEB/RPM packages)
 
 Note: this guide only applies if you've installed OpenProject using our DEB/RPM packages.
 
@@ -51,3 +51,4 @@ openproject configure
 ```
 
 Using configure will take your previous decisions in the installer and simply re-apply them, which is an idempotent operation. It will detect the Gemfile config option being set and re-bundle the application with the additional plugins.
+

@@ -13,7 +13,7 @@ task :build do
   core_docs = ENV['OPENPROJECT_CORE']
   raise 'Missing OPENPROJECT_CORE env' unless core_docs
 
-  doc_folder = ENV['OPENPROJECT_DOC_ROOT'] || 'help'
+  doc_folder = ENV['OPENPROJECT_DOC_ROOT'] || 'docs'
   doc_root = File.join(core_docs, doc_folder)
 
   no_git = `which git`.empty?
@@ -28,9 +28,18 @@ task :build do
 
   localizable_path = File.expand_path('source/localizable', middleman_root)
 
-  Pathname.new(doc_root).children.each do |path|
-    name = File.basename(path)
-    next unless path.directory?
+  %w[
+    cloud-edition-guide
+    development
+    enterprise-edition-guide
+    getting-started
+    installation-and-operations
+    release-notes
+    system-admin-guide
+    user-guide
+  ].each do |name|
+    path = File.join(doc_root, name)
+    next unless File.directory?(path)
 
     puts "Removing previous folder #{name} and copying from #{path} again."
     FileUtils.rm_rf(File.join(localizable_path, name))
