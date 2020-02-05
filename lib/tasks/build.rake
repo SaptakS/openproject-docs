@@ -18,9 +18,12 @@ task :build do
 
   no_git = `which git`.empty?
   commit = nil
+  branch = nil
 
   unless no_git
     commit = Dir.chdir(core_docs) { `git rev-parse HEAD`.strip rescue "" }
+    branch = Dir.chdir(core_docs) { `git rev-parse --abbrev-ref HEAD`.strip rescue "" }
+    branch = nil if branch.empty?
     commit = nil if commit.empty?
   end
 
@@ -110,6 +113,7 @@ task :build do
 
     buildinfo = {
       commit: commit,
+      branch: branch,
       url: "https://github.com/opf/openproject/commit/#{commit}",
       timestamp: Time.now
     }
