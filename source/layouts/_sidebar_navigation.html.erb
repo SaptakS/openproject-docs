@@ -3,6 +3,27 @@
   nav_items = data.default_nav
 %>
 <nav class="global-nav-content">
+  <div class="mobile--landing-items">
+    <a href="https://openproject.com/"
+       target="_blank"
+       title="<%= t('landing.about_openproject') %>"
+       class="mobile--landing-item ">
+      <%= t('landing.about_openproject') %>
+    </a>
+    <a href="https://start.openproject.com/"
+       target="_blank"
+       title="<%= t('landing.get_started_for_free') %>"
+       class="mobile--landing-item">
+      <%= t('landing.get_started_for_free') %>
+    </a>
+    <a href="https://www.openproject.org/signin/"
+       target="_blank"
+       title="<%= t('landing.sign_in_long') %>"
+       class="mobile--landing-item">
+      <%= t('landing.sign_in_long') %>
+    </a>
+    <hr/>
+  </div>
   <!-- nav sections -->
   <% nav_items[:sections].each do |sec| %>
     <%# Remove any trailing slash in case it was given %>

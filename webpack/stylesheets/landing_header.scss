@@ -229,6 +229,41 @@
   }
 }
 
+.landing-header--link {
+  height: 40px;
+  color: white;
+  padding: 8px 15px;
+
+  &:hover {
+    color: #e0e0e0;
+    text-decoration: none;
+  }
+}
+
+.landing-header--on-page {
+  @media all and (max-width: $mobile-width) {
+    display: none;
+  }
+}
+
+.mobile--landing-items {
+  @media all and (min-width: $mobile-width) {
+    display: none;
+  }
+
+  .mobile--landing-item {
+    padding: 8px 15px;
+    line-height: 1.25;
+    font-size: 14px;
+    color: $gds-gray-800;
+
+    &:hover {
+      background-color: rgba(46,46,46,.06);
+      color: $gds-gray-900 !important;
+    }
+  }
+}
+
 .landing-header--get-started-btn {
   background: #35c53f;
   border: none;
