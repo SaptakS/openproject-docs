@@ -34,6 +34,8 @@ import * as tocbot from 'tocbot';
     hasInnerContainers: true,
     // Slower timeout
     throttleTimeout: 150,
+    // Uncollapse all
+    collapseDepth: 6,
     // Use ordered/numbered lists?
     orderedList: false
   });
