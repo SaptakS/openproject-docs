@@ -1,11 +1,18 @@
 <% meta = current_page.data %>
 
 <meta charset="utf-8">
-  <title><%= meta.title || "OpenProject Documentation" %></title>
+
+<% if meta.full_title %>
+  <title><%= meta.full_title %></title>
+<% else %>
+  <% title = meta.title || derive_title(current_page) %>
+  <title><%= title %></title>
+<% end %>
+
 <% if meta.description %>
   <meta name="description" content="<%= meta.description %>">
 <% else %>
-  <meta name="description" content="Documentation for OpenProject Community, Enterprise Edition, and Cloud Edition.">
+  <meta name="description" content="Help & documentation for OpenProject Community, Enterprise Edition, Cloud Edition: getting started, user guide, installation & operations guide, upgrade guide, development guide, API documentation, release notes.">
 <% end %>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="docsearch:language" content="<%= I18n.locale %>" />
