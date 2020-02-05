@@ -25,11 +25,6 @@ page '/*.txt', layout: false
 # page '/path/to/file.html', layout: 'other_layout'
 activate :i18n, mount_at_root: :en, langs: [:en]
 
-configure :development do
-  activate :livereload
-end
-
-
 # Activate /openproject to map to /openproject/README.* or /openproject/index.*
 activate :directory_indexes
 activate :readme_directory_indexes
