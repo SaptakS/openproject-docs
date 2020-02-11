@@ -18,4 +18,26 @@
       </form>
     <% end %>
   </div>
+  <nav class="landing-header--button-group landing-header--on-page">
+    <%= partial 'layouts/language_dropdown' %>
+    <a href="https://openproject.com/"
+       target="_blank"
+       title="<%= t('landing.about_openproject') %>"
+       class="header-link">
+      <%= t('landing.about_openproject') %>
+    </a>
+    <a href="https://start.openproject.com/"
+       target="_blank"
+       title="<%= t('landing.get_started_for_free') %>"
+       class="landing-header--btn landing-header--get-started-btn animated">
+      <%= t('landing.get_started_for_free') %>
+    </a>
+    <a href="https://www.openproject.org/signin/"
+       target="_blank"
+       title="<%= t('landing.sign_in') %>"
+       class="landing-header--btn landing-header--signin-btn animated">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+      <%= t('landing.sign_in') %>
+    </a>
+  </nav>
 </div>

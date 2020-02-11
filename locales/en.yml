@@ -69,6 +69,8 @@ en:
     enter_search_term: "Enter your search term here ..."
     get_started_for_free: "Get started for FREE"
     sign_in: "Sign in"
+    sign_in_long: "Sign in to OpenProject"
+    about_openproject: "About OpenProject"
   footer:
     links:
       blog:
