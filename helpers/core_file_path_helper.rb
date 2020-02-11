@@ -15,7 +15,7 @@ module CoreFilePathHelper
 
     if page.target.include?('localizable/')
       path = get_source_path(page)
-      "help/#{path}"
+      "docs/#{path}"
     end
   end
 
