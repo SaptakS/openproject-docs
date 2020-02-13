@@ -3,8 +3,6 @@ FROM nginx:alpine
 LABEL description="Hosts the OpenProject documentation."
 LABEL maintainer="operations@openproject.com"
 
-ARG CORE_ORIGIN="https://github.com/opf/openproject.git"
-ARG CORE_REF=dev
 ARG DOCS_PATH=/tmp/build/docs
 
 RUN apk add --update \
@@ -39,13 +37,15 @@ COPY data/buildinfo.yml /tmp/
 RUN mkdir /tmp/build/download
 WORKDIR /tmp/build/download
 
+ARG CORE_ORIGIN="https://github.com/opf/openproject.git"
+ARG CORE_REF=dev
+ENV OPENPROJECT_CORE=/tmp/build/core
+
 RUN curl -L -O https://github.com/opf/openproject/archive/$CORE_REF.zip \
   && unzip -q *.zip \
   && rm *.zip \
   && mv * core \
   && mv core ../
-
-ENV OPENPROJECT_CORE=/tmp/build/core
 
 WORKDIR $DOCS_PATH
 RUN rmdir ../download
