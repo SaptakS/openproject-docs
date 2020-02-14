@@ -29,11 +29,6 @@ RUN echo "gem 'bigdecimal'" >> Gemfile
 RUN cat Gemfile | grep -v pry > Gemfile.new && rm Gemfile && cp Gemfile.new Gemfile
 RUN bundle install && cp Gemfile.lock Gemfile.lock.new
 
-# Once the dependencies are installed we download the documentation contents
-# which we expect to change more often than the build dependencies.
-# Hence why it comes after them to improve caching.
-COPY data/buildinfo.yml /tmp/
-
 RUN mkdir /tmp/build/download
 WORKDIR /tmp/build/download
 
