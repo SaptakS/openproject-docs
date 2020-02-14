@@ -3,8 +3,6 @@ FROM nginx:alpine
 LABEL description="Hosts the OpenProject documentation."
 LABEL maintainer="operations@openproject.com"
 
-ARG CORE_ORIGIN="https://github.com/opf/openproject.git"
-ARG CORE_BRANCH=documentation
 ARG DOCS_PATH=/tmp/build/docs
 
 RUN apk add --update \
@@ -39,13 +37,15 @@ COPY data/buildinfo.yml /tmp/
 RUN mkdir /tmp/build/download
 WORKDIR /tmp/build/download
 
-RUN curl -L -O https://github.com/opf/openproject/archive/$CORE_BRANCH.zip \
+ARG CORE_ORIGIN="https://github.com/opf/openproject.git"
+ARG CORE_REF=dev
+ENV OPENPROJECT_CORE=/tmp/build/core
+
+RUN curl -L -O https://github.com/opf/openproject/archive/$CORE_REF.zip \
   && unzip -q *.zip \
   && rm *.zip \
   && mv * core \
   && mv core ../
-
-ENV OPENPROJECT_CORE=/tmp/build/core
 
 WORKDIR $DOCS_PATH
 RUN rmdir ../download
@@ -53,10 +53,9 @@ COPY . $DOCS_PATH/
 # restore new Gemfile and Gemfile.lock (overriden due to COPY)
 RUN cp Gemfile.new Gemfile && cp Gemfile.lock.new Gemfile.lock
 
-ARG SITE_URL="https://docs.openproject.org"
-
-RUN bundle exec rake build
-RUN bundle exec middleman build --clean
+RUN export SITE_URL="http://mywebsite.com" && bundle exec rake build && bundle exec middleman build --clean
 
 RUN rm -rf /usr/share/nginx/html && mv build /usr/share/nginx/html
-RUN sed -i "s/localhost/${SITE_URL//http*:\/\//}/" /etc/nginx/conf.d/default.conf
+
+COPY ./docker /docker
+ENTRYPOINT ["/docker/entrypoint.sh"]
