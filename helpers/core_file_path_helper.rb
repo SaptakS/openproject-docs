@@ -1,6 +1,6 @@
 module CoreFilePathHelper
   def core_branch
-    data.buildinfo&.branch || 'dev'
+    (data.respond_to?(:buildinfo) && data.buildinfo&.branch) || 'dev'
   end
   def edit_this_page_path(page = current_page)
     if core_path = (page.data&.source_path || find_core_path_of_page(page))

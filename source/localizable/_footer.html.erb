@@ -87,9 +87,9 @@
       <div class="footer-copyright">
         © <%= Date.today.year %> - OpenProject. All rights reserved.
         <br/>
-        <% if data.buildinfo&.commit %>
+        <% if data.respond_to?(:buildinfo) && data.buildinfo&.commit %>
           <%= link_to "Build #{data.buildinfo&.commit[0..7]}", data.buildinfo.url %>
-          <%= relative_date(data.buildinfo.timestamp) %>
+          <%= relative_date(data.buildinfo&.timestamp) %>
           ago
         <% end %>
       </div>

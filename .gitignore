@@ -5,3 +5,5 @@
 .sass-cache
 build/
 node_modules/
+/data/buildinfo.yml
+/source/api/
