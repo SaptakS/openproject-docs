@@ -19,7 +19,7 @@
 @import 'cookie_warning';
 
 .main {
-  margin: auto 0px;
+  margin: 0px;
   padding: $header-height 25px 0;
   position: relative;
   width: auto;
@@ -32,7 +32,7 @@
   }
 
   @media(min-width:1601px) {
-    margin: auto 220px;
+    margin: 0 220px;
     max-width: 65%;
   }
 
