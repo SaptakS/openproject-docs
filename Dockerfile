@@ -32,9 +32,11 @@ RUN bundle install && cp Gemfile.lock Gemfile.lock.new
 WORKDIR /tmp/build
 
 ARG CORE_ORIGIN="https://github.com/opf/openproject"
-ARG CORE_REF=dev
+# Never provide a default ARG for the branch to ensure we always specify it
+ARG CORE_REF
 ENV OPENPROJECT_CORE=/tmp/build/core
 
+echo "Cloning from $CORE_ORIGIN branch $CORE_REF"
 RUN git clone $CORE_ORIGIN --branch $CORE_REF --depth 1 core
 
 WORKDIR $DOCS_PATH
