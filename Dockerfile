@@ -36,7 +36,7 @@ ARG CORE_ORIGIN="https://github.com/opf/openproject"
 ARG CORE_REF
 ENV OPENPROJECT_CORE=/tmp/build/core
 
-echo "Cloning from $CORE_ORIGIN branch $CORE_REF"
+RUN echo "Cloning from $CORE_ORIGIN branch $CORE_REF"
 RUN git clone $CORE_ORIGIN --branch $CORE_REF --depth 1 core
 
 WORKDIR $DOCS_PATH
