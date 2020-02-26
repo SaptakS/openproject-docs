@@ -2,6 +2,11 @@
 is_hidden: true
 ---
 
+<% if ENV['ROBOTS_ALLOWED'] == 'false' %>
+user-agent: *
+disallow: /
+<% else %>
 sitemap: <%= site_url %>/sitemap.xml
 user-agent: *
 disallow: /debug/
+<% end %>

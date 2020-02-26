@@ -32,8 +32,20 @@ RUN bundle install && cp Gemfile.lock Gemfile.lock.new
 WORKDIR /tmp/build
 
 ARG CORE_ORIGIN="https://github.com/opf/openproject"
+# Whether to index robots
+ARG robots_allowed
+ENV ROBOTS_ALLOWED=$robots_allowed
 # Never provide a default ARG for the branch to ensure we always specify it
-ARG CORE_REF
+ARG core_ref
+ENV CORE_REF=$core_ref
+# Never provide defaults for GTM and HUBSPOT
+ARG gtm_tag
+ENV GTM_ID=$gtm_tag
+ARG hubspot_tag
+ENV HUBSPOT_PORTAL_ID=$hubspot_tag
+
+RUN echo "GTM TAG IS SET TO $GTM_TAG, HUBSPOT TAG to $HUBSPOT_TAG"
+
 ENV OPENPROJECT_CORE=/tmp/build/core
 
 RUN echo "Cloning from $CORE_ORIGIN branch $CORE_REF"
