@@ -58,6 +58,9 @@ RUN cp Gemfile.new Gemfile && cp Gemfile.lock.new Gemfile.lock
 
 RUN export SITE_URL="http://mywebsite.com" && bundle exec rake build && bundle exec middleman build --clean
 
+RUN echo "BUILDINFO" && cat data/buildinfo.yml
+RUN echo "BUILDINFO ON PAGE" && cat build/index.html | grep 'Build '
+
 RUN rm -rf /usr/share/nginx/html && mv build /usr/share/nginx/html
 
 COPY ./docker /docker
