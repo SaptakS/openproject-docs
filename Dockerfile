@@ -48,8 +48,8 @@ RUN echo "GTM TAG IS SET TO $GTM_TAG, HUBSPOT TAG to $HUBSPOT_TAG"
 
 ENV OPENPROJECT_CORE=/tmp/build/core
 
-RUN echo "Cloning from $CORE_ORIGIN branch $CORE_REF"
-RUN git clone $CORE_ORIGIN --branch $CORE_REF --depth 1 core
+RUN echo "Cloning from $CORE_ORIGIN and resetting to $CORE_REF"
+RUN git clone $CORE_ORIGIN core && cd core && git reset --hard $CORE_REF
 
 WORKDIR $DOCS_PATH
 COPY . $DOCS_PATH/
