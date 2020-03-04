@@ -21,8 +21,8 @@ task :build do
   branch = nil
 
   unless no_git
-    commit = Dir.chdir(core_docs) { `git rev-parse HEAD`.strip rescue "" }
-    branch = Dir.chdir(core_docs) { `git rev-parse --abbrev-ref HEAD`.strip rescue "" }
+    commit = ENV['CORE_REV'] || Dir.chdir(core_docs) { `git rev-parse HEAD`.strip rescue "" }
+    branch = ENV['CORE_BRANCH'] || Dir.chdir(core_docs) { `git rev-parse --abbrev-ref HEAD`.strip rescue "" }
     branch = nil if branch.empty?
     commit = nil if commit.empty?
   end

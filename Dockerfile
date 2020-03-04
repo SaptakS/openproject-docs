@@ -38,6 +38,8 @@ ENV ROBOTS_ALLOWED=$robots_allowed
 # Never provide a default ARG for the branch to ensure we always specify it
 ARG core_ref
 ENV CORE_REF=$core_ref
+ARG core_branch
+ENV CORE_BRANCH=$core_branch
 # Never provide defaults for GTM and HUBSPOT
 ARG gtm_tag
 ENV GTM_ID=$gtm_tag
