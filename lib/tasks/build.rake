@@ -64,16 +64,15 @@ task :build do
   puts 'Building API docs'
   Dir.chdir(File.join(middleman_root, 'api-builder')) do
     core_path = Pathname.new ENV['OPENPROJECT_CORE']
-    source_dir = File.join(core_path.to_s, 'docs', 'api', 'apiv3')
+    apiv3_source_dir = File.join(core_path.to_s, 'docs', 'api', 'apiv3')
+    bcf_source_dir = File.join(core_path.to_s, 'docs', 'api', 'bcf')
     target_dir = File.join(middleman_root, 'source', 'api')
     aglio_path = File.join(middleman_root, 'node_modules', '.bin', 'aglio')
 
     FileUtils.rm_rf target_dir
     FileUtils.mkdir_p target_dir
 
-    entries = Dir.glob("#{source_dir}/**/*.apib")
-
-    Parallel.each(entries, progress: 'Processing API entries') do |api_file|
+    Parallel.each(Dir.glob("#{apiv3_source_dir}/**/*.apib"), progress: 'Processing APIv3 entries') do |api_file|
       filepath = Pathname.new(api_file)
       relative_file = filepath.relative_path_from(core_path)
       filename = filepath.basename('.apib').to_s
@@ -101,6 +100,16 @@ task :build do
         FRONTMATTER
         f.puts input
       end
+    end
+
+    Parallel.each(Dir.glob("#{bcf_source_dir}/**/*.md"), progress: 'Processing BCF entries') do |api_file|
+      filepath = Pathname.new(api_file)
+      puts api_file
+      puts target_dir
+      filename = filepath.basename('.md').to_s
+
+      # Copy file to API
+      FileUtils.copy api_file, File.join(target_dir, "#{filename}.html.md")
     end
   end
 
