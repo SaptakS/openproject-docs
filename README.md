@@ -26,7 +26,7 @@ We are pulling the documentation from the openproject core at `https://github.co
 work in peace on her changes for now.
 
 To update the core docs use `OPENPROJECT_CORE=/path/to/openproject ./scripts/pull_repos.rb`
-with the `OPENPROJECT_CORE` path pointing to the checkout of the core with the branch set to `documentation` (until its merged into dev).
+with the `OPENPROJECT_CORE` path pointing to the checkout of the core with the branch set to to the current release branch (or whatever branch you make changes on)
 
 This will place all relevant guides under `help/` into the `source/localizable/openproject/*` folders and replace some README.md files into `README.index.html`
 so that middleman will use them as index files.
