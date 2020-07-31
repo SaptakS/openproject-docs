@@ -25,8 +25,7 @@ for all languages that are activated in the configuration.
 We are pulling the documentation from the openproject core at `https://github.com/opf/openproject/tree/documentation/help` so that Birthe can
 work in peace on her changes for now.
 
-To update the core docs use `OPENPROJECT_CORE=/path/to/openproject ./scripts/pull_repos.rb`
-with the `OPENPROJECT_CORE` path pointing to the checkout of the core with the branch set to `documentation` (until its merged into dev).
+To update the core docs use `OPENPROJECT_CORE=/path/to/openproject ./scripts/pull_repos.rb`.
 
 This will place all relevant guides under `help/` into the `source/localizable/openproject/*` folders and replace some README.md files into `README.index.html`
 so that middleman will use them as index files.
