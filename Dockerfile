@@ -8,7 +8,7 @@ ARG DOCS_PATH=/tmp/build/docs
 RUN apk add --update \
     curl ruby ruby-dev ruby-json ruby-etc git \
     libc-dev pkgconfig libxml2-dev zlib-dev libxslt-dev \
-    npm build-base python \
+    npm build-base python3 \
     && rm -rf /var/cache/apk/* \
     && gem install --no-document bundler pkg-config
 
