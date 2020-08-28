@@ -40,13 +40,15 @@ ARG core_ref
 ENV CORE_REF=$core_ref
 ARG core_branch
 ENV CORE_BRANCH=$core_branch
-# Never provide defaults for GTM and HUBSPOT
+# Never provide defaults for GTM and HUBSPOT and MATOMO
 ARG gtm_tag
 ENV GTM_ID=$gtm_tag
 ARG hubspot_tag
 ENV HUBSPOT_PORTAL_ID=$hubspot_tag
+ARG matomo_enabled=false
+ENV MATOMO_ENABLED=$matomo_enabled
 
-RUN echo "GTM TAG IS SET TO $GTM_TAG, HUBSPOT TAG to $HUBSPOT_TAG"
+RUN echo "GTM TAG IS SET TO $GTM_TAG, HUBSPOT TAG to $HUBSPOT_TAG, MATOMO ENABLED $MATOMO_ENABLED"
 
 ENV OPENPROJECT_CORE=/tmp/build/core
 
