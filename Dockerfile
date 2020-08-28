@@ -51,6 +51,8 @@ ENV MATOMO_ENABLED=$matomo_enabled
 RUN echo "GTM TAG IS SET TO $GTM_TAG, HUBSPOT TAG to $HUBSPOT_TAG, MATOMO ENABLED $MATOMO_ENABLED"
 
 ENV OPENPROJECT_CORE=/tmp/build/core
+# Disable Ruby warnings while many still spit 2.7 deprecation warnings
+ENV RUBYOPT="-W0"
 
 RUN echo "Cloning from $CORE_ORIGIN and resetting to $CORE_REF"
 RUN git clone $CORE_ORIGIN core && cd core && git reset --hard $CORE_REF
