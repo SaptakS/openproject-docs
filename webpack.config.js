@@ -18,6 +18,16 @@ module.exports = {
         }
       },
       {
+        test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+        use: [{
+          loader: 'file-loader', options: {
+            esModule: false,
+            outputPath: 'fonts',
+            publicPath: './../fonts',
+          }
+        }],
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
         exclude: /node_modules/,
         use: [{
@@ -44,7 +54,7 @@ module.exports = {
             options: {
               sourceMap: true
             }
-          }
+          },
         ],
       }
     ]

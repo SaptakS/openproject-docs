@@ -1,3 +1,5 @@
+import * as $ from "jquery";
+
 /*
  * Hides mobile header on scroll down and shows it on scroll up
  * by sliding it in and out of the screen

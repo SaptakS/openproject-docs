@@ -17,6 +17,9 @@
     "strictNullChecks": true,
     "skipLibCheck": true,
     "baseUrl": "./webpack/javascripts/",
+    "types": [
+      "webpack-env"
+    ],
     "typeRoots": [
       "node_modules/@types"
     ],
