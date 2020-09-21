@@ -6,6 +6,160 @@ require 'fileutils'
 require 'parallel'
 require 'psych' # required for .to_yaml
 
+class APIBuilder
+  def self.build
+    new.build
+  end
+
+  def build
+    Dir.chdir(File.join(middleman_root, 'api-builder')) do
+      cleanup_prior_run
+      create_target_dir
+      copy_introduction
+      build_v3
+      build_bcf
+    end
+  end
+
+  def cleanup_prior_run
+    FileUtils.rm_rf target_dir
+  end
+
+  def create_target_dir
+    FileUtils.mkdir_p target_dir
+  end
+
+  # Copy basic API v3 vs BCF introduction
+  def copy_introduction
+    FileUtils.copy(File.join(api_source_dir, 'README.md'), File.join(target_dir, "index.html.md"))
+  end
+
+  def build_v3
+    copy_endpoints_index
+
+    Parallel.each(Dir.glob("#{apiv3_source_dir}/**/*.apib"), progress: 'Processing APIv3 entries') do |api_file|
+      aglio_v3_file(api_file)
+    end
+  end
+
+  def build_bcf
+    bcf_source_dir = File.join(core_path.to_s, 'docs', 'api', 'bcf')
+    bcf_target_dir = File.join(middleman_root, 'source', 'api', 'bcf-rest-api')
+    FileUtils.mkdir_p bcf_target_dir
+
+    Parallel.each(Dir.glob("#{bcf_source_dir}/**/*.md"), progress: 'Processing BCF entries') do |api_file|
+      filepath = Pathname.new(api_file)
+      target_path = File.join(bcf_target_dir, "index.html.md")
+      relative_file = filepath.relative_path_from(core_path)
+
+      headers = frontmatter_header(:bcf_api, relative_file)
+      frontmattered_file_copy(headers, target_path, api_file)
+    end
+  end
+
+  def copy_endpoints_index
+    # Copy endpoints index file
+    FileUtils.mkdir_p endpoints_target_dir
+    endpoints_index_path = File.join(endpoints_target_dir, "index.html.md")
+    endpoints_source_path = File.join(apiv3_source_dir, 'endpoints', 'README.md')
+    FileUtils.copy(endpoints_source_path, endpoints_index_path)
+    frontmattered_file_copy(frontmatter_header(:endpoints, endpoints_source_path,  { title: 'Endpoints' }), endpoints_index_path, endpoints_index_path)
+  end
+
+  def aglio_v3_file(api_file)
+    filepath = Pathname.new(api_file)
+    relative_file = filepath.relative_path_from(core_path)
+    filename = filepath.basename('.apib').to_s
+    dirname = filepath.each_filename.to_a[-2]
+
+    # Ignore the index file
+    return if filename == 'index'
+
+    target_path = if dirname == 'endpoints'
+                    File.join(target_dir, 'endpoints', "#{filename}.html.erb")
+                  else
+                    FileUtils.mkdir_p File.join(target_dir, filename)
+                    File.join(target_dir, filename, "index.html.erb")
+                  end
+
+    # Execute aglio on that file
+    `NOCACHE=1 #{aglio_path} -t openproject-docs-single-page.jade -i #{api_file} -o #{target_path}`
+
+    headers = frontmatter_header(filename, relative_file, filename == 'introduction' ? { title: 'Introduction' }: {})
+
+    frontmattered_file_copy(headers, target_path, target_path)
+  end
+
+  # Define the specific title of the introduction page
+  # and determine the order the pages are to be listed in.
+  # Place everything before the bcf api page.
+  def frontmatter_header(filename, relative_file, additions = {})
+    { source_path: relative_file, sidebar_navigation: { priority: api_priority(filename) } }.merge(additions)
+  end
+
+  def frontmatter_string(headers)
+    header_string = headers.map do |key, value|
+      if value.is_a?(Hash)
+        "#{key}:\n" + value.map { |k, v| "    #{k}: #{v}" }.join("\n")
+      else
+        "#{key}: #{value}"
+      end
+    end.join("\n")
+
+    <<~FRONTMATTER
+      ---
+      #{header_string}
+      ---
+    FRONTMATTER
+  end
+
+  # Copies the file from target to source and prepends the frontmatter style headers to it.
+  def frontmattered_file_copy(headers, target_path, source_path)
+    input = File.read source_path
+
+    File.open(target_path, 'w') do |f|
+      f.puts frontmatter_string(headers)
+      f.puts input
+    end
+  end
+
+  def api_priority(key)
+    {
+      endpoints: 600,
+      introduction: 900,
+      'basic-objects': 890,
+      'group-objects': 880,
+      forms: 870,
+      filters: 860,
+      bcf_api: 500
+    }[key.to_sym] || 800
+  end
+
+  def core_path
+    Pathname.new ENV['OPENPROJECT_CORE']
+  end
+
+  def api_source_dir
+    File.join(core_path.to_s, 'docs', 'api')
+  end
+
+  def endpoints_target_dir
+    File.join(middleman_root, 'source', 'api', 'endpoints')
+  end
+
+  def apiv3_source_dir
+    File.join(core_path.to_s, 'docs', 'api', 'apiv3')
+  end
+
+  def target_dir
+    File.join(middleman_root, 'source', 'api')
+  end
+
+  def aglio_path
+    File.join(middleman_root, 'node_modules', '.bin', 'aglio')
+  end
+end
+
 def rename_md_file(path)
   renamed = path.gsub(/\.md$/, '.html.md')
 
@@ -16,36 +170,12 @@ def rename_md_file(path)
   FileUtils.mv path, renamed
 end
 
-def frontmatter_string(headers)
-  header_string = headers.map do |key, value|
-    if value.is_a?(Hash)
-      "#{key}:\n" + value.map { |k, v| "    #{k}: #{v}" }.join("\n")
-    else
-      "#{key}: #{value}"
-    end
-  end.join("\n")
-
-  <<~FRONTMATTER
-      ---
-      #{header_string}
-      ---
-  FRONTMATTER
-end
-
-# Copies the file from target to source and prepends the frontmatter style headers to it.
-def frontmattered_file_copy(headers, target_path, source_path)
-  input = File.read source_path
-
-  File.open(target_path, 'w') do |f|
-    f.puts frontmatter_string(headers)
-    f.puts input
-  end
+def middleman_root
+  File.expand_path('../../', __dir__)
 end
 
 desc 'Build and publish to Github Pages'
 task :build do
-  middleman_root = File.expand_path('../../', __dir__)
-
   core_docs = ENV['OPENPROJECT_CORE']
   raise 'Missing OPENPROJECT_CORE env' unless core_docs
 
@@ -92,70 +222,7 @@ task :build do
   end
 
   puts 'Building API docs'
-  Dir.chdir(File.join(middleman_root, 'api-builder')) do
-    core_path = Pathname.new ENV['OPENPROJECT_CORE']
-    api_source_dir = File.join(core_path.to_s, 'docs', 'api')
-    apiv3_source_dir = File.join(core_path.to_s, 'docs', 'api', 'apiv3')
-    bcf_source_dir = File.join(core_path.to_s, 'docs', 'api', 'bcf')
-    target_dir = File.join(middleman_root, 'source', 'api')
-    v3_target_dir = File.join(middleman_root, 'source', 'api', 'general-rest-api-v3')
-    bcf_target_dir = File.join(middleman_root, 'source', 'api', 'bcf-rest-api')
-    aglio_path = File.join(middleman_root, 'node_modules', '.bin', 'aglio')
-
-    FileUtils.rm_rf target_dir
-    FileUtils.mkdir_p target_dir
-    FileUtils.mkdir_p v3_target_dir
-    FileUtils.mkdir_p bcf_target_dir
-
-    FileUtils.copy File.join(api_source_dir, 'README.md'), File.join(target_dir, "index.html.md")
-
-    Parallel.each(Dir.glob("#{apiv3_source_dir}/**/*.apib"), progress: 'Processing APIv3 entries') do |api_file|
-      filepath = Pathname.new(api_file)
-      relative_file = filepath.relative_path_from(core_path)
-      filename = filepath.basename('.apib').to_s
-
-      # Ignore the index file
-      next if filename == 'index'
-
-      # Make introduction the new index
-      filename = 'index' if filename == 'introduction'
-
-      # Create a filename under API
-      target_path = File.join(v3_target_dir, "#{filename}.html.erb")
-
-      # Execute aglio on that file
-      `NOCACHE=1 #{aglio_path} -t openproject-docs-single-page.jade -i #{api_file} -o #{target_path}`
-
-      headers = { source_path: relative_file }
-
-      # Define the specific title of the introduction page
-      # and place it before the bcf api
-      case filename
-      when 'index'
-        headers['title'] = 'General purpose REST API v3'
-        headers['sidebar_navigation'] = { priority: 1000 }
-      when 'basic-objects'
-        headers['sidebar_navigation'] = { priority: 900 }
-      when 'group-objects'
-        headers['sidebar_navigation'] = { priority: 800 }
-      when 'forms'
-        headers['sidebar_navigation'] = { priority: 700 }
-      end
-
-      frontmattered_file_copy(headers, target_path, target_path)
-    end
-
-    Parallel.each(Dir.glob("#{bcf_source_dir}/**/*.md"), progress: 'Processing BCF entries') do |api_file|
-      filepath = Pathname.new(api_file)
-      target_path = File.join(bcf_target_dir, "index.html.md")
-      relative_file = filepath.relative_path_from(core_path)
-
-      headers = { source_path: relative_file, sidebar_navigation: { priority: 500 } }
-
-      frontmattered_file_copy(headers, target_path, api_file)
-    end
-  end
-
+  APIBuilder.build
   puts 'Done.'
 
   if no_git
