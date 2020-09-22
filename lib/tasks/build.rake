@@ -36,6 +36,7 @@ class APIBuilder
 
   def build_v3
     copy_endpoints_index
+    copy_example
 
     Parallel.each(Dir.glob("#{apiv3_source_dir}/**/*.apib"), progress: 'Processing APIv3 entries') do |api_file|
       aglio_v3_file(api_file)
@@ -53,7 +54,7 @@ class APIBuilder
       relative_file = filepath.relative_path_from(core_path)
 
       headers = frontmatter_header(:bcf_api, relative_file)
-      frontmattered_file_copy(headers, target_path, api_file)
+      frontmattered_file_copy(headers, api_file, target_path)
     end
   end
 
@@ -63,7 +64,21 @@ class APIBuilder
     endpoints_index_path = File.join(endpoints_target_dir, "index.html.md")
     endpoints_source_path = File.join(apiv3_source_dir, 'endpoints', 'README.md')
     FileUtils.copy(endpoints_source_path, endpoints_index_path)
-    frontmattered_file_copy(frontmatter_header(:endpoints, endpoints_source_path,  { title: 'Endpoints' }), endpoints_index_path, endpoints_index_path)
+    frontmattered_file_copy(frontmatter_header(:endpoints, endpoints_source_path,  { title: 'Endpoints' }), endpoints_index_path)
+  end
+
+  def copy_example
+    FileUtils.mkdir_p example_target_dir
+
+    Dir.glob("#{example_source_dir}/*.png").each do |api_file|
+      FileUtils.copy(api_file, example_target_dir)
+    end
+
+    example_index_source_path = File.join(example_source_dir, 'README.md')
+    example_index_target_path = File.join(example_target_dir, 'index.html.md')
+    frontmattered_file_copy(frontmatter_header(:example, example_index_source_path, { title: 'Example' }),
+                            example_index_source_path,
+                            example_index_target_path)
   end
 
   def aglio_v3_file(api_file)
@@ -87,7 +102,7 @@ class APIBuilder
 
     headers = frontmatter_header(filename, relative_file, filename == 'introduction' ? { title: 'Introduction' }: {})
 
-    frontmattered_file_copy(headers, target_path, target_path)
+    frontmattered_file_copy(headers, target_path)
   end
 
   # Define the specific title of the introduction page
@@ -114,7 +129,7 @@ class APIBuilder
   end
 
   # Copies the file from target to source and prepends the frontmatter style headers to it.
-  def frontmattered_file_copy(headers, target_path, source_path)
+  def frontmattered_file_copy(headers, source_path, target_path = source_path)
     input = File.read source_path
 
     File.open(target_path, 'w') do |f|
@@ -123,16 +138,20 @@ class APIBuilder
     end
   end
 
+  # The order the explicitly ordered api entries are to be sorted in.
+  # The higher the number, the higher up the element is ordered. A higher element comes before a lower element.
   def api_priority(key)
-    {
-      endpoints: 600,
-      introduction: 900,
-      'basic-objects': 890,
-      'group-objects': 880,
-      forms: 870,
-      filters: 860,
-      bcf_api: 500
-    }[key.to_sym] || 800
+    order = %i(introduction
+               example
+               basic-objects
+               group-objects
+               forms
+               filters
+               endpoints
+               default
+               bcf_api)
+
+    order.length - (order.index(key.to_sym) || order.index(:default))
   end
 
   def core_path
@@ -145,6 +164,14 @@ class APIBuilder
 
   def endpoints_target_dir
     File.join(middleman_root, 'source', 'api', 'endpoints')
+  end
+
+  def example_target_dir
+    File.join(target_dir.to_s, 'example')
+  end
+
+  def example_source_dir
+    File.join(apiv3_source_dir, 'example')
   end
 
   def apiv3_source_dir
