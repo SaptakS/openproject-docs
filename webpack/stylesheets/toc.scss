@@ -84,6 +84,7 @@
     top: 0;
     right: 8px;
     margin-top: $header-height;
+    background-color: $global-nav-bg;
     height: 100%;
 
     .toc-collapse {
@@ -109,6 +110,7 @@
 
   .doc-nav {
     width: $doc-nav-width;
+    background-color: $global-nav-bg;
   }
 }
 
@@ -119,12 +121,13 @@
   $doc-nav-width: 21%;
 
   .main.class.has-toc {
-    width: 64vw;
-    max-width: 64vw;
+    width: 58vw;
+    max-width: 58vw;
     margin: 0;
   }
 
   .doc-nav {
     width: $doc-nav-width;
+    background-color: $global-nav-bg;
   }
 }

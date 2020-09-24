@@ -7,13 +7,13 @@
     <a class="header-link logo-container flex-container justify-center align-center" href="<%= root_path %>">
       <%= image_tag "openproject-logo-white.svg", class: 'logo' %>
       <div class="header--separator hidden-for-mobile"></div>
-      <div class="header--help-text hidden-for-mobile">Help</div>
+      <div class="header--help-text hidden-for-mobile">Docs</div>
     </a>
     <% unless current_page.data.disable_searchbar || current_page.url.include?('/search') %>
       <form id="search-form">
         <i class="fa fa-search hidden-for-desktop" aria-hidden="true" data-gl-class-toggle="active" data-target=".header--element-container"></i>
         <i class="fa fa-arrow-left hidden-for-desktop" aria-hidden="true" data-gl-class-toggle="active" data-target=".header--element-container"></i>
-        <input type="text" name="q" class="docsearch-input docsearch" placeholder="Search ..." required/>
+        <input type="text" name="q" class="docsearch-input docsearch" placeholder="Search our docs" required/>
         <input type="submit" style="visibility: hidden; position:absolute;" />
       </form>
     <% end %>

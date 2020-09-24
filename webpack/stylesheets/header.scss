@@ -18,7 +18,6 @@
   }
 
   .logo-container {
-    margin-right: 30px;
 
     .header--help-text {
       font-size: 24px;
@@ -197,6 +196,7 @@
     border-color: $header-color;
     background: transparent;
     color: white;
+    margin-left: 30px;
 
     &:focus {
       background: white !important;

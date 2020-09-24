@@ -2,8 +2,9 @@
   <%#= TODO partial 'layouts/gtm' %>
   <%= partial 'layouts/header' %>
   <div class="wrapper">
+  <div class="container-fluid px-0 d-flex">
     <div class="nav-wrapper">
-      <aside id="global-nav" class="global-nav">
+      <aside id="global-nav" class="global-nav d-block d-lg-flex justify-content-none justify-content-lg-end">
         <%= partial 'layouts/sidebar_navigation' %>
       </aside>
       <button type="button" class="btn nav-toggle hidden-for-mobile" data-gl-class-toggle="active" data-target=".nav-wrapper">
@@ -42,6 +43,7 @@
     <div class="content-overlay"></div>
     <div class="clear"></div>
   </div>
+ </div>
 
   <%#= TODO mermaid.js support ? partial 'layouts/mermaid' %>
 <% end %>
