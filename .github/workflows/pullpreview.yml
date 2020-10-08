@@ -3,7 +3,7 @@ name: pullpreview
 on:
   push:
     branches:
-      - dev
+      - master
   pull_request:
     types: [labeled, unlabeled, synchronize, closed, reopened]
 
@@ -17,7 +17,7 @@ jobs:
     - uses: pullpreview/action@v4
       with:
         admins: crohr,HDinger,machisuji,oliverguenther,ulferts,wielinde
-        always_on: dev
+        always_on: master
         compose_files: docker-compose.yml,docker-compose.pullpreview.yml
         instance_type: small_2_0
       env:
