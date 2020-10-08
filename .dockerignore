@@ -7,3 +7,7 @@ build/
 node_modules/
 *.env
 Dockerfile
+docker-compose.yml
+.dockerignore
+*.swp
+/.github/
