@@ -3,4 +3,6 @@ version: '3.7'
 services:
   web:
     environment:
-      - SITE_URL="$PULLPREVIEW_PUBLIC_DNS"
+      - "SITE_URL=$PULLPREVIEW_PUBLIC_DNS"
+    ports:
+      - "80:80"
