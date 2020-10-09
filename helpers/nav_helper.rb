@@ -30,61 +30,65 @@ module NavHelper
   def generate_section_navigation(section, args = {})
     section_name = section.delete_prefix('/').chomp('/')
 
-    # First, get all index pages under this section
-    items = product_links(section, with_index: true)
-    categories = {}
+    ::Middleman::TemplateRenderer.cache.fetch(
+      [:section_navigation, section_name].join(":")
+    ) do
+      # First, get all index pages under this section
+      items = product_links(section, with_index: true)
+      categories = {}
 
-    # Remember dangling pages that are in a folder with no index page
-    # We just render them in the first level navigation
-    dangling_pages = []
+      # Remember dangling pages that are in a folder with no index page
+      # We just render them in the first level navigation
+      dangling_pages = []
 
-    # Then search all index pages
-    # to build the first level
-    suffix = '/index'
-    if args[:has_index_html] == false
-      suffix = ''
-    end
-
-    # Since some menu elements have no index html file structure (e.g. API files)
-    # we need to select those with another regex
-    items
-      .select { |entry|
-        entry[:path].match?(%r{/#{section_name}/([^/]+)#{suffix}}) &&
-        # Filter out the index page (e.g 'api/index')
-        (!(args[:has_index_html] == false) || !entry[:path].end_with?('index'))
-      }
-      .each do |entry|
-      category = entry[:resource].path.split('/')[1]
-      categories[category] = entry.merge(children: [])
-    end
-
-    # Then search other sub pages
-    # to find the second level by looking for anything BUT
-    # the index pages of children of this section
-    items
-      .select { |entry| entry[:path].match? %r{/#{section_name}/.+?/(?!index)} }
-      .each do |entry|
-
-      path_parts = entry[:resource].path.split('/')
-
-      category = path_parts[1]
-      if categories[category]
-        categories[category][:children] << entry
-      else
-        warn "Pages exist, but no index at #{section_name}/#{category} exists. Adding to dangling."
-        dangling_pages << entry
+      # Then search all index pages
+      # to build the first level
+      suffix = '/index'
+      if args[:has_index_html] == false
+        suffix = ''
       end
+
+      # Since some menu elements have no index html file structure (e.g. API files)
+      # we need to select those with another regex
+      items
+        .select { |entry|
+          entry[:path].match?(%r{/#{section_name}/([^/]+)#{suffix}}) &&
+          # Filter out the index page (e.g 'api/index')
+          (!(args[:has_index_html] == false) || !entry[:path].end_with?('index'))
+        }
+        .each do |entry|
+        category = entry[:resource].path.split('/')[1]
+        categories[category] = entry.merge(children: [])
+      end
+
+      # Then search other sub pages
+      # to find the second level by looking for anything BUT
+      # the index pages of children of this section
+      items
+        .select { |entry| entry[:path].match? %r{/#{section_name}/.+?/(?!index)} }
+        .each do |entry|
+
+        path_parts = entry[:resource].path.split('/')
+
+        category = path_parts[1]
+        if categories[category]
+          categories[category][:children] << entry
+        else
+          warn "Pages exist, but no index at #{section_name}/#{category} exists. Adding to dangling."
+          dangling_pages << entry
+        end
+      end
+
+      # Then return all sorted items
+      sorter = args[:sorter] || :sort_by_priority
+      sorted = send(sorter, categories.values + dangling_pages, args)
+
+      sorted.each do |item|
+        item[:children] = send(sorter, item[:children], args) if item[:children]
+      end
+
+      sorted
     end
-
-    # Then return all sorted items
-    sorter = args[:sorter] || :sort_by_priority
-    sorted = send(sorter, categories.values + dangling_pages, args)
-
-    sorted.each do |item|
-      item[:children] = send(sorter, item[:children], args) if item[:children]
-    end
-
-    sorted
   end
 
   def sort_by_priority(pages, args = {})
