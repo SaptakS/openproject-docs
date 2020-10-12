@@ -18,17 +18,16 @@ and live reloading and start the development server at `http://localhost:4567` b
 ## How to develop
 
 The site source is located at `source/` with localizable templates living under `source/localizable/`. They are being built into the URLs `/:language/<whatever is under localizable>`
-for all languages that are activated in the configuration.
+for all languages that are activated in the configuration. 
 
 ### Updating the core documentation
 
-We are pulling the documentation from the openproject core at `https://github.com/opf/openproject/tree/documentation/help` so that Birthe can
-work in peace on her changes for now.
+The documentation text itself is not maintained in this repository but is pulled from OpenProject, where  `https://github.com/opf/openproject/tree/dev/docs` is the upstream location.
 
-To update the core docs use `OPENPROJECT_CORE=/path/to/openproject rake build`
+Locally, when developing, use `OPENPROJECT_CORE=/path/to/openproject rake build`
 with the `OPENPROJECT_CORE` being the *absolute* path pointing to the checkout of the core with the branch set to to the current release branch (or whatever branch you make changes on)
 
-This will place all relevant guides under `help/` into the `source/localizable/openproject/*` folders and replace some README.md files into `README.index.html`
+This will place all relevant guides under `docs/` into the `source/localizable/openproject/*` folders will put all api documenation, after having rendered them to html using aglio, to `source/api`. Some README.md files will be transformed into `README.index.html`
 so that middleman will use them as index files.
 
 ### Working on CSS / JS
@@ -44,13 +43,7 @@ Also the left hand navigation is built from there which we will still need to up
 
 ## Deploying the site
 
-Always commit and push your changes first to the `master` branch. Then run
+Update the repository and push all the changes to the `master` branch. The CI will then dockerize the repository using the `https://ci.openproject.com/view/Dockerize/job/openproject-docs-dockerize/` job which will lead to the configured branches being deployed to `https://docs.openproject.org/` (the current release) and `https://docs.openproject-edge.com/` (the dev branch)
 
-```
-bundle exec rake deploy
-```
-
-which will run the middleman static site generator to output all changes into `build/` , which then gets copied and pushed in the `gh-pages`
-branch. This in turn builds and updates the https://finnlabs.github.io/openproject-docs site after a few minutes automatically.
-
-This build step happens daily in the `middleman-docs` branch of travis-ci-jobs: https://travis-ci.com/finnlabs/travis-ci-jobs/branches
+If a new branch is to be depoyed to `docs` the configuration for the job needs to be altered:
+`https://ci.openproject.com/view/Dockerize/job/openproject-docs-dockerize/configure`
