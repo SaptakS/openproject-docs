@@ -2,7 +2,7 @@
 
 set -ex
 
-cat > /etc/nginx/conf.d/default.conf <<CONF
+cat > /etc/nginx/sites-enabled/default <<CONF
 server {
     listen       80;
     server_name  _;

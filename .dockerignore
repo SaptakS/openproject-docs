@@ -1,10 +1,11 @@
+/.git
 .bundle
 .cache
 .tmp
 .DS_Store
 .sass-cache
 build/
-node_modules/
+/node_modules/
 *.env
 Dockerfile
 docker-compose.yml
