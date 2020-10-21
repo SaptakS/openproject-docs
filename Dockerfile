@@ -19,7 +19,7 @@ RUN bundle install -j$(nproc)
 ARG ORIGIN="https://github.com/opf/openproject"
 ARG BRANCH=dev
 
-ENV ROBOTS_ALLOWED=false
+ENV ROBOTS_ALLOWED=true
 ENV MATOMO_ENABLED=false
 ENV GTM_ID=""
 ENV HUBSPOT_PORTAL_ID=""
