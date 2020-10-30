@@ -17,7 +17,8 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install -j$(nproc)
 
 ARG ORIGIN="https://github.com/opf/openproject"
-ARG BRANCH=dev
+ARG CORE_REV
+ARG CORE_BRANCH
 
 ENV ROBOTS_ALLOWED=true
 ENV MATOMO_ENABLED=false
@@ -27,7 +28,7 @@ ENV OPENPROJECT_CORE=/tmp/build/core
 # Disable Ruby warnings while many still spit 2.7 deprecation warnings
 ENV RUBYOPT="-W0"
 
-RUN git clone --depth=1 --branch "$BRANCH" $ORIGIN /tmp/build/core
+RUN mkdir -p $OPENPROJECT_CORE && curl -L $ORIGIN/archive/$CORE_REV.tar.gz -o - | tar xzf - --strip=1 -C $OPENPROJECT_CORE
 
 COPY . ./
 
