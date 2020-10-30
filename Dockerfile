@@ -20,10 +20,11 @@ ARG ORIGIN="https://github.com/opf/openproject"
 ARG CORE_REV
 ARG CORE_BRANCH
 
-ENV ROBOTS_ALLOWED=true
-ENV MATOMO_ENABLED=false
-ENV GTM_ID=""
-ENV HUBSPOT_PORTAL_ID=""
+ARG ROBOTS_ALLOWED=true
+ARG MATOMO_ENABLED=false
+ARG GTM_ID=""
+ARG HUBSPOT_PORTAL_ID=""
+
 ENV OPENPROJECT_CORE=/tmp/build/core
 # Disable Ruby warnings while many still spit 2.7 deprecation warnings
 ENV RUBYOPT="-W0"
