@@ -14,6 +14,10 @@ jobs:
     timeout-minutes: 40
     steps:
     - uses: actions/checkout@v2
+    - name: Generate docker-compose .env file
+      run: |
+        echo "CORE_BRANCH=dev" >> .env
+        echo "CORE_REV=$(git ls-remote https://github.com/opf/openproject refs/heads/dev | cut -f 1)" >> .env
     - uses: pullpreview/action@v4
       with:
         admins: crohr,HDinger,machisuji,oliverguenther,ulferts,wielinde

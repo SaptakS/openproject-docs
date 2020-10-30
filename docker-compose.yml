@@ -2,4 +2,8 @@ version: '3.7'
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        CORE_REV: "${CORE_REV}"
+        CORE_BRANCH: "${CORE_BRANCH}"
