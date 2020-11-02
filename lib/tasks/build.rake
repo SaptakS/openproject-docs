@@ -37,6 +37,7 @@ class APIBuilder
   def build_v3
     copy_endpoints_index
     copy_example
+    copy_clients
 
     Parallel.each(Dir.glob("#{apiv3_source_dir}/**/*.apib"), progress: 'Processing APIv3 entries') do |api_file|
       aglio_v3_file(api_file)
@@ -79,6 +80,21 @@ class APIBuilder
     frontmattered_file_copy(frontmatter_header(:example, example_index_source_path, { title: 'Example' }),
                             example_index_source_path,
                             example_index_target_path)
+  end
+
+  def copy_clients
+    FileUtils.mkdir_p clients_target_dir
+
+    Dir.glob("#{clients_source_dir}/*.png").each do |api_file|
+      FileUtils.copy(api_file, clients_target_dir)
+    end
+
+    clients_index_source_path = File.join(clients_source_dir, 'README.md')
+    clients_index_target_path = File.join(clients_target_dir, 'index.html.md')
+    frontmattered_file_copy(frontmatter_header(:'clients-libraries', clients_index_source_path, { title: 'Client libraries' }),
+                            clients_index_source_path,
+                            clients_index_target_path)
+
   end
 
   def aglio_v3_file(api_file)
@@ -149,6 +165,7 @@ class APIBuilder
                filters
                endpoints
                default
+               clients-libraries
                bcf_api)
 
     order.length - (order.index(key.to_sym) || order.index(:default))
@@ -172,6 +189,14 @@ class APIBuilder
 
   def example_source_dir
     File.join(apiv3_source_dir, 'example')
+  end
+
+  def clients_target_dir
+    File.join(target_dir.to_s, 'client-libraries')
+  end
+
+  def clients_source_dir
+    File.join(apiv3_source_dir, 'client-libraries')
   end
 
   def apiv3_source_dir
