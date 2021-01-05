@@ -1,0 +1,12 @@
+.lang-dropdown {
+    text-transform: uppercase;
+    .dropdown-toggle {
+        margin-right: 10px;
+    }
+    .dropdown-menu {
+        min-width: 0;
+        li {
+            display: list-item;
+        }
+    }
+}
