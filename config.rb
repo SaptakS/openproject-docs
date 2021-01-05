@@ -23,7 +23,7 @@ page '/*.txt', layout: false
 
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
-activate :i18n, mount_at_root: :en, langs: [:en]
+activate :i18n, mount_at_root: :en, langs: [:en, :de]
 
 # Activate /openproject to map to /openproject/README.* or /openproject/index.*
 activate :directory_indexes
