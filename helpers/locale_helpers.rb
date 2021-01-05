@@ -20,13 +20,13 @@ module LocaleHelpers
 
   def switch_language_path(target_lang)
     current_lang = I18n.locale.to_s
-    url = current_page.url.gsub("#{current_lang}/", '')
+    url = current_page.url.gsub("/#{current_lang}/", '/')
 
     if target_lang == 'en'
       # Link to the current page with english
       url
     else
-      "#{site_url}/#{target_lang}#{current_page.url}"
+      "#{site_url}/#{target_lang}#{url}"
     end
   end
 end
