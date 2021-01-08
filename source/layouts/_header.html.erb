@@ -4,7 +4,7 @@
       <i class="fa fa-bars" aria-hidden="true" data-gl-class-toggle="active" data-target=".nav-wrapper"></i>
       <i class="fa fa-times" aria-hidden="true" data-gl-class-toggle="active" data-target=".nav-wrapper"></i>
     </a>
-    <a class="header-link logo-container flex-container justify-center align-center" href="<%= root_path %>">
+    <a class="header-link logo-container flex-container justify-center align-center" href="<%= localized_url(root_path) %>">
       <%= image_tag "openproject-logo-white.svg", class: 'logo' %>
       <div class="header--separator hidden-for-mobile"></div>
       <div class="header--help-text hidden-for-mobile">Docs</div>
@@ -20,7 +20,7 @@
   </div>
   <nav class="landing-header--button-group landing-header--on-page">
     <%= partial 'layouts/language_dropdown' %>
-    <a href="https://openproject.com/"
+    <a href="<%= localized_url('https://openproject.com/') %>"
        target="_blank"
        title="<%= t('landing.about_openproject') %>"
        class="header-link">

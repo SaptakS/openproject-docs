@@ -12,9 +12,22 @@ module LocaleHelpers
     lang = options.fetch(:language, I18n.locale.to_s)
 
     if lang == 'en'
-      "#{site_url}/#{path}"
+      "/#{path}"
     else
-      "#{site_url}/#{lang}/#{path}"
+      "/#{lang}/#{path}"
+    end
+  end
+
+  def localized_url(external_url, options = {})
+    lang = options.fetch(:language, I18n.locale.to_s)
+    external_url = external_url.chomp('/')
+
+    if lang == 'en'
+      external_url
+    else
+      if external_url == site_url() || external_url.include?("openproject")
+        "#{external_url}/#{lang}"
+      end
     end
   end
 

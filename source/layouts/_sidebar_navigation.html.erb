@@ -27,7 +27,7 @@
   <!-- nav sections -->
   <% nav_items[:sections].each do |sec| %>
     <%# Remove any trailing slash in case it was given %>
-    <% section_url = sec[:path].chomp('/') %>
+    <% section_url = localized_path(sec[:path].chomp('/')) %>
 
     <% if sec[:generate_categories]
          # Get the section_url without leading slash
