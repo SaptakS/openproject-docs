@@ -13,11 +13,7 @@ module LocaleHelpers
     path.split("/").each do |chunk|
       untranslated_path = t(:paths).key(chunk)
       if untranslated_path != nil
-        begin
-          translated = I18n.translate!("paths.#{untranslated_path}", locale: target_lang)
-        rescue I18n::MissingTranslationData
-          translated = untranslated_path
-        end
+        translated = I18n.t("paths.#{untranslated_path}", locale: target_lang, default: untranslated_path)
         new_path = "#{new_path}/#{translated}"
       else
         new_path = "#{new_path}/#{chunk}"
@@ -30,11 +26,7 @@ module LocaleHelpers
     path = path.delete_prefix('/')
     new_path = ""
     path.split("/").each do |chunk|
-      begin
-        translated = I18n.translate!("paths.#{chunk}", locale: I18n.locale.to_s)
-      rescue I18n::MissingTranslationData
-        translated = chunk
-      end
+      translated = I18n.t("paths.#{chunk}", locale: I18n.locale.to_s, default: chunk)
       new_path = "#{new_path}/#{translated}"
     end
     new_path
