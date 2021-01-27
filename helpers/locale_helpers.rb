@@ -7,14 +7,47 @@ module LocaleHelpers
     "#{site_url}/"
   end
 
+  def translate_path_to_target_lang(path, target_lang)
+    path = path.delete_prefix('/')
+    new_path = ""
+    path.split("/").each do |chunk|
+      untranslated_path = t(:paths).key(chunk)
+      if untranslated_path != nil
+        begin
+          translated = I18n.translate!("paths.#{untranslated_path}", locale: target_lang)
+        rescue I18n::MissingTranslationData
+          translated = untranslated_path
+        end
+        new_path = "#{new_path}/#{translated}"
+      else
+        new_path = "#{new_path}/#{chunk}"
+      end
+    end
+    new_path
+  end
+
+  def translate_nav_path(path)
+    path = path.delete_prefix('/')
+    new_path = ""
+    path.split("/").each do |chunk|
+      begin
+        translated = I18n.translate!("paths.#{chunk}", locale: I18n.locale.to_s)
+      rescue I18n::MissingTranslationData
+        translated = chunk
+      end
+      new_path = "#{new_path}/#{translated}"
+    end
+    new_path
+  end
+
   def localized_path(path, options = {})
     path = path.delete_prefix('/')
     lang = options.fetch(:language, I18n.locale.to_s)
 
     if lang == 'en'
-      "/#{path}"
+      "#{translate_nav_path(path)}"
     else
-      "/#{lang}/#{path}"
+      "/#{lang}#{translate_nav_path(path)}"
     end
   end
 
@@ -37,9 +70,9 @@ module LocaleHelpers
 
     if target_lang == 'en'
       # Link to the current page with english
-      url
+      translate_path_to_target_lang(url, target_lang)
     else
-      "#{site_url}/#{target_lang}#{url}"
+      "#{site_url}/#{target_lang}#{translate_path_to_target_lang(url, target_lang)}"
     end
   end
 end

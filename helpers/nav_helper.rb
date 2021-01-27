@@ -28,7 +28,7 @@ module NavHelper
   # e.g., "user-guide" will find all pages behind source/user-guide/,
   # group them by subfolders (if any) and sorts the nav items
   def generate_section_navigation(section, args = {})
-    section_name = section.delete_prefix('/').chomp('/').split('/')[1]
+    section_name = section.delete_prefix('/').chomp('/').split('/')[-1]
 
     ::Middleman::TemplateRenderer.cache.fetch(
       [:section_navigation, section_name].join(":")

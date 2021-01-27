@@ -1,5 +1,177 @@
 ---
 de:
+  paths:
+    user-guide: benutzeranleitung
+    getting-started: beginnend
+    system-admin-guide: system-admin-Anleitung
+    cloud-edition-guide: cloud-edition-Guide
+    enterprise-edition-guide: firmen-edition-guide
+    installation-and-operations: installation-und-operationen
+    release-notes: release-notes
+    development: entwicklung
+    openproject-introduction: openproject-Einführung
+    projects: projekte
+    invite-members: einladende Mitglieder
+    work-packages-introduction: work-packages-Einführung
+    gantt-chart-introduction: gant-chart-Einführung
+    boards-introduction: boards-Einführung
+    my-account: mein Konto
+    my-page: meine-Seite
+    sign-in-registration: anmelden
+    agile-boards: agile-Boards
+    activity: aktivität
+    time-and-costs: Zeit und Kosten
+    calendar: kalender
+    work-packages: arbeitspakete
+    meetings: besprechen
+    roadmap: fahrplan
+    repository: repository
+    wysiwyg: wysiwyg
+    backlogs-scrum: backlogs-scrum
+    wiki: wiki
+    forums: foren
+    keyboard-shortcuts-access-keys: tastatur-Verknüpfungs-Zugangstasten
+    news: neuigkeiten
+    project-overview: projektübersicht
+    start-page: start-page
+    documents: dokumente
+    members: Mitglieder
+    integrations: integrationen
+    budgets: budgets
+    gantt-chart: gantt-chart
+    github-integration: github-integration
+    design: entwerfen
+    enumerations: Aufzählungen
+    announcement: ankündigung
+    information: informationen
+    email: email
+    manage-work-packages: verwalten-Arbeitspakete
+    system-settings: system-Einstellungen
+    plugins: plugins
+    backlogs: backlogs
+    colors: farben
+    authentication: authentifizierung
+    attribute-help-texts: attribute-help-text
+    custom-fields: benutzerdefinierte Felder
+    users-permissions: benutzerberechtigungen
+    webhooks: webhooks
+    manage-subscription: verwalten-Abonnement
+    backups: sicherungen
+    sign-in: anmelden
+    book-cloud-edition: book-cloud-Edition
+    invoices-and-billing-history: Rechnungen und Rechnungsverlauf
+    create-trial-installation: erstelle Test-Installation
+    support: unterstützung
+    activate-enterprise-edition: aktivere Unternehmens-Edition
+    enterprise-trial: firmen-Testversion
+    changing-to-bim-edition: ändere zu bim-Edition
+    operation: operieren
+    system-requirements: system-Anforderungen
+    misc: sc
+    configuration: konfiguration
+    installation: installieren
+    concepts: konzepte
+    product-development-handbook: Produktentwicklungs-Handbuch
+    create-omniauth-plugin: erstelle omniauth-Plugin
+    report-a-bug: report-a-bug
+    development-environment-ubuntu: entwicklungs-environment-ubuntu
+    development-environment-osx: entwicklungs-environment-osx
+    submit-feature-idea: submit-feature-Idee
+    code-review-guidelines: code-review-guidelines
+    release-process: veröffentlichungsprozess
+    development-environment-docker: entwicklungs-umwelt-docker
+    accessibility-checklist: Zugänglichkeitsprüfungsliste
+    security: sicher
+    git-workflow: git-Workflow
+    translate-openproject: translate-openproject
+    create-openproject-plugin: erstelle OpenProject-Plugin
+    running-tests: laufende Tests
+    reporting: melden
+    cost-tracking: kostenverfolgung
+    toggl-integration: umschalten
+    time-tracking: zeiterfassung
+    work-package-table-configuration: work-package-table-Konfiguration
+    create-work-package: erstelle Arbeitspaket
+    work-package-views: arbeitspaketansichten
+    exporting: exportiere
+    work-package-relations-hierarchies: work-package-relations-hierarchien
+    edit-work-package: bearbeiten-Arbeitspaket
+    copy-move-delete: kopieren-verschieben-löschen
+    manage-sprints: manager-Sprints
+    work-with-backlogs: work-with-backlogs
+    taskboard: taskboard
+    more-wiki-functions: mehrer-Wiki-Funktionen
+    wiki-menu: wiki-Menü
+    create-edit-wiki: erstellen-editieren-Wiki
+    modules: module
+    versions: versionen
+    work-package-types: Arbeitspaket-Typen
+    project-information: projektinformationen
+    work-package-categories: Arbeitspaket-Kategorien
+    backlogs-settings: backlogs-Einstellungen
+    activities-time-tracking: Aktivitäten-Zeiterfassung
+    project-settings: projekt-Einstellungen
+    Excel Synchronization: Excel-Synchronisierung
+    scheduling: planen
+    work-package-status: Arbeitspaket-Status
+    custom-actions: benutzerdefinierte Aktionen
+    work-package-workflows: work-package-Workflows
+    work-package-settings: workpackage-Einstellungen
+    display-settings: anzeigen-Einstellungen
+    repositories: repositories
+    project-system-settings: projekt-system-Einstellungen
+    api-settings: api-Einstellungen
+    general-settings: allgemeine Einstellungen
+    authentication-settings: authentifizierung-Einstellungen
+    kerberos: kerberos
+    ldap-group-synchronization: ldap-gruppen-Synchronisation
+    ldap-authentication: ldap-Authentifizierung
+    oauth-applications: oauth-Anwendungen
+    saml: sampel
+    two-factor-authentication: Zwei-Faktor-Authentifizierung
+    openid-providers: openid-Anbieter
+    recaptcha: recaptcha
+    custom-fields-projects: kunden-felders-Projekte
+    roles-permissions: rollen-Berechtigungen
+    avatars: avatare
+    users: benutzer
+    groups: gruppen
+    settings: einstellen
+    installation-support: installations-Support
+    reconfiguring: neu konfigurieren
+    monitoring: überwachung
+    upgrading: upgraden
+    control: steuern
+    faq: faq
+    restoring: wiederherstellen
+    backing-up: sichern
+    custom-openid-connect-providers: custom-openid-connect-Provider
+    upgrading-older-openproject-versions: aktualisieren-ältere openproject-Versionen
+    migration: migration
+    textile-migration: textil-Migration
+    packaged-postgresql-migration: gepackted-postgresql-Migration
+    time-entries-corrupted-by-10-4: Zeit-Einträge beschädigt von 10-4
+    docker-postgresql-migration: docker-postgresql-Migration
+    ssl: sl
+    outbound-emails: ausgehend-E-Mails
+    incoming-emails: eingehende E-Mails
+    environment: umgebung
+    database: datenbank
+    server: server
+    docker: docker
+    univention: univention
+    packaged: verpackt
+    queries: abfragen
+    application-architecture: anwendungsarchitektur
+    infrastructure: infrastruktur
+    state-management: staatliches Management
+    resource-changesets: ressourcen-Änderungssätze
+    hal-resources: hal-Ressourcen
+    translations: übersetzen
+    wysiwyg-editor: wysiwyg-editor
+    permissions: berechtigungen
+    resource-schemas: ressourcen-Schemas
+    inline-editing: inline-Bearbeitung
   products:
     openproject:
       shortname: 'OpenProject'

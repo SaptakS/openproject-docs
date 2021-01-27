@@ -44,8 +44,8 @@ class CombinedLocalesUpdater
         crowdin.add_directory(@crowdin_version_dir)
       end
 
-      # puts "-- Uploading all translations --"
-      # locale_paths.each { |dir| upload_doc_translations(dir) }
+      puts "-- Uploading all translations --"
+      locale_paths.each { |dir| upload_doc_translations(dir) }
 
       puts "-- Requesting build --"
       request_build
