@@ -16,6 +16,9 @@ en:
       text: 'In-depth guide of all features </br>in OpenProject'
       badge: 'All features'
       badge_color: 'red'
+    faq:
+      title: 'FAQ'
+      text: 'General frequently asked <br/>questions'
     project-admin-guide:
       title: 'Project Admin guide'
       text: 'Manage your projects </br>in OpenProject'
@@ -23,14 +26,14 @@ en:
       title: 'Cloud Edition guide'
       text: 'Manage your OpenProject </br>Cloud Edition'
     enterprise-edition-guide:
-      title: 'Enterprise Edition guide'
-      text: 'Manage your OpenProject </br>Enterprise Edition'
+      title: 'Enterprise guide'
+      text: 'Manage your cloud or </br>on-premises Enterprise edition'
     system-admin-guide:
-      title: 'System Admin guide'
-      text: 'Learn how to configure your </br>OpenProject'
+      title: 'System admin guide'
+      text: 'Learn how to configure your </br>OpenProject instance'
     installation-and-operations:
-      title: 'Installation and operations guide'
-      text: 'Find out how to install </br>and operate OpenProject'
+      title: 'Installation & operations guide'
+      text: 'Learn how to install </br>and operate OpenProject'
     release-notes:
       title: 'Release Notes'
       text: 'See the latest changes </br>in OpenProject'
@@ -38,7 +41,7 @@ en:
       title: 'Development'
       text: 'Learn about how to contribute </br>to OpenProject'
     api:
-      title: 'API'
+      title: 'API documentation'
       text: 'Learn about the API </br>powering OpenProject'
   popular_topics:
     installation:

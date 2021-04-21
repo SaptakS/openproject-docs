@@ -7,27 +7,27 @@
 #
 
 sections:
-  - title: Getting Started
+  - title: Getting started
     path: '/getting-started'
     generate_categories: true
 
-  - title: User Guide
+  - title: User guide
     path: '/user-guide'
     generate_categories: true
 
-  - title: System Admin Guide
+  - title: System admin guide
     path: '/system-admin-guide'
     generate_categories: true
-
-  - title: Cloud Edition Guide
-    path: '/cloud-edition-guide'
+  
+  - title: FAQ
+    path: '/faq'
     generate_categories: true
 
-  - title: Enterprise Edition Guide
+  - title: Enterprise Guide
     path: '/enterprise-edition-guide'
     generate_categories: true
 
-  - title: Installation & Upgrade Guides
+  - title: Installation & operations guide
     path: '/installation-and-operations'
     generate_categories: true
 

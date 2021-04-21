@@ -7,9 +7,9 @@ user-guide:
 system-admin-guide:
   path: '/system-admin-guide'
   img: 'products/system-admin-guide.svg'
-cloud-edition-guide:
-  path: '/cloud-edition-guide'
-  img: 'products/openproject-cloud-edition.svg'
+faq:
+  path: '/faq'
+  img: 'products/faq.svg'
 enterprise-edition-guide:
   path: '/enterprise-edition-guide'
   img: 'products/openproject-enterprise-edition.svg'
