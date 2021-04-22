@@ -11,7 +11,7 @@ faq:
   path: '/faq'
   img: 'products/faq.svg'
 enterprise-edition-guide:
-  path: '/enterprise-edition-guide'
+  path: '/enterprise-guide'
   img: 'products/openproject-enterprise-edition.svg'
 installation-and-operations:
   path: '/installation-and-operations'

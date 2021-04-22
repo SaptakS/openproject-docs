@@ -23,8 +23,8 @@ sections:
     path: '/faq'
     generate_categories: true
 
-  - title: Enterprise Guide
-    path: '/enterprise-edition-guide'
+  - title: Enterprise guide
+    path: '/enterprise-guide'
     generate_categories: true
 
   - title: Installation & operations guide
